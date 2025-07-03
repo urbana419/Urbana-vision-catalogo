@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urbana Visión - Sistema Híbrido</title>
+    <title>Óptica Nvisión - Sistema Híbrido</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: Arial, sans-serif; 
-            background: #1e293b; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
             min-height: 100vh; 
             color: white; 
             font-size: 16px;
@@ -16,35 +16,45 @@
         }
         .container { max-width: 430px; margin: 0 auto; padding: 15px; }
         
-        /* MODO NORMAL - Sistema Original */
         .modo-normal {
             display: block;
         }
         
         .header { 
-            background: rgba(255, 255, 255, 0.1); 
+            background: rgba(255, 255, 255, 0.15); 
+            backdrop-filter: blur(10px);
             border-radius: 25px; 
             padding: 30px 25px; 
             text-align: center; 
             margin-bottom: 25px; 
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .logo { 
-            width: 65px; 
-            height: 65px; 
-            background: #3b82f6; 
+            width: 70px; 
+            height: 70px; 
+            background: linear-gradient(45deg, #4f46e5, #7c3aed); 
             border-radius: 50%; 
             margin: 0 auto 20px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            font-size: 28px; 
+            font-size: 32px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
-        .brand-name { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
-        .tagline { font-size: 14px; opacity: 0.9; margin-bottom: 20px; }
+        .brand-name { 
+            font-size: 28px; 
+            font-weight: 800; 
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tagline { font-size: 15px; opacity: 0.95; margin-bottom: 20px; font-weight: 500; }
         .contact-info { 
             display: flex; 
             justify-content: center; 
-            gap: 15px; 
+            gap: 12px; 
             flex-wrap: wrap; 
             font-size: 13px; 
         }
@@ -52,9 +62,10 @@
             display: flex; 
             align-items: center; 
             gap: 6px; 
-            padding: 8px 12px; 
-            background: rgba(255, 255, 255, 0.1); 
-            border-radius: 15px; 
+            padding: 10px 14px; 
+            background: rgba(255, 255, 255, 0.2); 
+            border-radius: 20px; 
+            font-weight: 600;
         }
 
         .feature-buttons {
@@ -65,7 +76,8 @@
         }
         
         .feature-btn {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
             padding: 20px 15px;
@@ -80,11 +92,10 @@
         }
         
         .feature-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
 
-        /* MODO HUMANITARIO - Nuevo Sistema */
         .modo-humanitario {
             display: none;
             position: fixed;
@@ -93,7 +104,7 @@
             width: 100%;
             height: 100%;
             z-index: 1000;
-            background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c2d12 100%);
             padding: 20px;
         }
         
@@ -113,20 +124,19 @@
             padding: 40px 30px;
             text-align: center;
             margin-bottom: 30px;
-            border: 3px solid #3b82f6;
+            border: 3px solid #fbbf24;
         }
         
         .humanitario-logo {
             width: 100px;
             height: 100px;
-            background: #3b82f6;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
             border-radius: 50%;
             margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 50px;
-            color: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
@@ -152,7 +162,7 @@
         .action-btn-humanitario {
             background: rgba(255, 255, 255, 0.95);
             color: #1e293b;
-            border: 4px solid #3b82f6;
+            border: 4px solid #fbbf24;
             padding: 35px 25px;
             border-radius: 25px;
             font-size: 20px;
@@ -166,7 +176,7 @@
         }
         
         .action-btn-humanitario:hover {
-            background: #3b82f6;
+            background: #fbbf24;
             color: white;
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.4);
@@ -216,7 +226,6 @@
             margin-bottom: 10px;
         }
 
-        /* Sistema de Test Visual Humanitario */
         .test-visual-humanitario {
             display: none;
             position: fixed;
@@ -245,7 +254,7 @@
             padding: 50px 40px;
             text-align: center;
             margin-bottom: 30px;
-            border: 4px solid #10b981;
+            border: 4px solid #22d3ee;
         }
         
         .test-icon {
@@ -291,7 +300,6 @@
             transform: scale(1.05);
         }
 
-        /* Tabla Visual para Test */
         .vision-chart {
             background: white;
             color: black;
@@ -300,7 +308,7 @@
             margin: 25px 0;
             font-family: monospace;
             font-weight: bold;
-            border: 4px solid #10b981;
+            border: 4px solid #22d3ee;
         }
         
         .chart-line {
@@ -309,7 +317,6 @@
             text-align: center;
         }
 
-        /* Controles de Audio */
         .audio-controls {
             position: fixed;
             bottom: 20px;
@@ -335,7 +342,6 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Barra de Progreso */
         .progress-indicator {
             position: fixed;
             top: 20px;
@@ -355,7 +361,6 @@
             transition: width 0.5s ease;
         }
 
-        /* Detector de Modo */
         .modo-selector {
             position: fixed;
             top: 20px;
@@ -369,7 +374,6 @@
             cursor: pointer;
         }
 
-        /* Estilos del sistema original que se mantienen */
         .analytics-badge {
             position: fixed;
             top: 20px;
@@ -380,6 +384,7 @@
             border-radius: 20px;
             font-size: 12px;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .admin-access {
@@ -389,7 +394,8 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -397,14 +403,18 @@
             color: #888;
             font-size: 20px;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .empty-state { 
             text-align: center; 
             padding: 60px 20px; 
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
         }
         .state-icon { font-size: 64px; margin-bottom: 20px; }
-        .state-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+        .state-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; }
 
         .product-card { 
             background: rgba(255, 255, 255, 0.1); 
@@ -423,7 +433,7 @@
         }
         .product-info { text-align: center; }
         .product-code { 
-            background: #3b82f6; 
+            background: linear-gradient(45deg, #22d3ee, #0891b2); 
             color: white; 
             padding: 15px 25px; 
             border-radius: 25px; 
@@ -447,7 +457,7 @@
         .product-price { 
             font-size: 36px; 
             font-weight: 800; 
-            color: #10b981; 
+            color: #22d3ee; 
             margin-bottom: 30px; 
         }
 
@@ -464,8 +474,83 @@
             text-decoration: none; 
             display: block; 
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            background: #128c7e;
+            transform: translateY(-2px);
+        }
+
+        .interest-button {
+            background: linear-gradient(45deg, #22d3ee, #0891b2);
+            color: white;
+            padding: 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(34, 211, 238, 0.6); }
+        }
+
+        .interest-button:hover {
+            background: linear-gradient(45deg, #0891b2, #0e7490);
+            transform: translateY(-3px);
+        }
+
+        .share-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .share-btn {
+            padding: 18px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-copy-link {
+            background: rgba(99, 102, 241, 0.2);
+            color: #6366f1;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-copy-link:hover {
+            background: #6366f1;
+            color: white;
+        }
+
+        .btn-send-message {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-send-message:hover {
+            background: #10b981;
+            color: white;
         }
 
         .catalog-button { 
@@ -480,6 +565,11 @@
             width: 100%; 
             text-align: center;
             border: none;
+            transition: all 0.3s ease;
+        }
+
+        .catalog-button:hover {
+            background: rgba(99, 102, 241, 0.3);
         }
 
         .catalog-grid { 
@@ -494,7 +584,14 @@
             padding: 18px; 
             text-align: center; 
             cursor: pointer; 
+            transition: all 0.3s ease;
         }
+        
+        .catalog-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
         .catalog-item-image { 
             width: 100%; 
             height: 140px; 
@@ -511,37 +608,59 @@
         .catalog-item-price { 
             font-size: 18px; 
             font-weight: 700; 
-            color: #10b981; 
+            color: #22d3ee; 
         }
 
-        /* Ocultar elementos en modo humanitario */
         .modo-humanitario .analytics-badge,
         .modo-humanitario .admin-access {
             display: none;
         }
+
+        .success-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(16, 185, 129, 0.95);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            z-index: 2000;
+            display: none;
+            animation: fadeInOut 3s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            10%, 90% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
     </style>
 </head>
 <body>
-    <!-- Selector de Modo -->
     <div class="modo-selector" onclick="toggleModo()" id="modoSelector">
-        👓 Modo: Normal
+        👁️ Modo: Normal
     </div>
 
-    <!-- MODO NORMAL - Sistema Original -->
     <div id="modoNormal" class="modo-normal">
         <div class="container">
             <div class="header">
-                <div class="logo">👓</div>
-                <h1 class="brand-name">Urbana Visión</h1>
-                <p class="tagline">Monturas de calidad premium</p>
+                <div class="logo">👁️</div>
+                <h1 class="brand-name">Óptica Nvisión</h1>
+                <p class="tagline">Vea mejor, viva mejor - Especialistas en salud visual</p>
                 <div class="contact-info">
-                    <div class="contact-item"><span>📱</span><span>809-713-5307</span></div>
-                    <div class="contact-item"><span>🎁</span><span>6 meses garantía</span></div>
-                    <div class="contact-item"><span>🚚</span><span>Envío gratis</span></div>
+                    <div class="contact-item"><span>📱</span><span>849-797-2424</span></div>
+                    <div class="contact-item"><span>🎁</span><span>Garantía premium</span></div>
+                    <div class="contact-item"><span>🚚</span><span>Entrega gratis</span></div>
                 </div>
             </div>
 
             <div class="feature-buttons">
+                <button class="feature-btn" onclick="showVisionTest()">
+                    🔍 TEST DE VISTA<br>
+                    <small>Gratis y rápido</small>
+                </button>
                 <button class="feature-btn" onclick="showCatalogView()">
                     👓 VER MONTURAS<br>
                     <small>Catálogo completo</small>
@@ -549,10 +668,6 @@
                 <button class="feature-btn" onclick="abrirPOS()">
                     💼 PUNTO DE VENTA<br>
                     <small>Facturación completa</small>
-                </button>
-                <button class="feature-btn" onclick="adminAccess()">
-                    ⚙️ ADMINISTRAR<br>
-                    <small>Panel de control</small>
                 </button>
                 <button class="feature-btn" onclick="activarModoHumanitario()">
                     🌾 MODO SIMPLE<br>
@@ -562,15 +677,15 @@
             
             <div id="mainContent">
                 <div class="empty-state">
-                    <span class="state-icon">📦</span>
-                    <div class="state-title">Catálogo en construcción</div>
-                    <div>Pronto tendremos monturas disponibles</div>
+                    <span class="state-icon">🏥</span>
+                    <div class="state-title">Bienvenido a Óptica Nvisión</div>
+                    <div>Su salud visual es nuestra prioridad. Comience con nuestro test de vista gratuito o explore nuestro catálogo de monturas premium.</div>
                     <br>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <button onclick="showCatalogView()" style="padding: 15px; background: #3b82f6; color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
-                            👓 Monturas
+                        <button onclick="showVisionTest()" style="padding: 15px; background: linear-gradient(45deg, #22d3ee, #0891b2); color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
+                            🔍 Hacer Test
                         </button>
-                        <button onclick="activarModoHumanitario()" style="padding: 15px; background: #10b981; color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
+                        <button onclick="activarModoHumanitario()" style="padding: 15px; background: linear-gradient(45deg, #10b981, #059669); color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
                             🌾 Modo Simple
                         </button>
                     </div>
@@ -579,24 +694,20 @@
         </div>
     </div>
 
-    <!-- MODO HUMANITARIO - Sistema Simplificado -->
     <div id="modoHumanitario" class="modo-humanitario">
         <div class="humanitario-container">
-            <!-- Header Humanitario -->
             <div class="humanitario-header">
-                <div class="humanitario-logo">👓</div>
-                <h1 class="humanitario-title">Urbana Visión</h1>
-                <p class="humanitario-subtitle">🌟 Lentes de calidad 🌟</p>
+                <div class="humanitario-logo">👁️</div>
+                <h1 class="humanitario-title">Óptica Nvisión</h1>
+                <p class="humanitario-subtitle">🌟 Cuidamos sus ojos 🌟</p>
             </div>
 
-            <!-- Sección de Emergencia -->
             <div class="emergency-section" onclick="emergencyCall()">
                 <div class="emergency-icon">🚨</div>
                 <div class="emergency-text">¿PROBLEMA EN LOS OJOS?</div>
                 <div class="emergency-text" style="font-size: 16px;">TOQUE AQUÍ PARA LLAMAR</div>
             </div>
 
-            <!-- Acciones Principales Humanitarias -->
             <div class="main-actions-humanitario">
                 <button class="action-btn-humanitario" onclick="iniciarTestHumanitario()">
                     <span class="action-icon-humanitario">👁️</span>
@@ -617,7 +728,6 @@
                 </button>
             </div>
 
-            <!-- Botón para volver al modo normal -->
             <div style="text-align: center;">
                 <button onclick="desactivarModoHumanitario()" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 15px 30px; border-radius: 20px; font-size: 16px; font-weight: 600; cursor: pointer;">
                     🔙 Modo Normal
@@ -626,7 +736,6 @@
         </div>
     </div>
 
-    <!-- SISTEMA DE TEST VISUAL HUMANITARIO -->
     <div id="testVisualHumanitario" class="test-visual-humanitario">
         <div class="progress-indicator">
             <div class="progress-bar" id="progressBar"></div>
@@ -658,30 +767,30 @@
         </div>
     </div>
 
-    <!-- Controles de Audio -->
     <div class="audio-controls">
         <button class="audio-btn" onclick="toggleAudio()" id="audioBtn">
             🔊
         </button>
     </div>
 
-    <!-- Analytics y Admin (solo en modo normal) -->
     <div id="analyticsBadge" class="analytics-badge">
         📊 <span id="viewCount">0</span> vistas | 💬 <span id="clickCount">0</span> clicks
     </div>
 
     <div class="admin-access" onclick="adminAccess()">⚙️</div>
 
+    <div id="successNotification" class="success-notification">
+        ✅ ¡Enlace copiado!
+    </div>
+
     <script>
-        // VARIABLES GLOBALES
-        var WHATSAPP_NUMBER = '18097135307';
+        var WHATSAPP_NUMBER = '18497972424';
         var BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
         var isAudioEnabled = false;
-        var modoActual = 'normal'; // 'normal' o 'humanitario'
+        var modoActual = 'normal';
         var currentTestStep = 0;
         var audioSupported = 'speechSynthesis' in window;
 
-        // PASOS DEL TEST HUMANITARIO
         var testSteps = [
             {
                 icon: "👋",
@@ -738,7 +847,6 @@
             ojoDerecho: null
         };
 
-        // FUNCIONES DE UTILIDAD
         function getUrlParam(name) {
             try {
                 var urlParams = new URLSearchParams(window.location.search);
@@ -777,9 +885,9 @@
         function addView() {
             try {
                 if (typeof(Storage) !== "undefined" && localStorage) {
-                    var views = localStorage.getItem('urbana_views') || '0';
+                    var views = localStorage.getItem('nvision_views') || '0';
                     views = parseInt(views) + 1;
-                    localStorage.setItem('urbana_views', views.toString());
+                    localStorage.setItem('nvision_views', views.toString());
                     
                     var viewElement = document.getElementById('viewCount');
                     if (viewElement) {
@@ -794,9 +902,9 @@
         function addWhatsAppClick() {
             try {
                 if (typeof(Storage) !== "undefined" && localStorage) {
-                    var clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
+                    var clicks = localStorage.getItem('nvision_whatsapp_clicks') || '0';
                     clicks = parseInt(clicks) + 1;
-                    localStorage.setItem('urbana_whatsapp_clicks', clicks.toString());
+                    localStorage.setItem('nvision_whatsapp_clicks', clicks.toString());
                     
                     var clickElement = document.getElementById('clickCount');
                     if (clickElement) {
@@ -808,7 +916,83 @@
             }
         }
 
-        // SISTEMA DE AUDIO
+        function showNotification(message) {
+            var notification = document.getElementById('successNotification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        function copyProductLink(codigo) {
+            var enlace = window.location.origin + window.location.pathname + '?codigo=' + codigo;
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(enlace)
+                    .then(() => showNotification('✅ Enlace copiado al portapapeles'))
+                    .catch(() => fallbackCopyText(enlace));
+            } else {
+                fallbackCopyText(enlace);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showNotification('✅ Enlace copiado');
+            } catch (err) {
+                showNotification('❌ No se pudo copiar');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function sendProductMessage(codigo) {
+            var monturas = safeGetStorage('nvision_monturas');
+            var montura = monturas[codigo];
+            
+            if (montura) {
+                var mensaje = '🔥 *ÓPTICA NVISIÓN* 🔥\n\n';
+                mensaje += '📸 Te comparto esta montura:\n';
+                mensaje += '🔢 Código: ' + montura.codigo + '\n';
+                mensaje += '💰 Precio: ' + montura.precio + '\n';
+                mensaje += '📝 Descripción: ' + montura.nombre + '\n\n';
+                mensaje += '🔗 Ver más detalles: ' + montura.enlace + '\n\n';
+                mensaje += '¡Vea mejor, viva mejor! 👁️✨';
+                
+                window.open('https://wa.me/?text=' + encodeURIComponent(mensaje), '_blank');
+                addWhatsAppClick();
+                showNotification('✅ Compartiendo por WhatsApp');
+            }
+        }
+
+        function sendInterestMessage(codigo) {
+            var monturas = safeGetStorage('nvision_monturas');
+            var montura = monturas[codigo];
+            
+            if (montura) {
+                addWhatsAppClick();
+                var mensaje = '🔥 *ME INTERESA ESTA MONTURA* 🔥\n\n';
+                mensaje += '👓 Código: ' + montura.codigo + '\n';
+                mensaje += '💰 Precio: ' + montura.precio + '\n';
+                mensaje += '📝 Descripción: ' + montura.nombre + '\n\n';
+                mensaje += '¿Está disponible para probármela?\n';
+                mensaje += '¿Pueden darme más información?\n\n';
+                mensaje += '🔗 Vi este producto en: ' + montura.enlace;
+                
+                window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mensaje), '_blank');
+            }
+        }
+
         function toggleAudio() {
             isAudioEnabled = !isAudioEnabled;
             var btn = document.getElementById('audioBtn');
@@ -837,7 +1021,6 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // GESTIÓN DE MODOS
         function toggleModo() {
             if (modoActual === 'normal') {
                 activarModoHumanitario();
@@ -856,20 +1039,20 @@
                 toggleAudio();
             }
             
-            speakText("Modo simple activado. Aquí puede revisar sus ojos y ver lentes de calidad. ¿Tiene algún problema urgente en los ojos?");
+            speakText("Modo simple activado. Aquí puede revisar sus ojos de manera fácil. ¿Tiene algún problema urgente en los ojos?");
         }
 
         function desactivarModoHumanitario() {
             modoActual = 'normal';
             document.getElementById('modoHumanitario').style.display = 'none';
             document.getElementById('modoNormal').style.display = 'block';
-            document.getElementById('modoSelector').textContent = '👓 Modo: Normal';
+            document.getElementById('modoSelector').textContent = '👁️ Modo: Normal';
             
             cerrarTestHumanitario();
+            
             speakText("Modo normal activado");
         }
 
-        // FUNCIONES DE EMERGENCIA
         function emergencyCall() {
             speakText("Llamando a emergencias médicas");
             addWhatsAppClick();
@@ -884,7 +1067,6 @@
             }
         }
 
-        // TEST VISUAL HUMANITARIO
         function iniciarTestHumanitario() {
             speakText("Iniciando test de vista con instrucciones de voz");
             currentTestStep = 0;
@@ -959,7 +1141,7 @@
         function completarTest() {
             addWhatsAppClick();
             
-            var mensaje = "🔍 TEST DE VISTA COMPLETADO - URBANA VISIÓN 🔍\n\n";
+            var mensaje = "🔍 TEST DE VISTA COMPLETADO 🔍\n\n";
             mensaje += "👁️ Ojo Izquierdo: " + (testResults.ojoIzquierdo ? "Ve bien ✅" : "Dificultades ❌") + "\n";
             mensaje += "👁️ Ojo Derecho: " + (testResults.ojoDerecho ? "Ve bien ✅" : "Dificultades ❌") + "\n\n";
             
@@ -969,11 +1151,11 @@
                 speakText("Test completado. Necesita consulta profesional. Contactando con especialista.");
             } else {
                 mensaje += "✅ VISTA APARENTEMENTE NORMAL\n";
-                mensaje += "👓 Me interesan monturas de calidad premium.\n\n";
-                speakText("Test completado. Su vista parece normal. Contactando para mostrar monturas de calidad.");
+                mensaje += "👓 Podría interesarme ver monturas de protección.\n\n";
+                speakText("Test completado. Su vista parece normal. Contactando para mostrar monturas.");
             }
             
-            mensaje += "Completé el test en su página web de Urbana Visión.";
+            mensaje += "Completé el test en su página web.";
             
             window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mensaje), '_blank');
             
@@ -982,19 +1164,18 @@
             }, 2000);
         }
 
-        // OTRAS FUNCIONES HUMANITARIAS
         function verLentesSimple() {
-            speakText("Mostrando monturas de calidad premium disponibles");
+            speakText("Mostrando monturas disponibles");
             addView();
             showCatalogView();
         }
 
         function pedirAyuda() {
-            speakText("Contactando con especialista de Urbana Visión para ayuda personal");
+            speakText("Contactando con especialista para ayuda personal");
             addWhatsAppClick();
             
-            var mensaje = "🤝 SOLICITUD DE AYUDA - URBANA VISIÓN 🤝\n\n";
-            mensaje += "Hola, necesito ayuda para revisar mi vista y ver monturas. ";
+            var mensaje = "🤝 SOLICITUD DE AYUDA 🤝\n\n";
+            mensaje += "Hola, necesito ayuda para revisar mi vista. ";
             mensaje += "¿Pueden explicarme paso a paso cómo usar su sistema? ";
             mensaje += "Prefiero hablar por teléfono.\n\n";
             mensaje += "📞 Por favor, llámenme o explíquenme por WhatsApp.";
@@ -1002,18 +1183,67 @@
             window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mensaje), '_blank');
         }
 
-        // CATÁLOGO DE PRODUCTOS
+        function showVisionTest() {
+            addView();
+            var html = '';
+            html += '<div class="vision-test">';
+            html += '<h2 style="font-size: 24px; margin-bottom: 20px; color: #22d3ee;">🔍 Test de Vista Básico</h2>';
+            html += '<div class="test-instructions">';
+            html += '<div class="test-step">📏 Extienda su brazo completamente</div>';
+            html += '<div class="test-step">🖐️ Tape su ojo derecho con la mano</div>';
+            html += '<div class="test-step">👁️ Lea las letras con el ojo izquierdo</div>';
+            html += '</div>';
+            
+            html += '<div class="vision-chart">';
+            html += '<div class="chart-line" style="font-size: 40px;">E</div>';
+            html += '<div class="chart-line" style="font-size: 32px;">F P</div>';
+            html += '<div class="chart-line" style="font-size: 24px;">T O Z</div>';
+            html += '<div class="chart-line" style="font-size: 18px;">L P E D</div>';
+            html += '<div class="chart-line" style="font-size: 14px;">P E C F D</div>';
+            html += '<div class="chart-line" style="font-size: 12px;">E D F C Z P</div>';
+            html += '</div>';
+            
+            html += '<p style="margin: 20px 0; font-size: 14px; color: #e2e8f0;"><strong>⚠️ Importante:</strong> Este es solo un test referencial. Para un examen completo, visite a un profesional.</p>';
+            
+            html += '<div class="test-buttons">';
+            html += '<button onclick="sendTestResult(true)" class="test-btn test-btn-primary">✅ Veo bien todas</button>';
+            html += '<button onclick="sendTestResult(false)" class="test-btn test-btn-secondary">❌ No veo algunas</button>';
+            html += '</div>';
+            
+            html += '<div style="margin-top: 20px;">';
+            html += '<button onclick="showCatalogView()" class="catalog-button">👓 Ver Monturas Disponibles</button>';
+            html += '</div>';
+            html += '</div>';
+
+            document.getElementById('mainContent').innerHTML = html;
+        }
+
+        function sendTestResult(canSeeWell) {
+            addWhatsAppClick();
+            var message = '';
+            if (canSeeWell) {
+                message = '¡Hola! Hice el test de vista en su página y puedo ver bien. Me gustaría explorar monturas para protección o estilo. ¿Qué opciones tienen disponibles? 👁️✨';
+            } else {
+                message = '¡Hola! Hice el test de vista en su página y tengo dificultades para ver algunas letras. Necesito una evaluación profesional y posiblemente monturas graduadas. ¿Pueden ayudarme? 👁️🔍';
+            }
+            
+            var whatsappUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
+        }
+
         function showProduct(montura) {
             var categories = {
                 'hombre': '👨 Hombres',
                 'mujer': '👩 Mujeres', 
                 'deportivo': '🏃 Deportivos',
-                'niños': '👶 Niños'
+                'niños': '👶 Niños',
+                'lectura': '📖 Lectura',
+                'sol': '🕶️ Sol'
             };
 
             addView();
 
-            var message = '¡Hola! Me interesa la montura ' + montura.codigo + ' "' + montura.nombre + '" por ' + montura.precio + '. ¿Está disponible? 🥽';
+            var message = '¡Hola! Me interesa la montura ' + montura.codigo + ' "' + montura.nombre + '" por ' + montura.precio + '. ¿Está disponible y puedo agendar una cita para probármela? 👓✨';
             var whatsappUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
 
             var html = '';
@@ -1024,8 +1254,17 @@
             html += '<div class="product-category">' + (categories[montura.categoria] || '👓 Monturas') + '</div>';
             html += '<h2 class="product-name">' + montura.nombre + '</h2>';
             html += '<div class="product-price">' + montura.precio + '</div>';
+            
+            html += '<button onclick="sendInterestMessage(\'' + montura.codigo + '\')" class="interest-button">';
+            html += '💖 ¡ME INTERESA!</button>';
+            
+            html += '<div class="share-buttons">';
+            html += '<button onclick="copyProductLink(\'' + montura.codigo + '\')" class="share-btn btn-copy-link">📋 Copiar Enlace</button>';
+            html += '<button onclick="sendProductMessage(\'' + montura.codigo + '\')" class="share-btn btn-send-message">💬 Enviar Mensaje</button>';
+            html += '</div>';
+            
             html += '<a href="' + whatsappUrl + '" target="_blank" class="whatsapp-button" onclick="addWhatsAppClick()">';
-            html += '💬 PEDIR POR WHATSAPP</a>';
+            html += '💬 CONSULTAR DISPONIBILIDAD</a>';
             html += '<button onclick="showCatalogView()" class="catalog-button">';
             html += '👁️ Ver todas las monturas</button>';
             html += '</div></div>';
@@ -1034,18 +1273,18 @@
         }
 
         function showCatalogView() {
-            var monturas = safeGetStorage('urbana_monturas');
+            var monturas = safeGetStorage('nvision_monturas');
             var keys = Object.keys(monturas);
 
             if (keys.length === 0) {
                 var html = '';
                 html += '<div class="empty-state">';
                 html += '<span class="state-icon">📦</span>';
-                html += '<div class="state-title">Catálogo en construcción</div>';
-                html += '<div>Pronto tendremos monturas disponibles</div><br>';
+                html += '<div class="state-title">Catálogo en preparación</div>';
+                html += '<div>Estamos agregando nuevas monturas premium. Mientras tanto, puede hacer nuestro test de vista gratuito.</div><br>';
                 html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">';
-                html += '<button onclick="activarModoHumanitario()" style="padding: 15px; background: #10b981; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🌾 Modo Simple</button>';
-                html += '<button onclick="adminAccess()" style="padding: 15px; background: rgba(255, 255, 255, 0.2); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">⚙️ Admin</button>';
+                html += '<button onclick="showVisionTest()" style="padding: 15px; background: linear-gradient(45deg, #22d3ee, #0891b2); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🔍 Test de Vista</button>';
+                html += '<button onclick="activarModoHumanitario()" style="padding: 15px; background: linear-gradient(45deg, #10b981, #059669); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🌾 Modo Simple</button>';
                 html += '</div></div>';
                 
                 document.getElementById('mainContent').innerHTML = html;
@@ -1070,7 +1309,7 @@
             html += '</div>';
             
             html += '<div style="text-align: center; margin-top: 20px;">';
-            html += '<button onclick="activarModoHumanitario()" class="catalog-button">🌾 Modo Simple con Voz</button>';
+            html += '<button onclick="showVisionTest()" class="catalog-button">🔍 Hacer Test de Vista Gratis</button>';
             html += '</div>';
             
             document.getElementById('mainContent').innerHTML = html;
@@ -1081,10 +1320,9 @@
             window.location.href = currentUrl + '?codigo=' + codigo;
         }
 
-        // FUNCIONES DEL SISTEMA ORIGINAL
         function abrirPOS() {
             var password = prompt('🔐 Acceso al Sistema POS:');
-            if (password === 'urbana2025') {
+            if (password === 'nvision2025') {
                 window.location.href = BASE_URL + 'pos.html';
             } else if (password !== null) {
                 alert('❌ Contraseña incorrecta');
@@ -1092,15 +1330,14 @@
         }
 
         function adminAccess() {
-            var password = prompt('🔐 Contraseña de administrador Urbana:');
-            if (password === 'urbana2025') {
+            var password = prompt('🔐 Contraseña de administrador Nvisión:');
+            if (password === 'nvision2025') {
                 window.location.href = BASE_URL + 'admin.html';
             } else if (password !== null) {
                 alert('❌ Contraseña incorrecta');
             }
         }
 
-        // DETECCIÓN AUTOMÁTICA DEL MODO APROPIADO
         function detectarModoApropiado() {
             try {
                 var userAgent = navigator.userAgent.toLowerCase();
@@ -1120,7 +1357,6 @@
             }
         }
 
-        // INICIALIZACIÓN
         function initApp() {
             try {
                 var views = '0';
@@ -1128,8 +1364,8 @@
                 
                 try {
                     if (typeof(Storage) !== "undefined" && localStorage) {
-                        views = localStorage.getItem('urbana_views') || '0';
-                        clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
+                        views = localStorage.getItem('nvision_views') || '0';
+                        clicks = localStorage.getItem('nvision_whatsapp_clicks') || '0';
                     }
                 } catch (e) {
                     console.log('Storage not available:', e);
@@ -1143,12 +1379,12 @@
                 var productCode = getUrlParam('codigo');
                 
                 if (productCode) {
-                    var monturas = safeGetStorage('urbana_monturas');
+                    var monturas = safeGetStorage('nvision_monturas');
                     var montura = monturas[productCode.toUpperCase()];
                     
                     if (montura) {
                         document.getElementById('mainContent').innerHTML = showProduct(montura);
-                        document.title = montura.codigo + ' - ' + montura.nombre + ' | Urbana Visión';
+                        document.title = montura.codigo + ' - ' + montura.nombre + ' | Óptica Nvisión';
                     } else {
                         var html = '';
                         html += '<div class="empty-state">';
@@ -1156,11 +1392,16 @@
                         html += '<div class="state-title">Montura no encontrada</div>';
                         html += '<div>El código <strong>' + productCode + '</strong> no existe</div><br>';
                         html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">';
-                        html += '<button onclick="showCatalogView()" style="padding: 15px; background: #3b82f6; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">👓 Ver Catálogo</button>';
-                        html += '<button onclick="activarModoHumanitario()" style="padding: 15px; background: #10b981; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🌾 Modo Simple</button>';
+                        html += '<button onclick="showCatalogView()" style="padding: 15px; background: linear-gradient(45deg, #22d3ee, #0891b2); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">👓 Ver Catálogo</button>';
+                        html += '<button onclick="activarModoHumanitario()" style="padding: 15px; background: linear-gradient(45deg, #10b981, #059669); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🌾 Modo Simple</button>';
                         html += '</div></div>';
                         
                         document.getElementById('mainContent').innerHTML = html;
+                    }
+                } else {
+                    var monturas = safeGetStorage('nvision_monturas');
+                    if (Object.keys(monturas).length > 0) {
+                        showCatalogView();
                     }
                 }
 
@@ -1168,25 +1409,15 @@
                 
                 setTimeout(function() {
                     if (audioSupported) {
-                        speakText("Bienvenido a Urbana Visión, monturas de calidad premium. Toque el botón naranja para activar la ayuda por voz.");
+                        speakText("Bienvenido a Óptica Nvisión. Toque el botón naranja para activar la ayuda por voz.");
                     }
                 }, 2000);
                 
             } catch (e) {
                 console.error('Error initializing app:', e);
-                var html = '';
-                html += '<div class="empty-state">';
-                html += '<span class="state-icon">⚠️</span>';
-                html += '<div class="state-title">Error de carga</div>';
-                html += '<div>Intente recargar la página</div><br>';
-                html += '<button onclick="window.location.reload()" style="padding: 15px; background: #ef4444; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🔄 Recargar</button>';
-                html += '</div>';
-                
-                document.getElementById('mainContent').innerHTML = html;
             }
         }
 
-        // EVENTOS
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initApp);
         } else {
