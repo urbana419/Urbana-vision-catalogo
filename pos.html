@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POS - Urbana Visión</title>
+    <title>POS - Óptica Nvisión</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: Arial, sans-serif; 
-            background: #1e293b; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
             min-height: 100vh; 
             color: white; 
             padding: 10px;
@@ -16,7 +16,9 @@
         .container { max-width: 500px; margin: 0 auto; }
         
         .header {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             padding: 20px;
             text-align: center;
@@ -26,7 +28,10 @@
         .header h1 {
             font-size: 24px;
             margin-bottom: 5px;
-            color: #3b82f6;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .tabs {
@@ -37,7 +42,8 @@
         }
         
         .tab-btn {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
             padding: 15px 10px;
@@ -50,13 +56,15 @@
         }
         
         .tab-btn.active {
-            background: #3b82f6;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(45deg, #22d3ee, #0891b2);
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
         }
         
         .tab-content {
             display: none;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 20px;
@@ -69,7 +77,7 @@
             font-weight: 700;
             margin-bottom: 20px;
             text-align: center;
-            color: #10b981;
+            color: #fbbf24;
         }
         
         .form-group {
@@ -112,17 +120,17 @@
         }
         
         .btn-primary {
-            background: #3b82f6;
+            background: linear-gradient(45deg, #22d3ee, #0891b2);
             color: white;
         }
         
         .btn-success {
-            background: #10b981;
+            background: linear-gradient(45deg, #10b981, #059669);
             color: white;
         }
         
         .btn-danger {
-            background: #ef4444;
+            background: linear-gradient(45deg, #ef4444, #dc2626);
             color: white;
         }
         
@@ -154,7 +162,7 @@
         
         .list-item-title {
             font-weight: 700;
-            color: #3b82f6;
+            color: #60a5fa;
             margin-bottom: 5px;
             font-size: 14px;
         }
@@ -192,7 +200,7 @@
         .summary-total {
             font-weight: 800;
             font-size: 18px;
-            color: #10b981;
+            color: #22d3ee;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 8px;
         }
@@ -218,7 +226,7 @@
         }
         
         .cart-item-price {
-            color: #10b981;
+            color: #22d3ee;
             font-size: 12px;
         }
         
@@ -246,9 +254,9 @@
         }
         
         .alert {
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #3b82f6;
+            background: rgba(34, 211, 238, 0.2);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            color: #22d3ee;
             padding: 12px;
             border-radius: 10px;
             margin-bottom: 15px;
@@ -273,16 +281,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>💼 POS Urbana Visión</h1>
+            <h1>💼 POS Óptica Nvisión</h1>
             <p>Sistema Punto de Venta Completo</p>
-            <div style="margin-top: 10px;">
-                <button onclick="goToMainSite()" style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); padding: 8px 15px; border-radius: 10px; font-size: 12px; cursor: pointer; margin-right: 10px;">
-                    🏠 Sitio Principal
-                </button>
-                <button onclick="goToAdmin()" style="background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 8px 15px; border-radius: 10px; font-size: 12px; cursor: pointer;">
-                    ⚙️ Panel Admin
-                </button>
-            </div>
         </div>
         
         <div class="tabs">
@@ -326,6 +326,27 @@
                 </div>
                 
                 <div class="form-group">
+                    <label class="form-label">📅 Fecha Último Examen</label>
+                    <input type="date" id="clienteFechaExamen" class="form-input">
+                </div>
+                
+                <div class="row">
+                    <div class="form-group">
+                        <label class="form-label">👁️ Ojo Derecho (OD)</label>
+                        <input type="text" id="clienteOjoDerecho" class="form-input" placeholder="+1.25 -0.50 x 90">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">👁️ Ojo Izquierdo (OI)</label>
+                        <input type="text" id="clienteOjoIzquierdo" class="form-input" placeholder="+1.00 -0.75 x 85">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">🩺 Diagnóstico</label>
+                    <textarea id="clienteDiagnostico" class="form-textarea" rows="2" placeholder="Diagnóstico optométrico"></textarea>
+                </div>
+                
+                <div class="form-group">
                     <label class="form-label">💬 Comentarios</label>
                     <textarea id="clienteComentarios" class="form-textarea" rows="2" placeholder="Observaciones adicionales"></textarea>
                 </div>
@@ -352,7 +373,7 @@
             <form id="productoForm" style="margin-top: 15px;">
                 <div class="form-group">
                     <label class="form-label">🔤 ID Producto</label>
-                    <input type="text" id="productoId" class="form-input" placeholder="H001" style="text-transform: uppercase;">
+                    <input type="text" id="productoId" class="form-input" placeholder="NV001" style="text-transform: uppercase;">
                 </div>
                 
                 <div class="form-group">
@@ -505,25 +526,26 @@
     
     <script>
         // Variables globales
-        var WHATSAPP_NUMBER = '18097135307';
-        var BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
         var currentTab = 'clientes';
         var carritoActual = [];
         var clienteSeleccionado = null;
         
         // Gestión de pestañas
         function showTab(tabName) {
+            // Ocultar todas las pestañas
             var contents = document.querySelectorAll('.tab-content');
             var buttons = document.querySelectorAll('.tab-btn');
             
             contents.forEach(content => content.classList.remove('active'));
             buttons.forEach(btn => btn.classList.remove('active'));
             
+            // Mostrar pestaña seleccionada
             document.getElementById(tabName).classList.add('active');
             event.target.classList.add('active');
             
             currentTab = tabName;
             
+            // Actualizar datos específicos de cada pestaña
             if (tabName === 'facturacion') {
                 cargarClientesSelect();
                 cargarProductosSelect();
@@ -579,6 +601,10 @@
                 cedula: document.getElementById('clienteCedula').value.trim(),
                 correo: document.getElementById('clienteCorreo').value.trim(),
                 direccion: document.getElementById('clienteDireccion').value.trim(),
+                fechaExamen: document.getElementById('clienteFechaExamen').value,
+                ojoDerecho: document.getElementById('clienteOjoDerecho').value.trim(),
+                ojoIzquierdo: document.getElementById('clienteOjoIzquierdo').value.trim(),
+                diagnostico: document.getElementById('clienteDiagnostico').value.trim(),
                 comentarios: document.getElementById('clienteComentarios').value.trim(),
                 fechaRegistro: new Date().toISOString()
             };
@@ -588,10 +614,10 @@
                 return;
             }
             
-            var clientes = safeGetStorage('urbana_clientes');
+            var clientes = safeGetStorage('nvision_clientes');
             clientes[cliente.id] = cliente;
             
-            if (safeSetStorage('urbana_clientes', clientes)) {
+            if (safeSetStorage('nvision_clientes', clientes)) {
                 showAlert('✅ Cliente guardado exitosamente');
                 limpiarFormularioCliente();
                 cargarListaClientes();
@@ -605,7 +631,7 @@
         }
         
         function cargarListaClientes() {
-            var clientes = safeGetStorage('urbana_clientes');
+            var clientes = safeGetStorage('nvision_clientes');
             var container = document.getElementById('listaClientes');
             var keys = Object.keys(clientes);
             
@@ -619,15 +645,18 @@
                 var cliente = clientes[key];
                 html += '<div class="list-item" onclick="editarCliente(\'' + key + '\')">';
                 html += '<div class="list-item-title">' + cliente.nombre + '</div>';
-                html += '<div class="list-item-info">📱 ' + cliente.telefono + ' | 🆔 ' + (cliente.cedula || 'Sin cédula') + '</div>';
-                html += '</div>';
+                html += '<div class="list-item-info">📱 ' + cliente.telefono + ' | 🆔 ' + (cliente.cedula || 'Sin cédula');
+                if (cliente.fechaExamen) {
+                    html += '<br>👁️ Último examen: ' + cliente.fechaExamen;
+                }
+                html += '</div></div>';
             });
             
             container.innerHTML = html;
         }
         
         function editarCliente(clienteId) {
-            var clientes = safeGetStorage('urbana_clientes');
+            var clientes = safeGetStorage('nvision_clientes');
             var cliente = clientes[clienteId];
             
             if (cliente) {
@@ -636,14 +665,18 @@
                 document.getElementById('clienteCedula').value = cliente.cedula || '';
                 document.getElementById('clienteCorreo').value = cliente.correo || '';
                 document.getElementById('clienteDireccion').value = cliente.direccion || '';
+                document.getElementById('clienteFechaExamen').value = cliente.fechaExamen || '';
+                document.getElementById('clienteOjoDerecho').value = cliente.ojoDerecho || '';
+                document.getElementById('clienteOjoIzquierdo').value = cliente.ojoIzquierdo || '';
+                document.getElementById('clienteDiagnostico').value = cliente.diagnostico || '';
                 document.getElementById('clienteComentarios').value = cliente.comentarios || '';
             }
         }
         
         // GESTIÓN DE INVENTARIO
         function sincronizarInventario() {
-            var monturas = safeGetStorage('urbana_monturas');
-            var productos = safeGetStorage('urbana_productos');
+            var monturas = safeGetStorage('nvision_monturas');
+            var productos = safeGetStorage('nvision_productos');
             var monturaKeys = Object.keys(monturas);
             
             if (monturaKeys.length === 0) {
@@ -668,7 +701,7 @@
                 }
             });
             
-            if (safeSetStorage('urbana_productos', productos)) {
+            if (safeSetStorage('nvision_productos', productos)) {
                 showAlert('✅ Sincronizados ' + sincronizados + ' productos del catálogo');
                 cargarListaProductos();
             } else {
@@ -691,10 +724,10 @@
                 return;
             }
             
-            var productos = safeGetStorage('urbana_productos');
+            var productos = safeGetStorage('nvision_productos');
             productos[producto.id] = producto;
             
-            if (safeSetStorage('urbana_productos', productos)) {
+            if (safeSetStorage('nvision_productos', productos)) {
                 showAlert('✅ Producto guardado: ' + producto.id);
                 limpiarFormularioProducto();
                 cargarListaProductos();
@@ -708,7 +741,7 @@
         }
         
         function cargarListaProductos() {
-            var productos = safeGetStorage('urbana_productos');
+            var productos = safeGetStorage('nvision_productos');
             var container = document.getElementById('listaProductos');
             var keys = Object.keys(productos);
             
@@ -731,7 +764,7 @@
         
         // GESTIÓN DE COMPROBANTES FISCALES
         function obtenerSiguienteComprobante(tipo) {
-            var comprobantes = safeGetStorage('urbana_comprobantes');
+            var comprobantes = safeGetStorage('nvision_comprobantes');
             if (!comprobantes[tipo]) {
                 var prefijos = {
                     'consumidor': 'B010000000001',
@@ -744,7 +777,7 @@
             
             var siguiente = comprobantes[tipo];
             comprobantes[tipo] = siguiente + 1;
-            safeSetStorage('urbana_comprobantes', comprobantes);
+            safeSetStorage('nvision_comprobantes', comprobantes);
             
             var prefijo = tipo === 'consumidor' ? 'B01' :
                          tipo === 'empresarial' ? 'B02' :
@@ -755,20 +788,22 @@
         
         function resetearComprobantes() {
             if (confirm('⚠️ ¿Está seguro de resetear toda la numeración de comprobantes?')) {
-                safeSetStorage('urbana_comprobantes', {});
+                safeSetStorage('nvision_comprobantes', {});
                 showAlert('✅ Numeración de comprobantes reseteada');
                 actualizarVistaComprobantes();
             }
         }
         
         function actualizarVistaComprobantes() {
-            var comprobantes = safeGetStorage('urbana_comprobantes');
+            var comprobantes = safeGetStorage('nvision_comprobantes');
             
             var tipos = ['consumidor', 'empresarial', 'gubernamental', 'zona_franca'];
             tipos.forEach(function(tipo) {
                 var elemento = document.getElementById('siguiente' + tipo.charAt(0).toUpperCase() + tipo.slice(1).replace('_', ''));
                 if (elemento) {
-                    var numero = comprobantes[tipo] || 1;
+                    var numero = comprobantes[tipo] || (tipo === 'consumidor' ? 1 :
+                                                      tipo === 'empresarial' ? 1 :
+                                                      tipo === 'gubernamental' ? 1 : 1);
                     var prefijo = tipo === 'consumidor' ? 'B01' :
                                  tipo === 'empresarial' ? 'B02' :
                                  tipo === 'gubernamental' ? 'B03' : 'B04';
@@ -779,7 +814,7 @@
         
         // GESTIÓN DE FACTURACIÓN
         function cargarClientesSelect() {
-            var clientes = safeGetStorage('urbana_clientes');
+            var clientes = safeGetStorage('nvision_clientes');
             var select = document.getElementById('facturaCliente');
             var keys = Object.keys(clientes);
             
@@ -793,7 +828,7 @@
         }
         
         function cargarProductosSelect() {
-            var productos = safeGetStorage('urbana_productos');
+            var productos = safeGetStorage('nvision_productos');
             var select = document.getElementById('facturaProducto');
             var keys = Object.keys(productos);
             
@@ -815,9 +850,10 @@
                 return;
             }
             
-            var productos = safeGetStorage('urbana_productos');
+            var productos = safeGetStorage('nvision_productos');
             var producto = productos[productoId];
             
+            // Verificar si ya está en el carrito
             var itemExistente = carritoActual.find(item => item.id === productoId);
             if (itemExistente) {
                 itemExistente.cantidad++;
@@ -865,6 +901,7 @@
             
             container.innerHTML = html;
             
+            // Actualizar resumen
             var itbis = subtotal * 0.18;
             var total = subtotal + itbis;
             
@@ -901,7 +938,7 @@
                 return;
             }
             
-            var clientes = safeGetStorage('urbana_clientes');
+            var clientes = safeGetStorage('nvision_clientes');
             var cliente = clientes[clienteId];
             var numeroComprobante = obtenerSiguienteComprobante(tipoComprobante);
             
@@ -920,9 +957,10 @@
             
             generarPDF(factura);
             
-            var facturas = safeGetStorage('urbana_facturas');
+            // Guardar factura en historial
+            var facturas = safeGetStorage('nvision_facturas');
             facturas[factura.id] = factura;
-            safeSetStorage('urbana_facturas', facturas);
+            safeSetStorage('nvision_facturas', facturas);
             
             showAlert('✅ Factura generada: ' + numeroComprobante);
             limpiarFactura();
@@ -933,12 +971,12 @@
                 var { jsPDF } = window.jspdf;
                 var doc = new jsPDF();
                 
-                // Header con logo
+                // Header
                 doc.setFontSize(20);
-                doc.text('URBANA VISIÓN', 105, 20, { align: 'center' });
+                doc.text('ÓPTICA NVISIÓN', 105, 20, { align: 'center' });
                 doc.setFontSize(12);
-                doc.text('Monturas de calidad premium', 105, 30, { align: 'center' });
-                doc.text('Tel: 809-713-5307', 105, 40, { align: 'center' });
+                doc.text('Vea mejor, viva mejor - Especialistas en salud visual', 105, 30, { align: 'center' });
+                doc.text('Tel: 849-797-2424', 105, 40, { align: 'center' });
                 
                 // Información de factura
                 doc.setFontSize(14);
@@ -954,8 +992,17 @@
                 doc.text('Teléfono: ' + factura.cliente.telefono, 20, 130);
                 if (factura.cliente.cedula) doc.text('Cédula/RNC: ' + factura.cliente.cedula, 20, 140);
                 
+                // Examen optométrico (si existe)
+                if (factura.cliente.fechaExamen) {
+                    doc.text('ÚLTIMO EXAMEN OPTOMÉTRICO:', 20, 160);
+                    doc.text('Fecha: ' + factura.cliente.fechaExamen, 20, 170);
+                    if (factura.cliente.ojoDerecho) doc.text('OD: ' + factura.cliente.ojoDerecho, 20, 180);
+                    if (factura.cliente.ojoIzquierdo) doc.text('OI: ' + factura.cliente.ojoIzquierdo, 100, 180);
+                    if (factura.cliente.diagnostico) doc.text('Diagnóstico: ' + factura.cliente.diagnostico, 20, 190);
+                }
+                
                 // Productos
-                var startY = 160;
+                var startY = factura.cliente.fechaExamen ? 210 : 160;
                 doc.text('PRODUCTOS:', 20, startY);
                 
                 var currentY = startY + 15;
@@ -990,7 +1037,7 @@
         }
         
         function enviarFacturaPorWhatsApp(factura) {
-            var mensaje = '📄 *FACTURA URBANA VISIÓN*\n\n';
+            var mensaje = '📄 *FACTURA ÓPTICA NVISIÓN*\n\n';
             mensaje += '🧾 Número: ' + factura.numeroComprobante + '\n';
             mensaje += '📅 Fecha: ' + factura.fecha + '\n';
             mensaje += '👤 Cliente: ' + factura.cliente.nombre + '\n\n';
@@ -1006,7 +1053,14 @@
             mensaje += 'ITBIS (18%): RD$' + factura.itbis.toFixed(2) + '\n';
             mensaje += '*TOTAL: RD$' + factura.total.toFixed(2) + '*\n\n';
             
-            mensaje += '\n¡Gracias por confiar en Urbana Visión! 👓✨';
+            if (factura.cliente.fechaExamen) {
+                mensaje += '👁️ *ÚLTIMO EXAMEN:*\n';
+                mensaje += 'Fecha: ' + factura.cliente.fechaExamen + '\n';
+                if (factura.cliente.ojoDerecho) mensaje += 'OD: ' + factura.cliente.ojoDerecho + '\n';
+                if (factura.cliente.ojoIzquierdo) mensaje += 'OI: ' + factura.cliente.ojoIzquierdo + '\n';
+            }
+            
+            mensaje += '\n¡Gracias por confiar en Óptica Nvisión! 👓✨';
             
             var whatsappUrl = 'https://wa.me/' + factura.cliente.telefono.replace(/[^0-9]/g, '') + '?text=' + encodeURIComponent(mensaje);
             window.open(whatsappUrl, '_blank');
@@ -1017,9 +1071,10 @@
             cargarListaClientes();
             actualizarVistaComprobantes();
             
-            var comprobantes = safeGetStorage('urbana_comprobantes');
+            // Auto-generar algunos datos de prueba si no existen
+            var comprobantes = safeGetStorage('nvision_comprobantes');
             if (Object.keys(comprobantes).length === 0) {
-                safeSetStorage('urbana_comprobantes', {
+                safeSetStorage('nvision_comprobantes', {
                     'consumidor': 1,
                     'empresarial': 1,
                     'gubernamental': 1,
@@ -1027,15 +1082,6 @@
                 });
                 actualizarVistaComprobantes();
             }
-        }
-
-        // Navegación
-        function goToMainSite() {
-            window.location.href = BASE_URL;
-        }
-
-        function goToAdmin() {
-            window.location.href = BASE_URL + 'admin.html';
         }
         
         // Inicializar cuando la página carga
