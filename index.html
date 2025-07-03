@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urbana Visión - Catálogo</title>
+    <title>Urbana Visión - Sistema Híbrido</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -11,8 +11,15 @@
             background: #1e293b; 
             min-height: 100vh; 
             color: white; 
+            font-size: 16px;
+            overflow-x: hidden;
         }
         .container { max-width: 430px; margin: 0 auto; padding: 15px; }
+        
+        /* MODO NORMAL - Sistema Original */
+        .modo-normal {
+            display: block;
+        }
         
         .header { 
             background: rgba(255, 255, 255, 0.1); 
@@ -50,6 +57,319 @@
             border-radius: 15px; 
         }
 
+        .feature-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .feature-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 20px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .feature-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* MODO HUMANITARIO - Nuevo Sistema */
+        .modo-humanitario {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+            padding: 20px;
+        }
+        
+        .humanitario-container {
+            max-width: 400px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .humanitario-header {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1e293b;
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 3px solid #3b82f6;
+        }
+        
+        .humanitario-logo {
+            width: 100px;
+            height: 100px;
+            background: #3b82f6;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .humanitario-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .humanitario-subtitle {
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .main-actions-humanitario {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .action-btn-humanitario {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1e293b;
+            border: 4px solid #3b82f6;
+            padding: 35px 25px;
+            border-radius: 25px;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .action-btn-humanitario:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        .action-icon-humanitario {
+            font-size: 60px;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .action-text-humanitario {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .action-subtitle-humanitario {
+            font-size: 14px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .emergency-section {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            border-radius: 25px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            animation: pulse 2s infinite;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .emergency-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .emergency-text {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        /* Sistema de Test Visual Humanitario */
+        .test-visual-humanitario {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1001;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .test-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .test-step {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1e293b;
+            border-radius: 30px;
+            padding: 50px 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 4px solid #10b981;
+        }
+        
+        .test-icon {
+            font-size: 100px;
+            margin-bottom: 25px;
+        }
+        
+        .test-text {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .test-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .test-btn {
+            padding: 20px;
+            font-size: 20px;
+            font-weight: 800;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-yes {
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            color: white;
+        }
+        
+        .btn-no {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            color: white;
+        }
+        
+        .btn-yes:hover, .btn-no:hover {
+            transform: scale(1.05);
+        }
+
+        /* Tabla Visual para Test */
+        .vision-chart {
+            background: white;
+            color: black;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            font-family: monospace;
+            font-weight: bold;
+            border: 4px solid #10b981;
+        }
+        
+        .chart-line {
+            margin: 15px 0;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        /* Controles de Audio */
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1002;
+        }
+        
+        .audio-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Barra de Progreso */
+        .progress-indicator {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 1003;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Detector de Modo */
+        .modo-selector {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Estilos del sistema original que se mantienen */
         .analytics-badge {
             position: fixed;
             top: 20px;
@@ -61,6 +381,30 @@
             font-size: 12px;
             z-index: 1000;
         }
+
+        .admin-access {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #888;
+            font-size: 20px;
+            z-index: 1000;
+        }
+
+        .empty-state { 
+            text-align: center; 
+            padding: 60px 20px; 
+        }
+        .state-icon { font-size: 64px; margin-bottom: 20px; }
+        .state-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
 
         .product-card { 
             background: rgba(255, 255, 255, 0.1); 
@@ -170,102 +514,495 @@
             color: #10b981; 
         }
 
-        .empty-state { 
-            text-align: center; 
-            padding: 60px 20px; 
-        }
-        .state-icon { font-size: 64px; margin-bottom: 20px; }
-        .state-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
-
-        .admin-access {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #888;
-            font-size: 20px;
-            z-index: 1000;
+        /* Ocultar elementos en modo humanitario */
+        .modo-humanitario .analytics-badge,
+        .modo-humanitario .admin-access {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">👓</div>
-            <h1 class="brand-name">Urbana Visión</h1>
-            <p class="tagline">Monturas de calidad premium</p>
-            <div class="contact-info">
-                <div class="contact-item"><span>📱</span><span>809-713-5307</span></div>
-                <div class="contact-item"><span>🎁</span><span>6 meses garantía</span></div>
-                <div class="contact-item"><span>🚚</span><span>Envío gratis</span></div>
+    <!-- Selector de Modo -->
+    <div class="modo-selector" onclick="toggleModo()" id="modoSelector">
+        👓 Modo: Normal
+    </div>
+
+    <!-- MODO NORMAL - Sistema Original -->
+    <div id="modoNormal" class="modo-normal">
+        <div class="container">
+            <div class="header">
+                <div class="logo">👓</div>
+                <h1 class="brand-name">Urbana Visión</h1>
+                <p class="tagline">Monturas de calidad premium</p>
+                <div class="contact-info">
+                    <div class="contact-item"><span>📱</span><span>809-713-5307</span></div>
+                    <div class="contact-item"><span>🎁</span><span>6 meses garantía</span></div>
+                    <div class="contact-item"><span>🚚</span><span>Envío gratis</span></div>
+                </div>
+            </div>
+
+            <div class="feature-buttons">
+                <button class="feature-btn" onclick="showCatalogView()">
+                    👓 VER MONTURAS<br>
+                    <small>Catálogo completo</small>
+                </button>
+                <button class="feature-btn" onclick="abrirPOS()">
+                    💼 PUNTO DE VENTA<br>
+                    <small>Facturación completa</small>
+                </button>
+                <button class="feature-btn" onclick="adminAccess()">
+                    ⚙️ ADMINISTRAR<br>
+                    <small>Panel de control</small>
+                </button>
+                <button class="feature-btn" onclick="activarModoHumanitario()">
+                    🌾 MODO SIMPLE<br>
+                    <small>Para zonas rurales</small>
+                </button>
+            </div>
+            
+            <div id="mainContent">
+                <div class="empty-state">
+                    <span class="state-icon">📦</span>
+                    <div class="state-title">Catálogo en construcción</div>
+                    <div>Pronto tendremos monturas disponibles</div>
+                    <br>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <button onclick="showCatalogView()" style="padding: 15px; background: #3b82f6; color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
+                            👓 Monturas
+                        </button>
+                        <button onclick="activarModoHumanitario()" style="padding: 15px; background: #10b981; color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
+                            🌾 Modo Simple
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div id="mainContent">
-            <div class="empty-state">
-                <span class="state-icon">📦</span>
-                <div class="state-title">Catálogo en construcción</div>
-                <div>Pronto tendremos monturas disponibles</div>
-                <br>
-                <button onclick="adminAccess()" style="padding: 15px 30px; background: #3b82f6; color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 16px;">
-                    ⚙️ Acceso Administrador
+    </div>
+
+    <!-- MODO HUMANITARIO - Sistema Simplificado -->
+    <div id="modoHumanitario" class="modo-humanitario">
+        <div class="humanitario-container">
+            <!-- Header Humanitario -->
+            <div class="humanitario-header">
+                <div class="humanitario-logo">👓</div>
+                <h1 class="humanitario-title">Urbana Visión</h1>
+                <p class="humanitario-subtitle">🌟 Lentes de calidad 🌟</p>
+            </div>
+
+            <!-- Sección de Emergencia -->
+            <div class="emergency-section" onclick="emergencyCall()">
+                <div class="emergency-icon">🚨</div>
+                <div class="emergency-text">¿PROBLEMA EN LOS OJOS?</div>
+                <div class="emergency-text" style="font-size: 16px;">TOQUE AQUÍ PARA LLAMAR</div>
+            </div>
+
+            <!-- Acciones Principales Humanitarias -->
+            <div class="main-actions-humanitario">
+                <button class="action-btn-humanitario" onclick="iniciarTestHumanitario()">
+                    <span class="action-icon-humanitario">👁️</span>
+                    <div class="action-text-humanitario">REVISAR VISTA</div>
+                    <div class="action-subtitle-humanitario">Con ayuda de voz</div>
+                </button>
+                
+                <button class="action-btn-humanitario" onclick="verLentesSimple()">
+                    <span class="action-icon-humanitario">👓</span>
+                    <div class="action-text-humanitario">VER LENTES</div>
+                    <div class="action-subtitle-humanitario">Monturas disponibles</div>
+                </button>
+                
+                <button class="action-btn-humanitario" onclick="pedirAyuda()">
+                    <span class="action-icon-humanitario">🤝</span>
+                    <div class="action-text-humanitario">PEDIR AYUDA</div>
+                    <div class="action-subtitle-humanitario">Hablar con especialista</div>
+                </button>
+            </div>
+
+            <!-- Botón para volver al modo normal -->
+            <div style="text-align: center;">
+                <button onclick="desactivarModoHumanitario()" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 15px 30px; border-radius: 20px; font-size: 16px; font-weight: 600; cursor: pointer;">
+                    🔙 Modo Normal
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- SISTEMA DE TEST VISUAL HUMANITARIO -->
+    <div id="testVisualHumanitario" class="test-visual-humanitario">
+        <div class="progress-indicator">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="test-container">
+            <div class="test-step" id="testStep">
+                <div class="test-icon" id="stepIcon">👋</div>
+                <div class="test-text" id="stepText">¡Hola! Vamos a revisar sus ojos. Es muy fácil.</div>
+                <div id="visualChart" style="display: none;">
+                    <div class="vision-chart">
+                        <div class="chart-line" style="font-size: 40px;">E</div>
+                        <div class="chart-line" style="font-size: 32px;">F P</div>
+                        <div class="chart-line" style="font-size: 24px;">T O Z</div>
+                        <div class="chart-line" style="font-size: 18px;">L P E D</div>
+                        <div class="chart-line" style="font-size: 14px;">P E C F D</div>
+                        <div class="chart-line" style="font-size: 12px;">E D F C Z P</div>
+                    </div>
+                </div>
+                <div class="test-buttons">
+                    <button class="test-btn btn-yes" onclick="responderTest(true)" id="btnSi">
+                        ✅ SÍ
+                    </button>
+                    <button class="test-btn btn-no" onclick="responderTest(false)" id="btnNo">
+                        ❌ NO
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controles de Audio -->
+    <div class="audio-controls">
+        <button class="audio-btn" onclick="toggleAudio()" id="audioBtn">
+            🔊
+        </button>
+    </div>
+
+    <!-- Analytics y Admin (solo en modo normal) -->
     <div id="analyticsBadge" class="analytics-badge">
-        📊 <span id="viewCount">0</span> vistas
+        📊 <span id="viewCount">0</span> vistas | 💬 <span id="clickCount">0</span> clicks
     </div>
 
     <div class="admin-access" onclick="adminAccess()">⚙️</div>
 
     <script>
+        // VARIABLES GLOBALES
         var WHATSAPP_NUMBER = '18097135307';
         var BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+        var isAudioEnabled = false;
+        var modoActual = 'normal'; // 'normal' o 'humanitario'
+        var currentTestStep = 0;
+        var audioSupported = 'speechSynthesis' in window;
 
-        function getUrlParam(name) {
-            var url = window.location.search.substring(1);
-            var params = url.split('&');
-            for (var i = 0; i < params.length; i++) {
-                var param = params[i].split('=');
-                if (param[0] === name) {
-                    return decodeURIComponent(param[1]);
-                }
+        // PASOS DEL TEST HUMANITARIO
+        var testSteps = [
+            {
+                icon: "👋",
+                text: "¡Hola! Vamos a revisar sus ojos. Es muy fácil.",
+                audio: "Hola, vamos a revisar sus ojos, es muy fácil. ¿Está listo?",
+                showChart: false,
+                yesText: "SÍ, ESTOY LISTO",
+                noText: "NO, SALIR"
+            },
+            {
+                icon: "📱",
+                text: "Mantenga el teléfono a un brazo de distancia de sus ojos.",
+                audio: "Mantenga el teléfono a un brazo de distancia de sus ojos. ¿Ya lo hizo?",
+                showChart: false,
+                yesText: "✅ YA ESTÁ",
+                noText: "❓ NO ENTIENDO"
+            },
+            {
+                icon: "🖐️",
+                text: "Tape su ojo derecho con la mano.",
+                audio: "Ahora tape su ojo derecho con la mano. ¿Ya tapó el ojo derecho?",
+                showChart: false,
+                yesText: "✅ TAPADO",
+                noText: "❓ NO ENTIENDO"
+            },
+            {
+                icon: "👁️",
+                text: "Mire las letras con el ojo izquierdo. ¿Puede ver todas las letras claramente?",
+                audio: "Mire las letras con el ojo izquierdo. ¿Puede ver todas las letras claramente?",
+                showChart: true,
+                yesText: "✅ VEO TODO",
+                noText: "❌ NO VEO BIEN"
+            },
+            {
+                icon: "🖐️",
+                text: "Ahora tape su ojo izquierdo con la mano.",
+                audio: "Ahora tape su ojo izquierdo con la mano. ¿Ya tapó el ojo izquierdo?",
+                showChart: false,
+                yesText: "✅ TAPADO",
+                noText: "❓ NO ENTIENDO"
+            },
+            {
+                icon: "👁️",
+                text: "Mire las letras con el ojo derecho. ¿Puede ver todas las letras claramente?",
+                audio: "Mire las letras con el ojo derecho. ¿Puede ver todas las letras claramente?",
+                showChart: true,
+                yesText: "✅ VEO TODO",
+                noText: "❌ NO VEO BIEN"
             }
-            return null;
+        ];
+
+        var testResults = {
+            ojoIzquierdo: null,
+            ojoDerecho: null
+        };
+
+        // FUNCIONES DE UTILIDAD
+        function getUrlParam(name) {
+            try {
+                var urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            } catch (e) {
+                try {
+                    var url = window.location.search.substring(1);
+                    var params = url.split('&');
+                    for (var i = 0; i < params.length; i++) {
+                        var param = params[i].split('=');
+                        if (param[0] === name) {
+                            return decodeURIComponent(param[1]);
+                        }
+                    }
+                } catch (e2) {
+                    console.log('URL param error:', e2);
+                }
+                return null;
+            }
         }
 
         function safeGetStorage(key) {
             try {
-                var value = localStorage.getItem(key);
-                if (value && value !== 'null' && value !== 'undefined') {
-                    return JSON.parse(value);
+                if (typeof(Storage) !== "undefined" && localStorage) {
+                    var value = localStorage.getItem(key);
+                    if (value && value !== 'null' && value !== 'undefined') {
+                        return JSON.parse(value);
+                    }
                 }
-            } catch (e) {}
+            } catch (e) {
+                console.log('Storage error:', e);
+            }
             return {};
         }
 
         function addView() {
             try {
-                var views = localStorage.getItem('urbana_views') || '0';
-                views = parseInt(views) + 1;
-                localStorage.setItem('urbana_views', views.toString());
-                
-                var viewElement = document.getElementById('viewCount');
-                if (viewElement) {
-                    viewElement.innerHTML = views;
+                if (typeof(Storage) !== "undefined" && localStorage) {
+                    var views = localStorage.getItem('urbana_views') || '0';
+                    views = parseInt(views) + 1;
+                    localStorage.setItem('urbana_views', views.toString());
+                    
+                    var viewElement = document.getElementById('viewCount');
+                    if (viewElement) {
+                        viewElement.innerHTML = views;
+                    }
                 }
-            } catch (e) {}
+            } catch (e) {
+                console.log('Error updating views:', e);
+            }
         }
 
+        function addWhatsAppClick() {
+            try {
+                if (typeof(Storage) !== "undefined" && localStorage) {
+                    var clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
+                    clicks = parseInt(clicks) + 1;
+                    localStorage.setItem('urbana_whatsapp_clicks', clicks.toString());
+                    
+                    var clickElement = document.getElementById('clickCount');
+                    if (clickElement) {
+                        clickElement.innerHTML = clicks;
+                    }
+                }
+            } catch (e) {
+                console.log('Error updating clicks:', e);
+            }
+        }
+
+        // SISTEMA DE AUDIO
+        function toggleAudio() {
+            isAudioEnabled = !isAudioEnabled;
+            var btn = document.getElementById('audioBtn');
+            btn.textContent = isAudioEnabled ? '🔇' : '🔊';
+            
+            if (isAudioEnabled && audioSupported) {
+                speakText("Audio activado. Ahora escuchará instrucciones de voz.");
+            } else if (isAudioEnabled && !audioSupported) {
+                alert("Su navegador no soporta audio. Use un navegador más reciente.");
+                isAudioEnabled = false;
+                btn.textContent = '🔊';
+            }
+        }
+
+        function speakText(text) {
+            if (!isAudioEnabled || !audioSupported) return;
+            
+            window.speechSynthesis.cancel();
+            
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES';
+            utterance.rate = 0.7;
+            utterance.volume = 1.0;
+            utterance.pitch = 1.0;
+            
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // GESTIÓN DE MODOS
+        function toggleModo() {
+            if (modoActual === 'normal') {
+                activarModoHumanitario();
+            } else {
+                desactivarModoHumanitario();
+            }
+        }
+
+        function activarModoHumanitario() {
+            modoActual = 'humanitario';
+            document.getElementById('modoNormal').style.display = 'none';
+            document.getElementById('modoHumanitario').style.display = 'block';
+            document.getElementById('modoSelector').textContent = '🌾 Modo: Simple';
+            
+            if (!isAudioEnabled && audioSupported) {
+                toggleAudio();
+            }
+            
+            speakText("Modo simple activado. Aquí puede revisar sus ojos y ver lentes de calidad. ¿Tiene algún problema urgente en los ojos?");
+        }
+
+        function desactivarModoHumanitario() {
+            modoActual = 'normal';
+            document.getElementById('modoHumanitario').style.display = 'none';
+            document.getElementById('modoNormal').style.display = 'block';
+            document.getElementById('modoSelector').textContent = '👓 Modo: Normal';
+            
+            cerrarTestHumanitario();
+            speakText("Modo normal activado");
+        }
+
+        // FUNCIONES DE EMERGENCIA
+        function emergencyCall() {
+            speakText("Llamando a emergencias médicas");
+            addWhatsAppClick();
+            
+            if (confirm("🚨 ¿Tiene una EMERGENCIA en los ojos? ¿Llamar INMEDIATAMENTE?")) {
+                window.open('tel:' + WHATSAPP_NUMBER.replace(/^1/, ''), '_self');
+                
+                setTimeout(function() {
+                    var emergencyMessage = "🚨 EMERGENCIA EN LOS OJOS 🚨\n\nNecesito atención médica URGENTE. Tengo un problema grave en la vista.\n\n⏰ Es una EMERGENCIA ⏰";
+                    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(emergencyMessage), '_blank');
+                }, 1000);
+            }
+        }
+
+        // TEST VISUAL HUMANITARIO
+        function iniciarTestHumanitario() {
+            speakText("Iniciando test de vista con instrucciones de voz");
+            currentTestStep = 0;
+            testResults = { ojoIzquierdo: null, ojoDerecho: null };
+            
+            document.getElementById('testVisualHumanitario').style.display = 'block';
+            actualizarTestStep();
+        }
+
+        function cerrarTestHumanitario() {
+            document.getElementById('testVisualHumanitario').style.display = 'none';
+            speakText("Test cerrado");
+        }
+
+        function actualizarTestStep() {
+            if (currentTestStep >= testSteps.length) {
+                completarTest();
+                return;
+            }
+            
+            var step = testSteps[currentTestStep];
+            
+            document.getElementById('stepIcon').textContent = step.icon;
+            document.getElementById('stepText').textContent = step.text;
+            document.getElementById('btnSi').textContent = step.yesText;
+            document.getElementById('btnNo').textContent = step.noText;
+            
+            var chart = document.getElementById('visualChart');
+            if (step.showChart) {
+                chart.style.display = 'block';
+            } else {
+                chart.style.display = 'none';
+            }
+            
+            var progress = ((currentTestStep + 1) / testSteps.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            setTimeout(function() {
+                speakText(step.audio);
+            }, 500);
+        }
+
+        function responderTest(respuesta) {
+            var currentStep = testSteps[currentTestStep];
+            
+            if (!respuesta && (currentTestStep === 1 || currentTestStep === 2 || currentTestStep === 4)) {
+                speakText("No se preocupe. " + currentStep.audio);
+                return;
+            }
+            
+            if (!respuesta && currentTestStep === 0) {
+                cerrarTestHumanitario();
+                return;
+            }
+            
+            if (currentTestStep === 3) {
+                testResults.ojoIzquierdo = respuesta;
+                speakText(respuesta ? "Perfecto, ve bien con el ojo izquierdo" : "Entiendo, tiene dificultades con el ojo izquierdo");
+            }
+            
+            if (currentTestStep === 5) {
+                testResults.ojoDerecho = respuesta;
+                speakText(respuesta ? "Perfecto, ve bien con el ojo derecho" : "Entiendo, tiene dificultades con el ojo derecho");
+            }
+            
+            currentTestStep++;
+            setTimeout(function() {
+                actualizarTestStep();
+            }, 1000);
+        }
+
+        function completarTest() {
+            addWhatsAppClick();
+            
+            var mensaje = "🔍 TEST DE VISTA COMPLETADO - URBANA VISIÓN 🔍\n\n";
+            mensaje += "👁️ Ojo Izquierdo: " + (testResults.ojoIzquierdo ? "Ve bien ✅" : "Dificultades ❌") + "\n";
+            mensaje += "👁️ Ojo Derecho: " + (testResults.ojoDerecho ? "Ve bien ✅" : "Dificultades ❌") + "\n\n";
+            
+            if (!testResults.ojoIzquierdo || !testResults.ojoDerecho) {
+                mensaje += "🏥 NECESITA CONSULTA PROFESIONAL\n";
+                mensaje += "📅 Por favor, agéndenme una cita para examen completo.\n\n";
+                speakText("Test completado. Necesita consulta profesional. Contactando con especialista.");
+            } else {
+                mensaje += "✅ VISTA APARENTEMENTE NORMAL\n";
+                mensaje += "👓 Me interesan monturas de calidad premium.\n\n";
+                speakText("Test completado. Su vista parece normal. Contactando para mostrar monturas de calidad.");
+            }
+            
+            mensaje += "Completé el test en su página web de Urbana Visión.";
+            
+            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mensaje), '_blank');
+            
+            setTimeout(function() {
+                cerrarTestHumanitario();
+            }, 2000);
+        }
+
+        // OTRAS FUNCIONES HUMANITARIAS
+        function verLentesSimple() {
+            speakText("Mostrando monturas de calidad premium disponibles");
+            addView();
+            showCatalogView();
+        }
+
+        function pedirAyuda() {
+            speakText("Contactando con especialista de Urbana Visión para ayuda personal");
+            addWhatsAppClick();
+            
+            var mensaje = "🤝 SOLICITUD DE AYUDA - URBANA VISIÓN 🤝\n\n";
+            mensaje += "Hola, necesito ayuda para revisar mi vista y ver monturas. ";
+            mensaje += "¿Pueden explicarme paso a paso cómo usar su sistema? ";
+            mensaje += "Prefiero hablar por teléfono.\n\n";
+            mensaje += "📞 Por favor, llámenme o explíquenme por WhatsApp.";
+            
+            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mensaje), '_blank');
+        }
+
+        // CATÁLOGO DE PRODUCTOS
         function showProduct(montura) {
             var categories = {
                 'hombre': '👨 Hombres',
@@ -287,7 +1024,7 @@
             html += '<div class="product-category">' + (categories[montura.categoria] || '👓 Monturas') + '</div>';
             html += '<h2 class="product-name">' + montura.nombre + '</h2>';
             html += '<div class="product-price">' + montura.precio + '</div>';
-            html += '<a href="' + whatsappUrl + '" target="_blank" class="whatsapp-button">';
+            html += '<a href="' + whatsappUrl + '" target="_blank" class="whatsapp-button" onclick="addWhatsAppClick()">';
             html += '💬 PEDIR POR WHATSAPP</a>';
             html += '<button onclick="showCatalogView()" class="catalog-button">';
             html += '👁️ Ver todas las monturas</button>';
@@ -306,8 +1043,10 @@
                 html += '<span class="state-icon">📦</span>';
                 html += '<div class="state-title">Catálogo en construcción</div>';
                 html += '<div>Pronto tendremos monturas disponibles</div><br>';
-                html += '<button onclick="adminAccess()" style="padding: 15px 30px; background: #3b82f6; color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 16px;">';
-                html += '⚙️ Acceso Administrador</button></div>';
+                html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">';
+                html += '<button onclick="activarModoHumanitario()" style="padding: 15px; background: #10b981; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🌾 Modo Simple</button>';
+                html += '<button onclick="adminAccess()" style="padding: 15px; background: rgba(255, 255, 255, 0.2); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">⚙️ Admin</button>';
+                html += '</div></div>';
                 
                 document.getElementById('mainContent').innerHTML = html;
                 return;
@@ -320,7 +1059,6 @@
             for (var i = 0; i < keys.length; i++) {
                 var key = keys[i];
                 var montura = monturas[key];
-                var productUrl = BASE_URL + '?codigo=' + montura.codigo;
                 
                 html += '<div class="catalog-item" onclick="goToProduct(\'' + montura.codigo + '\')">';
                 html += '<img src="' + montura.foto + '" alt="' + montura.codigo + '" class="catalog-item-image">';
@@ -330,15 +1068,31 @@
             }
             
             html += '</div>';
+            
+            html += '<div style="text-align: center; margin-top: 20px;">';
+            html += '<button onclick="activarModoHumanitario()" class="catalog-button">🌾 Modo Simple con Voz</button>';
+            html += '</div>';
+            
             document.getElementById('mainContent').innerHTML = html;
         }
 
         function goToProduct(codigo) {
-            window.location.href = BASE_URL + '?codigo=' + codigo;
+            var currentUrl = window.location.href.split('?')[0];
+            window.location.href = currentUrl + '?codigo=' + codigo;
+        }
+
+        // FUNCIONES DEL SISTEMA ORIGINAL
+        function abrirPOS() {
+            var password = prompt('🔐 Acceso al Sistema POS:');
+            if (password === 'urbana2025') {
+                window.location.href = BASE_URL + 'pos.html';
+            } else if (password !== null) {
+                alert('❌ Contraseña incorrecta');
+            }
         }
 
         function adminAccess() {
-            var password = prompt('🔐 Contraseña de administrador:');
+            var password = prompt('🔐 Contraseña de administrador Urbana:');
             if (password === 'urbana2025') {
                 window.location.href = BASE_URL + 'admin.html';
             } else if (password !== null) {
@@ -346,13 +1100,45 @@
             }
         }
 
+        // DETECCIÓN AUTOMÁTICA DEL MODO APROPIADO
+        function detectarModoApropiado() {
+            try {
+                var userAgent = navigator.userAgent.toLowerCase();
+                var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                var isSlowConnection = connection && connection.effectiveType && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
+                var isOldDevice = userAgent.includes('android 4') || userAgent.includes('ios 8') || userAgent.includes('opera mini');
+                
+                if (isSlowConnection || isOldDevice) {
+                    setTimeout(function() {
+                        if (confirm("¿Quiere usar el MODO SIMPLE con voz para revisar su vista?")) {
+                            activarModoHumanitario();
+                        }
+                    }, 3000);
+                }
+            } catch (e) {
+                console.log('Error en detección automática:', e);
+            }
+        }
+
+        // INICIALIZACIÓN
         function initApp() {
             try {
-                var views = localStorage.getItem('urbana_views') || '0';
-                var viewElement = document.getElementById('viewCount');
-                if (viewElement) {
-                    viewElement.innerHTML = views;
+                var views = '0';
+                var clicks = '0';
+                
+                try {
+                    if (typeof(Storage) !== "undefined" && localStorage) {
+                        views = localStorage.getItem('urbana_views') || '0';
+                        clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
+                    }
+                } catch (e) {
+                    console.log('Storage not available:', e);
                 }
+                
+                var viewElement = document.getElementById('viewCount');
+                var clickElement = document.getElementById('clickCount');
+                if (viewElement) viewElement.innerHTML = views;
+                if (clickElement) clickElement.innerHTML = clicks;
 
                 var productCode = getUrlParam('codigo');
                 
@@ -369,32 +1155,57 @@
                         html += '<span class="state-icon">🔍</span>';
                         html += '<div class="state-title">Montura no encontrada</div>';
                         html += '<div>El código <strong>' + productCode + '</strong> no existe</div><br>';
-                        html += '<button onclick="showCatalogView()" style="padding: 15px; background: #3b82f6; color: white; border: none; border-radius: 15px; cursor: pointer;">';
-                        html += '👁️ Ver catálogo completo</button></div>';
+                        html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">';
+                        html += '<button onclick="showCatalogView()" style="padding: 15px; background: #3b82f6; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">👓 Ver Catálogo</button>';
+                        html += '<button onclick="activarModoHumanitario()" style="padding: 15px; background: #10b981; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🌾 Modo Simple</button>';
+                        html += '</div></div>';
                         
                         document.getElementById('mainContent').innerHTML = html;
                     }
-                } else {
-                    showCatalogView();
                 }
+
+                detectarModoApropiado();
+                
+                setTimeout(function() {
+                    if (audioSupported) {
+                        speakText("Bienvenido a Urbana Visión, monturas de calidad premium. Toque el botón naranja para activar la ayuda por voz.");
+                    }
+                }, 2000);
+                
             } catch (e) {
+                console.error('Error initializing app:', e);
                 var html = '';
                 html += '<div class="empty-state">';
                 html += '<span class="state-icon">⚠️</span>';
-                html += '<div class="state-title">Error cargando</div>';
-                html += '<div>Intenta recargar la página</div><br>';
-                html += '<button onclick="window.location.reload()" style="padding: 15px; background: #3b82f6; color: white; border: none; border-radius: 15px; cursor: pointer;">';
-                html += '🔄 Recargar</button></div>';
+                html += '<div class="state-title">Error de carga</div>';
+                html += '<div>Intente recargar la página</div><br>';
+                html += '<button onclick="window.location.reload()" style="padding: 15px; background: #ef4444; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🔄 Recargar</button>';
+                html += '</div>';
                 
                 document.getElementById('mainContent').innerHTML = html;
             }
         }
 
+        // EVENTOS
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initApp);
         } else {
             initApp();
         }
+        
+        window.addEventListener('offline', function() {
+            speakText("Sin conexión a internet. El sistema funciona sin conexión.");
+        });
+        
+        window.addEventListener('online', function() {
+            speakText("Conexión a internet restaurada.");
+        });
+
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
