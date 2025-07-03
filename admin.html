@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Urbana Visión</title>
+    <title>Panel Admin - Urbana Visión</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -11,307 +11,337 @@
             background: #1e293b; 
             min-height: 100vh; 
             color: white; 
-            padding: 15px; 
+            padding: 20px;
         }
-        .container { max-width: 420px; margin: 0 auto; }
+        .container { max-width: 500px; margin: 0 auto; }
         
-        .header { 
-            background: rgba(255, 255, 255, 0.1); 
-            border-radius: 20px; 
-            padding: 25px; 
-            text-align: center; 
-            margin-bottom: 25px; 
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
         }
-        .logo { 
-            width: 55px; 
-            height: 55px; 
-            background: #3b82f6; 
-            border-radius: 50%; 
-            margin: 0 auto 15px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 24px; 
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #3b82f6;
         }
-        h1 { font-size: 22px; margin-bottom: 8px; }
-        .subtitle { font-size: 13px; opacity: 0.8; }
-
-        .analytics-dashboard { 
-            background: rgba(255, 255, 255, 0.1); 
-            border-radius: 20px; 
-            padding: 25px; 
-            margin-bottom: 20px; 
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
         }
-        .stats-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 15px; 
-            margin-bottom: 20px; 
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
         }
-        .stat-card { 
-            background: rgba(255, 255, 255, 0.1); 
-            border-radius: 12px; 
-            padding: 15px; 
-            text-align: center; 
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: #3b82f6;
+            margin-bottom: 8px;
         }
-        .stat-number { 
-            font-size: 24px; 
-            font-weight: 700; 
-            color: #10b981; 
-            margin-bottom: 5px; 
+        
+        .stat-label {
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.9;
         }
-        .stat-label { 
-            font-size: 12px; 
-            color: #94a3b8; 
+        
+        .form-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
         }
-
-        .main-card { 
-            background: rgba(255, 255, 255, 0.1); 
-            border-radius: 20px; 
-            padding: 25px; 
-            margin-bottom: 20px; 
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #10b981;
         }
-        .section-title { 
-            font-size: 16px; 
-            color: #60a5fa; 
-            margin-bottom: 20px; 
-            text-align: center; 
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #e2e8f0;
+            font-size: 14px;
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 15px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+        
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .camera-upload {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 50px 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .camera-upload:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #3b82f6;
+        }
+        
+        .camera-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .preview-image {
+            max-width: 100%;
+            max-height: 250px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 18px 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .btn-small {
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 12px;
+        }
+        
+        .products-list {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .product-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .product-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-code {
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 5px;
+        }
+        
+        .product-price {
+            color: #10b981;
             font-weight: 600;
         }
-
-        .photo-upload-area { 
-            border: 2px dashed #60a5fa; 
-            border-radius: 15px; 
-            padding: 30px; 
-            text-align: center; 
-            margin-bottom: 20px; 
-            cursor: pointer; 
-            background: rgba(59, 130, 246, 0.05); 
+        
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
         }
-        .photo-upload-area.has-photo { 
-            border-color: #10b981; 
-            background: rgba(16, 185, 129, 0.1); 
-        }
-        .photo-preview { 
-            width: 200px; 
-            height: 200px; 
-            border-radius: 12px; 
-            margin: 0 auto 15px; 
-            object-fit: cover; 
-            display: none; 
-        }
-        .upload-text { color: #60a5fa; font-size: 14px; }
-
-        .form-grid { display: grid; gap: 20px; margin-bottom: 25px; }
-        .form-group { display: flex; flex-direction: column; }
-        .form-label { 
-            font-size: 13px; 
-            color: #cbd5e1; 
-            margin-bottom: 8px; 
+        
+        .alert {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
             font-weight: 600;
         }
-        .form-input, .form-select { 
-            background: rgba(255, 255, 255, 0.1); 
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            border-radius: 10px; 
-            padding: 12px 15px; 
-            color: white; 
-            font-size: 14px; 
+        
+        .alert-success {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: #10b981;
         }
-        .form-input:focus, .form-select:focus { 
-            outline: none; 
-            border-color: #60a5fa; 
-            background: rgba(255, 255, 255, 0.15); 
-        }
-        .form-input::placeholder { color: rgba(255, 255, 255, 0.5); }
-        .form-select option { background: #334155; color: white; }
-
-        .btn { 
-            background: #10b981; 
-            border: none; 
-            border-radius: 12px; 
-            padding: 15px; 
-            color: white; 
-            font-size: 15px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            width: 100%; 
-            margin-bottom: 15px; 
-        }
-        .btn:disabled { background: #64748b; cursor: not-allowed; }
-        .btn-secondary { background: #6366f1; }
-        .btn-info { background: #06b6d4; }
-
-        .success-message { 
-            background: #10b981; 
-            padding: 15px; 
-            border-radius: 12px; 
-            text-align: center; 
-            margin-bottom: 20px; 
-            display: none; 
-        }
-        .error-message { 
-            background: rgba(239, 68, 68, 0.8); 
-            padding: 15px; 
-            border-radius: 8px; 
-            margin: 10px 0; 
-            display: none; 
-        }
-
-        .result-card { 
-            background: rgba(59, 130, 246, 0.1); 
-            border: 1px solid rgba(59, 130, 246, 0.3); 
-            border-radius: 15px; 
-            padding: 20px; 
-            margin-top: 20px; 
-            display: none; 
-        }
-        .result-title { 
-            color: #60a5fa; 
-            font-size: 14px; 
-            margin-bottom: 15px; 
-            font-weight: 600;
-        }
-        .link-display { 
-            background: rgba(0, 0, 0, 0.4); 
-            border-radius: 8px; 
-            padding: 12px; 
-            font-family: monospace; 
-            font-size: 11px; 
-            color: #e2e8f0; 
-            word-break: break-all; 
-            margin-bottom: 15px; 
-        }
-        .message-preview { 
-            background: rgba(0, 0, 0, 0.4); 
-            border-radius: 8px; 
-            padding: 15px; 
-            font-size: 12px; 
-            white-space: pre-wrap; 
-            margin-bottom: 15px; 
-        }
-        .copy-buttons { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 10px; 
-        }
-        .copy-btn { 
-            background: rgba(255, 255, 255, 0.1); 
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            border-radius: 8px; 
-            padding: 10px; 
-            color: white; 
-            font-size: 12px; 
-            cursor: pointer; 
-        }
-
-        .catalog-section { 
-            background: rgba(255, 255, 255, 0.1); 
-            border-radius: 20px; 
-            padding: 25px; 
-        }
-        .catalog-list { 
-            max-height: 350px; 
-            overflow-y: auto; 
-            margin-top: 15px; 
-        }
-        .catalog-item { 
-            background: rgba(255, 255, 255, 0.05); 
-            border-radius: 12px; 
-            padding: 15px; 
-            margin-bottom: 12px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-        .item-info { flex: 1; }
-        .item-code { 
-            font-weight: 600; 
-            color: #60a5fa; 
-            margin-bottom: 5px; 
-        }
-        .item-details { 
-            font-size: 12px; 
-            color: #94a3b8; 
-        }
-        .item-actions { display: flex; gap: 8px; }
-        .action-btn { 
-            padding: 6px 12px; 
-            border: none; 
-            border-radius: 6px; 
-            font-size: 11px; 
-            cursor: pointer; 
-            color: white; 
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .btn-view { background: #3b82f6; }
-        .btn-delete { background: #ef4444; }
-
-        .empty-catalog { 
-            text-align: center; 
-            padding: 40px 20px; 
-            color: #64748b; 
+        
+        .alert-error {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #ef4444;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">👓</div>
-            <h1>Panel Administrativo</h1>
-            <p class="subtitle">Urbana Visión - Gestión de Catálogo</p>
+            <h1>📊 Panel de Administración</h1>
+            <p>Gestión completa de Urbana Visión</p>
+            <div style="margin-top: 10px;">
+                <button onclick="goToMainSite()" style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); padding: 8px 15px; border-radius: 10px; font-size: 12px; cursor: pointer; margin-right: 10px;">
+                    🏠 Sitio Principal
+                </button>
+                <button onclick="abrirPOS()" style="background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 8px 15px; border-radius: 10px; font-size: 12px; cursor: pointer;">
+                    💼 Sistema POS
+                </button>
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalProducts">0</div>
+                <div class="stat-label">Productos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalViews">0</div>
+                <div class="stat-label">Visitas totales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="whatsappClicks">0</div>
+                <div class="stat-label">Clicks WhatsApp</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="conversionRate">0%</div>
+                <div class="stat-label">Tasa conversión</div>
+            </div>
         </div>
 
-        <div class="analytics-dashboard">
-            <div class="section-title">📊 Analytics Dashboard</div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number" id="totalViews">0</div>
-                    <div class="stat-label">Vistas Totales</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="whatsappClicks">0</div>
-                    <div class="stat-label">Clics WhatsApp</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="conversionRate">0%</div>
-                    <div class="stat-label">Tasa Conversión</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="totalMonturas">0</div>
-                    <div class="stat-label">Total Monturas</div>
-                </div>
-            </div>
-            <button class="btn btn-info" onclick="showReport()">📈 Ver Reporte</button>
+        <div class="action-buttons">
+            <button onclick="goToMainSite()" class="btn btn-secondary btn-small">
+                🏠 Ir al sitio
+            </button>
+            <button onclick="abrirPOS()" class="btn btn-success btn-small">
+                💼 Sistema POS
+            </button>
+            <button onclick="exportData()" class="btn btn-secondary btn-small">
+                📤 Exportar
+            </button>
         </div>
 
-        <div class="main-card">
-            <div class="section-title">📸 Agregar Nueva Montura</div>
+        <div id="alertContainer"></div>
 
-            <div id="successMsg" class="success-message">✅ Montura agregada exitosamente</div>
-            <div id="errorMsg" class="error-message"></div>
-
-            <div class="photo-upload-area" id="uploadArea" onclick="document.getElementById('photoInput').click()">
-                <img id="photoPreview" class="photo-preview">
-                <div id="uploadText" class="upload-text">
-                    <div style="font-size: 32px; margin-bottom: 10px;">📷</div>
-                    <div><strong>Toca para tomar foto</strong></div>
-                    <div style="font-size: 12px; margin-top: 5px; opacity: 0.8;">Imagen optimizada automáticamente</div>
-                </div>
-            </div>
-            <input type="file" id="photoInput" accept="image/*" capture="environment" style="display: none;">
-
-            <div class="form-grid">
+        <div class="form-section">
+            <h2 class="section-title">➕ Agregar Nuevo Producto</h2>
+            
+            <form id="productForm">
                 <div class="form-group">
-                    <label class="form-label">Código de Montura</label>
-                    <input type="text" id="codigoInput" class="form-input" placeholder="Ej: H001, M150, D025, N003" maxlength="4">
+                    <label class="form-label">📸 Foto del Producto</label>
+                    <div class="camera-upload" onclick="document.getElementById('photoInput').click()">
+                        <span class="camera-icon">📷</span>
+                        <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Tomar/Subir Foto</div>
+                        <div style="font-size: 14px; opacity: 0.8;">Toque para activar cámara</div>
+                        <img id="photoPreview" class="preview-image" style="display: none;">
+                    </div>
+                    <input type="file" id="photoInput" accept="image/*" capture="environment" style="display: none;">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Categoría</label>
-                    <select id="categoriaSelect" class="form-select">
-                        <option value="">Seleccionar categoría</option>
+                    <label class="form-label">🔤 Código del Producto</label>
+                    <input type="text" id="productCode" class="form-input" placeholder="Ej: H001, M001..." style="text-transform: uppercase;" maxlength="10">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">📂 Categoría</label>
+                    <select id="productCategory" class="form-select">
                         <option value="hombre">👨 Hombres</option>
                         <option value="mujer">👩 Mujeres</option>
                         <option value="deportivo">🏃 Deportivos</option>
@@ -320,417 +350,355 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Precio</label>
-                    <input type="text" id="precioInput" class="form-input" placeholder="Ej: $2,500, RD$3,200" maxlength="15">
+                    <label class="form-label">💰 Precio</label>
+                    <input type="text" id="productPrice" class="form-input" placeholder="Ej: RD$2,500, RD$1,800...">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Nombre/Descripción (Opcional)</label>
-                    <input type="text" id="nombreInput" class="form-input" placeholder="Ej: Ray-Ban Aviador Negro" maxlength="50">
+                    <label class="form-label">📝 Nombre/Descripción</label>
+                    <textarea id="productName" class="form-textarea" rows="3" placeholder="Ej: Montura elegante para dama, marco metálico resistente..."></textarea>
                 </div>
-            </div>
 
-            <button id="saveBtn" class="btn" onclick="saveMontura()">💾 Guardar en Catálogo</button>
-            <button class="btn btn-secondary" onclick="openCatalog()">👁️ Ver Catálogo Cliente</button>
+                <div class="button-group">
+                    <button type="button" onclick="saveProduct()" class="btn btn-primary">
+                        💾 Guardar Producto
+                    </button>
+                    <button type="button" onclick="clearForm()" class="btn btn-secondary">
+                        🗑️ Limpiar Formulario
+                    </button>
+                </div>
+            </form>
+        </div>
 
-            <div id="resultCard" class="result-card">
-                <div class="result-title">📱 Enlace generado para WhatsApp</div>
-                <div><strong>Enlace directo:</strong></div>
-                <div id="generatedLink" class="link-display"></div>
-                <div><strong>Mensaje para copiar:</strong></div>
-                <div id="whatsappMessage" class="message-preview"></div>
-                <div class="copy-buttons">
-                    <button class="copy-btn" onclick="copyLink()">📋 Copiar Enlace</button>
-                    <button class="copy-btn" onclick="copyMessage()">💬 Copiar Mensaje</button>
+        <div class="products-list">
+            <h2 class="section-title">📦 Productos en Catálogo</h2>
+            <div id="productsList">
+                <div style="text-align: center; padding: 40px; opacity: 0.7;">
+                    <span style="font-size: 48px;">📦</span>
+                    <div style="margin-top: 15px;">No hay productos agregados</div>
                 </div>
             </div>
         </div>
 
-        <div class="catalog-section">
-            <div class="section-title">📋 Monturas en Catálogo</div>
-            <div id="catalogList" class="catalog-list">
-                <div class="empty-catalog">
-                    <div style="font-size: 48px; margin-bottom: 15px;">📦</div>
-                    <div>No hay monturas en el catálogo</div>
-                </div>
-            </div>
+        <div style="margin-top: 30px; text-align: center;">
+            <button onclick="exportData()" style="padding: 15px 30px; background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 15px; cursor: pointer; margin-right: 10px;">
+                📤 Exportar Datos
+            </button>
+            <button onclick="resetStats()" style="padding: 15px 30px; background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 15px; cursor: pointer;">
+                🗑️ Reset Stats
+            </button>
         </div>
     </div>
 
     <script>
-        var ADMIN_WHATSAPP = '18097135307';
-        var ADMIN_BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
-        var ADMIN_SELECTED_PHOTO = null;
-        var ADMIN_CURRENT_LINK = '';
-        var ADMIN_CURRENT_MESSAGE = '';
+        var WHATSAPP_NUMBER = '18097135307';
+        var BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+        var currentPhoto = null;
 
-        function checkAdminAccess() {
-            var password = prompt('🔐 Contraseña de administrador:');
-            if (password !== 'urbana2025') {
-                alert('❌ Acceso denegado');
-                window.location.href = ADMIN_BASE_URL;
-                return false;
-            }
-            return true;
-        }
-
-        function adminGetData() {
+        // Funciones de utilidad para almacenamiento
+        function safeGetStorage(key) {
             try {
-                var data = localStorage.getItem('urbana_monturas');
-                if (data && data !== 'null' && data !== 'undefined') {
-                    return JSON.parse(data);
+                if (typeof(Storage) !== "undefined" && localStorage) {
+                    var value = localStorage.getItem(key);
+                    if (value && value !== 'null' && value !== 'undefined') {
+                        return JSON.parse(value);
+                    }
                 }
-            } catch (e) {}
+            } catch (e) {
+                console.log('Storage error:', e);
+            }
             return {};
         }
 
-        function adminSetData(data) {
+        function safeSetStorage(key, value) {
             try {
-                localStorage.setItem('urbana_monturas', JSON.stringify(data));
-                return true;
+                if (typeof(Storage) !== "undefined" && localStorage) {
+                    localStorage.setItem(key, JSON.stringify(value));
+                    return true;
+                }
             } catch (e) {
+                console.log('Storage error:', e);
                 return false;
             }
         }
 
-        function getAdminViews() {
-            try {
-                var views = localStorage.getItem('urbana_views');
-                return views ? parseInt(views) : 0;
-            } catch (e) {
-                return 0;
-            }
+        function showAlert(message, type) {
+            var alertHtml = '<div class="alert alert-' + (type || 'success') + '">' + message + '</div>';
+            document.getElementById('alertContainer').innerHTML = alertHtml;
+            
+            setTimeout(function() {
+                document.getElementById('alertContainer').innerHTML = '';
+            }, 5000);
         }
 
-        function getAdminWhatsApp() {
-            try {
-                var clicks = localStorage.getItem('urbana_whatsapp');
-                return clicks ? parseInt(clicks) : 0;
-            } catch (e) {
-                return 0;
-            }
-        }
-
-        function updateAdminDashboard() {
-            var views = getAdminViews();
-            var whatsapp = getAdminWhatsApp();
-            var monturas = Object.keys(adminGetData()).length;
-            var conversion = views > 0 ? ((whatsapp / views) * 100).toFixed(1) : 0;
-
-            var totalViewsElement = document.getElementById('totalViews');
-            var whatsappClicksElement = document.getElementById('whatsappClicks');
-            var conversionRateElement = document.getElementById('conversionRate');
-            var totalMonturasElement = document.getElementById('totalMonturas');
-
-            if (totalViewsElement) totalViewsElement.textContent = views;
-            if (whatsappClicksElement) whatsappClicksElement.textContent = whatsapp;
-            if (conversionRateElement) conversionRateElement.textContent = conversion + '%';
-            if (totalMonturasElement) totalMonturasElement.textContent = monturas;
-        }
-
+        // Manejo de fotos
         document.getElementById('photoInput').addEventListener('change', function(e) {
             var file = e.target.files[0];
             if (file) {
-                compressAdminImage(file);
+                if (file.size > 5 * 1024 * 1024) {
+                    showAlert('⚠️ La imagen es muy grande. Use una imagen menor a 5MB.', 'error');
+                    return;
+                }
+                
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    currentPhoto = e.target.result;
+                    var preview = document.getElementById('photoPreview');
+                    preview.src = currentPhoto;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
             }
         });
 
-        function compressAdminImage(file) {
-            try {
-                var canvas = document.createElement('canvas');
-                var ctx = canvas.getContext('2d');
-                var img = new Image();
-                
-                img.onload = function() {
-                    var maxSize = 800;
-                    var width = img.width;
-                    var height = img.height;
-                    
-                    if (width > height) {
-                        if (width > maxSize) {
-                            height = (height * maxSize) / width;
-                            width = maxSize;
-                        }
-                    } else {
-                        if (height > maxSize) {
-                            width = (width * maxSize) / height;
-                            height = maxSize;
-                        }
-                    }
-                    
-                    canvas.width = width;
-                    canvas.height = height;
-                    ctx.fillStyle = '#ffffff';
-                    ctx.fillRect(0, 0, width, height);
-                    ctx.drawImage(img, 0, 0, width, height);
-                    
-                    ADMIN_SELECTED_PHOTO = canvas.toDataURL('image/jpeg', 0.7);
-                    showAdminPreview();
-                };
-                
-                img.onerror = function() {
-                    showAdminError('Error procesando imagen');
-                };
-                
-                img.src = URL.createObjectURL(file);
-            } catch (e) {
-                showAdminError('Error procesando imagen');
-            }
-        }
+        // Gestión de productos
+        function saveProduct() {
+            var codigo = document.getElementById('productCode').value.trim().toUpperCase();
+            var categoria = document.getElementById('productCategory').value;
+            var precio = document.getElementById('productPrice').value.trim();
+            var nombre = document.getElementById('productName').value.trim();
 
-        function showAdminPreview() {
-            var area = document.getElementById('uploadArea');
-            var preview = document.getElementById('photoPreview');
-            var text = document.getElementById('uploadText');
+            if (!currentPhoto) {
+                showAlert('⚠️ Debe agregar una foto del producto', 'error');
+                return;
+            }
             
-            if (preview && text && area) {
-                preview.src = ADMIN_SELECTED_PHOTO;
-                preview.style.display = 'block';
-                text.innerHTML = '<div style="background: rgba(0,0,0,0.7); padding: 10px; border-radius: 8px;">✅ Foto lista</div>';
-                area.className = 'photo-upload-area has-photo';
-            }
-        }
-
-        function showAdminError(message) {
-            var error = document.getElementById('errorMsg');
-            if (error) {
-                error.innerHTML = '❌ ' + message;
-                error.style.display = 'block';
-                setTimeout(function() {
-                    error.style.display = 'none';
-                }, 3000);
-            }
-        }
-
-        function saveMontura() {
-            var codigo = document.getElementById('codigoInput').value.trim().toUpperCase();
-            var categoria = document.getElementById('categoriaSelect').value;
-            var precio = document.getElementById('precioInput').value.trim();
-            var nombre = document.getElementById('nombreInput').value.trim();
-
-            if (!ADMIN_SELECTED_PHOTO) {
-                showAdminError('Toma una foto de la montura');
+            if (!codigo) {
+                showAlert('⚠️ Debe ingresar un código de producto', 'error');
                 return;
             }
-            if (!codigo || codigo.length < 3) {
-                showAdminError('Ingresa un código válido');
+            
+            if (codigo.length < 3) {
+                showAlert('⚠️ El código debe tener al menos 3 caracteres', 'error');
                 return;
             }
-            if (!categoria) {
-                showAdminError('Selecciona una categoría');
-                return;
-            }
+            
             if (!precio) {
-                showAdminError('Ingresa el precio');
+                showAlert('⚠️ Debe ingresar el precio del producto', 'error');
+                return;
+            }
+            
+            if (!nombre) {
+                showAlert('⚠️ Debe ingresar el nombre/descripción del producto', 'error');
                 return;
             }
 
-            var data = adminGetData();
-            if (data[codigo]) {
-                showAdminError('Código ' + codigo + ' ya existe');
-                return;
-            }
-
-            document.getElementById('saveBtn').disabled = true;
-            
-            var montura = {
-                codigo: codigo,
-                categoria: categoria,
-                precio: precio,
-                nombre: nombre || 'Sin nombre',
-                foto: ADMIN_SELECTED_PHOTO,
-                fechaCreacion: new Date().toISOString()
-            };
-            
-            data[codigo] = montura;
-            
-            if (adminSetData(data)) {
-                generateAdminWhatsAppLink(montura);
-                
-                var success = document.getElementById('successMsg');
-                if (success) {
-                    success.style.display = 'block';
-                    setTimeout(function() {
-                        success.style.display = 'none';
-                    }, 3000);
-                }
-                
-                var result = document.getElementById('resultCard');
-                if (result) {
-                    result.style.display = 'block';
-                }
-                
-                clearAdminForm();
-                loadAdminCatalog();
-                updateAdminDashboard();
-            } else {
-                showAdminError('Error guardando montura');
-            }
-            
-            document.getElementById('saveBtn').disabled = false;
-        }
-
-        function generateAdminWhatsAppLink(montura) {
-            ADMIN_CURRENT_LINK = ADMIN_BASE_URL + '?codigo=' + montura.codigo;
-            
-            var categories = {
-                'hombre': '👨 Hombres',
-                'mujer': '👩 Mujeres',
-                'deportivo': '🏃 Deportivos',
-                'niños': '👶 Niños'
-            };
-            
-            ADMIN_CURRENT_MESSAGE = '🥽 *NUEVA MONTURA - Urbana Visión*\n\n' +
-                '📋 *Código:* ' + montura.codigo + '\n' +
-                '👤 *Categoría:* ' + categories[montura.categoria] + '\n' +
-                '💰 *Precio:* ' + montura.precio + '\n' +
-                (montura.nombre !== 'Sin nombre' ? '📝 *Modelo:* ' + montura.nombre + '\n' : '') +
-                '\n📱 *VER FOTO COMPLETA:*\n' + ADMIN_CURRENT_LINK +
-                '\n\n🏥 *Urbana Visión*\n📱 WhatsApp: 809-713-5307\n🎁 6 meses de garantía\n\n_Toca el enlace para ver la foto_ 👆';
-            
-            var linkElement = document.getElementById('generatedLink');
-            var messageElement = document.getElementById('whatsappMessage');
-            
-            if (linkElement) linkElement.textContent = ADMIN_CURRENT_LINK;
-            if (messageElement) messageElement.textContent = ADMIN_CURRENT_MESSAGE;
-        }
-
-        function copyLink() {
             try {
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(ADMIN_CURRENT_LINK).then(function() {
-                        alert('📋 Enlace copiado');
-                    });
+                var monturas = safeGetStorage('urbana_monturas');
+                
+                if (monturas[codigo]) {
+                    if (!confirm('⚠️ El código ' + codigo + ' ya existe. ¿Desea reemplazarlo?')) {
+                        return;
+                    }
+                }
+                
+                monturas[codigo] = {
+                    codigo: codigo,
+                    categoria: categoria,
+                    precio: precio,
+                    nombre: nombre,
+                    foto: currentPhoto,
+                    fechaCreacion: new Date().toISOString(),
+                    enlace: window.location.origin + window.location.pathname.replace('admin.html', '') + '?codigo=' + codigo,
+                    whatsapp: 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('Hola, me interesa la montura ' + codigo + ' "' + nombre + '" por ' + precio + '. ¿Está disponible?')
+                };
+
+                if (safeSetStorage('urbana_monturas', monturas)) {
+                    showAlert('✅ Producto guardado exitosamente: ' + codigo, 'success');
+                    clearForm();
+                    updateStats();
+                    loadProductsList();
                 } else {
-                    var textarea = document.createElement('textarea');
-                    textarea.value = ADMIN_CURRENT_LINK;
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textarea);
-                    alert('📋 Enlace copiado');
+                    showAlert('❌ Error al guardar. Verifique el tamaño de la imagen.', 'error');
                 }
             } catch (e) {
-                alert('Error copiando enlace');
+                console.error('Error saving product:', e);
+                showAlert('❌ Error al guardar el producto. Intente con una imagen más pequeña.', 'error');
             }
         }
 
-        function copyMessage() {
+        function clearForm() {
+            document.getElementById('productCode').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productName').value = '';
+            document.getElementById('productCategory').value = 'hombre';
+            document.getElementById('photoPreview').style.display = 'none';
+            currentPhoto = null;
+            document.getElementById('photoInput').value = '';
+        }
+
+        function deleteProduct(codigo) {
+            if (confirm('⚠️ ¿Está seguro de eliminar el producto ' + codigo + '?')) {
+                try {
+                    var monturas = safeGetStorage('urbana_monturas');
+                    delete monturas[codigo];
+                    
+                    if (safeSetStorage('urbana_monturas', monturas)) {
+                        showAlert('✅ Producto eliminado: ' + codigo, 'success');
+                        updateStats();
+                        loadProductsList();
+                    } else {
+                        showAlert('❌ Error al eliminar el producto', 'error');
+                    }
+                } catch (e) {
+                    console.error('Error deleting product:', e);
+                    showAlert('❌ Error al eliminar el producto', 'error');
+                }
+            }
+        }
+
+        // Estadísticas
+        function updateStats() {
             try {
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(ADMIN_CURRENT_MESSAGE).then(function() {
-                        alert('💬 Mensaje copiado');
-                    });
-                } else {
-                    var textarea = document.createElement('textarea');
-                    textarea.value = ADMIN_CURRENT_MESSAGE;
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textarea);
-                    alert('💬 Mensaje copiado');
-                }
-            } catch (e) {
-                alert('Error copiando mensaje');
-            }
-        }
-
-        function clearAdminForm() {
-            var inputs = ['codigoInput', 'categoriaSelect', 'precioInput', 'nombreInput'];
-            for (var i = 0; i < inputs.length; i++) {
-                var element = document.getElementById(inputs[i]);
-                if (element) {
-                    element.value = '';
-                }
-            }
-            
-            ADMIN_SELECTED_PHOTO = null;
-            
-            var preview = document.getElementById('photoPreview');
-            var area = document.getElementById('uploadArea');
-            var text = document.getElementById('uploadText');
-            
-            if (preview) preview.style.display = 'none';
-            if (area) area.className = 'photo-upload-area';
-            if (text) {
-                text.innerHTML = '<div style="font-size: 32px; margin-bottom: 10px;">📷</div><div><strong>Toca para tomar foto</strong></div><div style="font-size: 12px; margin-top: 5px; opacity: 0.8;">Imagen optimizada automáticamente</div>';
-            }
-        }
-
-        function loadAdminCatalog() {
-            var list = document.getElementById('catalogList');
-            var data = adminGetData();
-            var items = Object.values(data);
-            
-            if (items.length === 0) {
-                list.innerHTML = '<div class="empty-catalog"><div style="font-size: 48px; margin-bottom: 15px;">📦</div><div>No hay monturas en el catálogo</div></div>';
-                return;
-            }
-            
-            items.sort(function(a, b) {
-                return new Date(b.fechaCreacion) - new Date(a.fechaCreacion);
-            });
-            
-            var html = '';
-            for (var i = 0; i < items.length; i++) {
-                var montura = items[i];
-                var icons = { 'hombre': '👨', 'mujer': '👩', 'deportivo': '🏃', 'niños': '👶' };
-                var icon = icons[montura.categoria] || '👓';
-                var link = ADMIN_BASE_URL + '?codigo=' + montura.codigo;
-                var date = new Date(montura.fechaCreacion).toLocaleDateString();
+                var monturas = safeGetStorage('urbana_monturas');
+                var views = '0';
+                var clicks = '0';
                 
-                html += '<div class="catalog-item">';
-                html += '<div class="item-info">';
-                html += '<div class="item-code">' + icon + ' ' + montura.codigo + ' - ' + montura.precio + '</div>';
-                html += '<div class="item-details">' + montura.nombre + ' | ' + date + '</div>';
-                html += '</div>';
-                html += '<div class="item-actions">';
-                html += '<a href="' + link + '" target="_blank" class="action-btn btn-view">Ver</a>';
-                html += '<button onclick="deleteAdminMontura(\'' + montura.codigo + '\')" class="action-btn btn-delete">❌</button>';
-                html += '</div>';
-                html += '</div>';
+                try {
+                    if (typeof(Storage) !== "undefined" && localStorage) {
+                        views = localStorage.getItem('urbana_views') || '0';
+                        clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
+                    }
+                } catch (e) {
+                    console.log('Storage not available for stats:', e);
+                }
+                
+                var viewsNum = parseInt(views);
+                var clicksNum = parseInt(clicks);
+                var conversion = viewsNum > 0 ? Math.round((clicksNum / viewsNum) * 100) : 0;
+
+                document.getElementById('totalProducts').innerHTML = Object.keys(monturas).length;
+                document.getElementById('totalViews').innerHTML = views;
+                document.getElementById('whatsappClicks').innerHTML = clicks;
+                document.getElementById('conversionRate').innerHTML = conversion + '%';
+            } catch (e) {
+                console.error('Error updating stats:', e);
             }
-            
-            list.innerHTML = html;
         }
 
-        function deleteAdminMontura(codigo) {
-            if (confirm('¿Eliminar montura ' + codigo + '?')) {
-                var data = adminGetData();
-                delete data[codigo];
-                if (adminSetData(data)) {
-                    loadAdminCatalog();
-                    updateAdminDashboard();
-                    alert('✅ Montura eliminada');
+        function resetStats() {
+            if (confirm('⚠️ ¿Está seguro de resetear todas las estadísticas?')) {
+                try {
+                    if (typeof(Storage) !== "undefined" && localStorage) {
+                        localStorage.setItem('urbana_views', '0');
+                        localStorage.setItem('urbana_whatsapp_clicks', '0');
+                    }
+                    updateStats();
+                    showAlert('✅ Estadísticas reseteadas', 'success');
+                } catch (e) {
+                    showAlert('❌ Error al resetear estadísticas', 'error');
                 }
             }
         }
 
-        function showReport() {
-            var views = getAdminViews();
-            var whatsapp = getAdminWhatsApp();
-            var monturas = Object.keys(adminGetData()).length;
-            var conversion = views > 0 ? ((whatsapp / views) * 100).toFixed(1) : 0;
-            
-            alert('📊 REPORTE URBANA VISIÓN\n\n📈 RESUMEN:\n• Total Vistas: ' + views + '\n• Clics WhatsApp: ' + whatsapp + '\n• Conversión: ' + conversion + '%\n• Monturas: ' + monturas + '\n\n💡 RENDIMIENTO:\n' + (conversion > 10 ? '✅ Excelente conversión' : conversion > 5 ? '⚠️ Conversión moderada' : '❌ Mejorar estrategia'));
+        // Lista de productos
+        function loadProductsList() {
+            try {
+                var monturas = safeGetStorage('urbana_monturas');
+                var keys = Object.keys(monturas);
+                var listContainer = document.getElementById('productsList');
+                
+                if (keys.length === 0) {
+                    listContainer.innerHTML = '<div style="text-align: center; padding: 40px; opacity: 0.7;"><span style="font-size: 48px;">📦</span><div style="margin-top: 15px;">No hay productos agregados</div></div>';
+                    return;
+                }
+                
+                var html = '';
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    var product = monturas[key];
+                    
+                    html += '<div class="product-item">';
+                    html += '<img src="' + product.foto + '" alt="' + product.codigo + '" class="product-thumb">';
+                    html += '<div class="product-info">';
+                    html += '<div class="product-code">' + product.codigo + '</div>';
+                    html += '<div class="product-price">' + product.precio + '</div>';
+                    html += '</div>';
+                    html += '<button onclick="deleteProduct(\'' + product.codigo + '\')" class="delete-btn">🗑️</button>';
+                    html += '</div>';
+                }
+                
+                listContainer.innerHTML = html;
+            } catch (e) {
+                console.error('Error loading products list:', e);
+            }
         }
 
-        function openCatalog() {
-            window.open(ADMIN_BASE_URL, '_blank');
+        // Exportar datos
+        function exportData() {
+            try {
+                var monturas = safeGetStorage('urbana_monturas');
+                var stats = {
+                    views: '0',
+                    clicks: '0'
+                };
+                
+                try {
+                    if (typeof(Storage) !== "undefined" && localStorage) {
+                        stats.views = localStorage.getItem('urbana_views') || '0';
+                        stats.clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
+                    }
+                } catch (e) {
+                    console.log('Storage not available for export:', e);
+                }
+                
+                var data = {
+                    productos: monturas,
+                    estadisticas: stats,
+                    exportado: new Date().toISOString(),
+                    total_productos: Object.keys(monturas).length
+                };
+                
+                var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'urbana_backup_' + new Date().toISOString().split('T')[0] + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showAlert('✅ Datos exportados exitosamente', 'success');
+            } catch (e) {
+                console.error('Error exporting data:', e);
+                showAlert('❌ Error al exportar los datos', 'error');
+            }
         }
 
+        // Navegación
+        function goToMainSite() {
+            window.location.href = BASE_URL;
+        }
+
+        // Abrir sistema POS
+        function abrirPOS() {
+            window.location.href = BASE_URL + 'pos.html';
+        }
+
+        // Inicialización
+        function initAdmin() {
+            try {
+                updateStats();
+                loadProductsList();
+                
+                var monturas = safeGetStorage('urbana_monturas');
+                var keys = Object.keys(monturas);
+                var nextNumber = keys.length + 1;
+                var suggestedCode = 'H' + String(nextNumber).padStart(3, '0');
+                document.getElementById('productCode').placeholder = 'Sugerido: ' + suggestedCode;
+                
+            } catch (e) {
+                console.error('Error initializing admin:', e);
+                showAlert('⚠️ Error al cargar el panel de administración', 'error');
+            }
+        }
+
+        // Inicializar cuando la página carga
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                if (checkAdminAccess()) {
-                    loadAdminCatalog();
-                    updateAdminDashboard();
-                }
-            });
+            document.addEventListener('DOMContentLoaded', initAdmin);
         } else {
-            if (checkAdminAccess()) {
-                loadAdminCatalog();
-                updateAdminDashboard();
-            }
+            initAdmin();
         }
     </script>
 </body>
