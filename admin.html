@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Admin - Óptica Nvisión</title>
+    <title>Panel Admin - Urbana Visión</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            font-family: Arial, sans-serif; 
+            background: #1e293b; 
             min-height: 100vh; 
             color: white; 
             padding: 20px;
@@ -16,9 +16,7 @@
         .container { max-width: 500px; margin: 0 auto; }
         
         .header {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             padding: 30px;
             text-align: center;
@@ -28,10 +26,7 @@
         .header h1 {
             font-size: 28px;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #3b82f6;
         }
         
         .stats-grid {
@@ -42,9 +37,7 @@
         }
         
         .stat-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 25px;
             text-align: center;
@@ -53,9 +46,8 @@
         .stat-number {
             font-size: 32px;
             font-weight: 900;
-            color: #22d3ee;
+            color: #3b82f6;
             margin-bottom: 8px;
-            text-shadow: 0 2px 10px rgba(34, 211, 238, 0.3);
         }
         
         .stat-label {
@@ -65,9 +57,7 @@
         }
         
         .form-section {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             padding: 30px;
             margin-bottom: 30px;
@@ -78,7 +68,7 @@
             font-weight: 700;
             margin-bottom: 25px;
             text-align: center;
-            color: #fbbf24;
+            color: #10b981;
         }
         
         .form-group {
@@ -110,8 +100,8 @@
         
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
-            border-color: #22d3ee;
-            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.1);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
         
         .camera-upload {
@@ -127,7 +117,7 @@
         
         .camera-upload:hover {
             background: rgba(255, 255, 255, 0.15);
-            border-color: #22d3ee;
+            border-color: #3b82f6;
         }
         
         .camera-icon {
@@ -224,14 +214,13 @@
         }
         
         .btn-primary {
-            background: linear-gradient(45deg, #22d3ee, #0891b2);
+            background: #3b82f6;
             color: white;
-            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(34, 211, 238, 0.4);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
         }
         
         .btn-secondary {
@@ -244,13 +233,8 @@
             background: rgba(255, 255, 255, 0.3);
         }
         
-        .btn-danger {
-            background: linear-gradient(45deg, #ef4444, #dc2626);
-            color: white;
-        }
-        
         .btn-success {
-            background: linear-gradient(45deg, #10b981, #059669);
+            background: #10b981;
             color: white;
         }
         
@@ -268,9 +252,7 @@
         }
         
         .products-list {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             padding: 30px;
             margin-bottom: 30px;
@@ -302,12 +284,12 @@
         
         .product-code {
             font-weight: 700;
-            color: #60a5fa;
+            color: #3b82f6;
             margin-bottom: 5px;
         }
         
         .product-price {
-            color: #22d3ee;
+            color: #10b981;
             font-weight: 600;
         }
         
@@ -322,9 +304,9 @@
         }
         
         .alert {
-            background: rgba(34, 211, 238, 0.2);
-            border: 1px solid rgba(34, 211, 238, 0.3);
-            color: #22d3ee;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
             padding: 15px;
             border-radius: 15px;
             margin-bottom: 20px;
@@ -377,9 +359,9 @@
     <div class="container">
         <div class="header">
             <h1>📊 Panel de Administración</h1>
-            <p>Gestión completa de Óptica Nvisión</p>
+            <p>Gestión completa de Urbana Visión</p>
             <div style="margin-top: 10px;">
-                <button onclick="goToMainSite()" style="background: rgba(34, 211, 238, 0.2); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); padding: 8px 15px; border-radius: 10px; font-size: 12px; cursor: pointer; margin-right: 10px;">
+                <button onclick="goToMainSite()" style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); padding: 8px 15px; border-radius: 10px; font-size: 12px; cursor: pointer; margin-right: 10px;">
                     🏠 Sitio Principal
                 </button>
                 <button onclick="abrirPOS()" style="background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 8px 15px; border-radius: 10px; font-size: 12px; cursor: pointer;">
@@ -447,7 +429,7 @@
 
                 <div class="form-group">
                     <label class="form-label">🔤 Código del Producto</label>
-                    <input type="text" id="productCode" class="form-input" placeholder="Ej: NV001, NV002..." style="text-transform: uppercase;" maxlength="10">
+                    <input type="text" id="productCode" class="form-input" placeholder="Ej: H001, M001..." style="text-transform: uppercase;" maxlength="10">
                 </div>
 
                 <div class="form-group">
@@ -457,8 +439,6 @@
                         <option value="mujer">👩 Mujeres</option>
                         <option value="deportivo">🏃 Deportivos</option>
                         <option value="niños">👶 Niños</option>
-                        <option value="lectura">📖 Lectura</option>
-                        <option value="sol">🕶️ Sol</option>
                     </select>
                 </div>
 
@@ -494,7 +474,7 @@
         </div>
 
         <div style="margin-top: 30px; text-align: center;">
-            <button onclick="exportData()" style="padding: 15px 30px; background: rgba(34, 211, 238, 0.2); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); border-radius: 15px; cursor: pointer; margin-right: 10px;">
+            <button onclick="exportData()" style="padding: 15px 30px; background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 15px; cursor: pointer; margin-right: 10px;">
                 📤 Exportar Datos
             </button>
             <button onclick="resetStats()" style="padding: 15px 30px; background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 15px; cursor: pointer;">
@@ -515,7 +495,7 @@
     </div>
 
     <script>
-        var WHATSAPP_NUMBER = '18497972424';
+        var WHATSAPP_NUMBER = '18097135307';
         var BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
         var currentPhoto = null;
         var currentProductCode = null;
@@ -661,7 +641,7 @@
             }
 
             try {
-                var monturas = safeGetStorage('nvision_monturas');
+                var monturas = safeGetStorage('urbana_monturas');
                 
                 if (monturas[codigo]) {
                     if (!confirm('⚠️ El código ' + codigo + ' ya existe. ¿Desea reemplazarlo?')) {
@@ -680,7 +660,7 @@
                     whatsapp: 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('Hola, me interesa la montura ' + codigo + ' "' + nombre + '" por ' + precio + '. ¿Está disponible?')
                 };
 
-                if (safeSetStorage('nvision_monturas', monturas)) {
+                if (safeSetStorage('urbana_monturas', monturas)) {
                     currentProductCode = codigo;
                     showAlert('✅ Producto guardado exitosamente: ' + codigo, 'success');
                     
@@ -740,18 +720,18 @@
                 return;
             }
             
-            var monturas = safeGetStorage('nvision_monturas');
+            var monturas = safeGetStorage('urbana_monturas');
             var montura = monturas[currentProductCode];
             
             if (montura) {
-                var mensaje = '🔥 *ÓPTICA NVISIÓN* 🔥\n\n';
+                var mensaje = '🔥 *URBANA VISION ÓPTICA* 🔥\n\n';
                 mensaje += '📸 Nueva montura disponible:\n';
                 mensaje += '🔢 Código: ' + montura.codigo + '\n';
                 mensaje += '💰 Precio: ' + montura.precio + '\n';
                 mensaje += '📂 Categoría: ' + montura.categoria + '\n';
                 mensaje += '📝 Descripción: ' + montura.nombre + '\n\n';
                 mensaje += '🔗 Ver detalles: ' + montura.enlace + '\n\n';
-                mensaje += '¡Vea mejor, viva mejor! 👁️✨';
+                mensaje += '¡Consulta disponibilidad! 👓✨';
                 
                 window.open('https://wa.me/?text=' + encodeURIComponent(mensaje), '_blank');
                 showAlert('✅ Compartiendo por WhatsApp', 'success');
@@ -773,10 +753,10 @@
         function deleteProduct(codigo) {
             if (confirm('⚠️ ¿Está seguro de eliminar el producto ' + codigo + '?')) {
                 try {
-                    var monturas = safeGetStorage('nvision_monturas');
+                    var monturas = safeGetStorage('urbana_monturas');
                     delete monturas[codigo];
                     
-                    if (safeSetStorage('nvision_monturas', monturas)) {
+                    if (safeSetStorage('urbana_monturas', monturas)) {
                         showAlert('✅ Producto eliminado: ' + codigo, 'success');
                         updateStats();
                         loadProductsList();
@@ -792,14 +772,14 @@
 
         function updateStats() {
             try {
-                var monturas = safeGetStorage('nvision_monturas');
+                var monturas = safeGetStorage('urbana_monturas');
                 var views = '0';
                 var clicks = '0';
                 
                 try {
                     if (typeof(Storage) !== "undefined" && localStorage) {
-                        views = localStorage.getItem('nvision_views') || '0';
-                        clicks = localStorage.getItem('nvision_whatsapp_clicks') || '0';
+                        views = localStorage.getItem('urbana_views') || '0';
+                        clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
                     }
                 } catch (e) {
                     console.log('Storage not available for stats:', e);
@@ -822,8 +802,8 @@
             if (confirm('⚠️ ¿Está seguro de resetear todas las estadísticas?')) {
                 try {
                     if (typeof(Storage) !== "undefined" && localStorage) {
-                        localStorage.setItem('nvision_views', '0');
-                        localStorage.setItem('nvision_whatsapp_clicks', '0');
+                        localStorage.setItem('urbana_views', '0');
+                        localStorage.setItem('urbana_whatsapp_clicks', '0');
                     }
                     updateStats();
                     showAlert('✅ Estadísticas reseteadas', 'success');
@@ -835,7 +815,7 @@
 
         function loadProductsList() {
             try {
-                var monturas = safeGetStorage('nvision_monturas');
+                var monturas = safeGetStorage('urbana_monturas');
                 var keys = Object.keys(monturas);
                 var listContainer = document.getElementById('productsList');
                 
@@ -868,7 +848,7 @@
 
         function exportData() {
             try {
-                var monturas = safeGetStorage('nvision_monturas');
+                var monturas = safeGetStorage('urbana_monturas');
                 var stats = {
                     views: '0',
                     clicks: '0'
@@ -876,8 +856,8 @@
                 
                 try {
                     if (typeof(Storage) !== "undefined" && localStorage) {
-                        stats.views = localStorage.getItem('nvision_views') || '0';
-                        stats.clicks = localStorage.getItem('nvision_whatsapp_clicks') || '0';
+                        stats.views = localStorage.getItem('urbana_views') || '0';
+                        stats.clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
                     }
                 } catch (e) {
                     console.log('Storage not available for export:', e);
@@ -894,7 +874,7 @@
                 var url = URL.createObjectURL(blob);
                 var a = document.createElement('a');
                 a.href = url;
-                a.download = 'nvision_backup_' + new Date().toISOString().split('T')[0] + '.json';
+                a.download = 'urbana_backup_' + new Date().toISOString().split('T')[0] + '.json';
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -920,10 +900,10 @@
                 updateStats();
                 loadProductsList();
                 
-                var monturas = safeGetStorage('nvision_monturas');
+                var monturas = safeGetStorage('urbana_monturas');
                 var keys = Object.keys(monturas);
                 var nextNumber = keys.length + 1;
-                var suggestedCode = 'NV' + String(nextNumber).padStart(3, '0');
+                var suggestedCode = 'H' + String(nextNumber).padStart(3, '0');
                 document.getElementById('productCode').placeholder = 'Sugerido: ' + suggestedCode;
                 
             } catch (e) {
