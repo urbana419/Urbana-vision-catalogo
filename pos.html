@@ -34,6 +34,45 @@
             background-clip: text;
         }
         
+        .header p {
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .header-btn {
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-home {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-admin {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-home:hover, .btn-admin:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
         .modo-rural-toggle {
             background: rgba(16, 185, 129, 0.2);
             border: 2px solid rgba(16, 185, 129, 0.3);
@@ -122,10 +161,17 @@
             border-radius: 10px;
             font-size: 14px;
             font-family: inherit;
+            transition: all 0.3s ease;
         }
         
         .form-input::placeholder, .form-textarea::placeholder {
             color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
         
         .btn {
@@ -143,22 +189,44 @@
         .btn-primary {
             background: linear-gradient(45deg, #3b82f6, #1d4ed8);
             color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
         
         .btn-success {
             background: linear-gradient(45deg, #10b981, #059669);
             color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
         }
         
         .btn-danger {
             background: linear-gradient(45deg, #ef4444, #dc2626);
             color: white;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
         }
         
         .btn-secondary {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
         
         .row {
@@ -175,10 +243,13 @@
             margin-bottom: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .list-item:hover {
             background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
         }
         
         .list-item-title {
@@ -191,6 +262,7 @@
         .list-item-info {
             font-size: 12px;
             opacity: 0.9;
+            line-height: 1.4;
         }
         
         .empty-state {
@@ -209,6 +281,7 @@
             border-radius: 15px;
             padding: 15px;
             margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .summary-row {
@@ -234,6 +307,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .cart-item-info {
@@ -259,13 +333,21 @@
         
         .qty-btn {
             background: rgba(255, 255, 255, 0.2);
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
             width: 30px;
             height: 30px;
             border-radius: 50%;
             cursor: pointer;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .qty-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
         
         .qty-display {
@@ -297,6 +379,35 @@
             border-color: rgba(239, 68, 68, 0.3);
             color: #ef4444;
         }
+
+        /* Mejoras visuales específicas */
+        .comprobante-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .comprobante-item:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -304,6 +415,14 @@
         <div class="header">
             <h1>💼 POS Urbana Visión</h1>
             <p>Sistema Punto de Venta Premium</p>
+            <div class="header-buttons">
+                <button onclick="goToMainSite()" class="header-btn btn-home">
+                    🏠 Sitio Principal
+                </button>
+                <button onclick="goToAdmin()" class="header-btn btn-admin">
+                    ⚙️ Panel Admin
+                </button>
+            </div>
             
             <div class="modo-rural-toggle" onclick="toggleModoRural()" id="modoRuralToggle">
                 🌾 Modo Rural/Humanitario: <span id="modoRuralStatus">Desactivado</span>
@@ -440,7 +559,7 @@
             <h2 class="section-title">📋 Comprobantes Fiscales</h2>
             
             <div id="listaComprobantes">
-                <div class="list-item">
+                <div class="list-item comprobante-item">
                     <div class="list-item-title">🧾 Consumidor Final</div>
                     <div class="list-item-info">
                         Rango: B010000000001 - B010000099999<br>
@@ -448,7 +567,7 @@
                     </div>
                 </div>
                 
-                <div class="list-item">
+                <div class="list-item comprobante-item">
                     <div class="list-item-title">🏢 Empresarial</div>
                     <div class="list-item-info">
                         Rango: B020000000001 - B020000099999<br>
@@ -456,7 +575,7 @@
                     </div>
                 </div>
                 
-                <div class="list-item">
+                <div class="list-item comprobante-item">
                     <div class="list-item-title">🏛️ Gubernamental</div>
                     <div class="list-item-info">
                         Rango: B030000000001 - B030000099999<br>
@@ -464,7 +583,7 @@
                     </div>
                 </div>
                 
-                <div class="list-item">
+                <div class="list-item comprobante-item">
                     <div class="list-item-title">🆓 Zona Franca</div>
                     <div class="list-item-info">
                         Rango: B040000000001 - B040000099999<br>
@@ -529,669 +648,3 @@
             <div id="carritoFactura">
                 <div class="empty-state">
                     <div class="empty-icon">🛒</div>
-                    <div>No hay monturas agregadas</div>
-                </div>
-            </div>
-            
-            <div id="resumenFactura" class="invoice-summary" style="display: none;">
-                <div class="summary-row">
-                    <span>Subtotal:</span>
-                    <span id="facturaSubtotal">RD$0.00</span>
-                </div>
-                <div class="summary-row">
-                    <span>ITBIS (18%):</span>
-                    <span id="facturaItbis">RD$0.00</span>
-                </div>
-                <div class="summary-row summary-total">
-                    <span>Total:</span>
-                    <span id="facturaTotal">RD$0.00</span>
-                </div>
-            </div>
-            
-            <button onclick="procesarFactura()" class="btn btn-success" id="btnProcesarFactura" disabled>📄 Generar Factura PDF</button>
-            <button onclick="limpiarFactura()" class="btn btn-secondary">🗑️ Limpiar Factura</button>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-    <script>
-        var WHATSAPP_NUMBER = '18097135307';
-        var BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
-        var currentTab = 'clientes';
-        var carritoActual = [];
-        var clienteSeleccionado = null;
-        var modoRuralActivo = false;
-        
-        function toggleModoRural() {
-            modoRuralActivo = !modoRuralActivo;
-            var toggle = document.getElementById('modoRuralToggle');
-            var status = document.getElementById('modoRuralStatus');
-            var comprobanteSelect = document.getElementById('facturaComprobante');
-            
-            if (modoRuralActivo) {
-                toggle.classList.add('active');
-                status.textContent = 'Activado (Sin NCF)';
-                comprobanteSelect.value = 'sin_ncf';
-                comprobanteSelect.disabled = true;
-                showAlert('✅ Modo Rural activado - Las facturas no tendrán NCF', 'success');
-            } else {
-                toggle.classList.remove('active');
-                status.textContent = 'Desactivado';
-                comprobanteSelect.disabled = false;
-                showAlert('ℹ️ Modo Rural desactivado - NCF disponibles', 'success');
-            }
-        }
-        
-        function showTab(tabName) {
-            var contents = document.querySelectorAll('.tab-content');
-            var buttons = document.querySelectorAll('.tab-btn');
-            
-            contents.forEach(content => content.classList.remove('active'));
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-            
-            currentTab = tabName;
-            
-            if (tabName === 'facturacion') {
-                cargarClientesSelect();
-                cargarProductosSelect();
-            } else if (tabName === 'clientes') {
-                cargarListaClientes();
-            } else if (tabName === 'inventario') {
-                cargarListaProductos();
-            }
-        }
-        
-        function safeGetStorage(key) {
-            try {
-                if (typeof(Storage) !== "undefined" && localStorage) {
-                    var value = localStorage.getItem(key);
-                    if (value && value !== 'null' && value !== 'undefined') {
-                        return JSON.parse(value);
-                    }
-                }
-            } catch (e) {
-                console.log('Storage error:', e);
-            }
-            return {};
-        }
-        
-        function safeSetStorage(key, value) {
-            try {
-                if (typeof(Storage) !== "undefined" && localStorage) {
-                    localStorage.setItem(key, JSON.stringify(value));
-                    return true;
-                }
-            } catch (e) {
-                console.log('Storage error:', e);
-                return false;
-            }
-        }
-        
-        function showAlert(message, type = 'success') {
-            var alertHtml = '<div class="alert alert-' + type + '">' + message + '</div>';
-            document.getElementById('alertContainer').innerHTML = alertHtml;
-            
-            setTimeout(function() {
-                document.getElementById('alertContainer').innerHTML = '';
-            }, 4000);
-        }
-        
-        function guardarCliente() {
-            var cliente = {
-                id: Date.now().toString(),
-                nombre: document.getElementById('clienteNombre').value.trim(),
-                telefono: document.getElementById('clienteTelefono').value.trim(),
-                cedula: document.getElementById('clienteCedula').value.trim(),
-                correo: document.getElementById('clienteCorreo').value.trim(),
-                direccion: document.getElementById('clienteDireccion').value.trim(),
-                fechaExamen: document.getElementById('clienteFechaExamen').value,
-                ojoDerecho: document.getElementById('clienteOjoDerecho').value.trim(),
-                ojoIzquierdo: document.getElementById('clienteOjoIzquierdo').value.trim(),
-                diagnostico: document.getElementById('clienteDiagnostico').value.trim(),
-                comentarios: document.getElementById('clienteComentarios').value.trim(),
-                fechaRegistro: new Date().toISOString()
-            };
-            
-            if (!cliente.nombre || !cliente.telefono) {
-                showAlert('⚠️ Nombre y teléfono son obligatorios', 'error');
-                return;
-            }
-            
-            var clientes = safeGetStorage('urbana_clientes');
-            clientes[cliente.id] = cliente;
-            
-            if (safeSetStorage('urbana_clientes', clientes)) {
-                showAlert('✅ Cliente guardado exitosamente');
-                limpiarFormularioCliente();
-                cargarListaClientes();
-            } else {
-                showAlert('❌ Error al guardar cliente', 'error');
-            }
-        }
-        
-        function limpiarFormularioCliente() {
-            document.getElementById('clienteForm').reset();
-        }
-        
-        function cargarListaClientes() {
-            var clientes = safeGetStorage('urbana_clientes');
-            var container = document.getElementById('listaClientes');
-            var keys = Object.keys(clientes);
-            
-            if (keys.length === 0) {
-                container.innerHTML = '<div class="empty-state"><div class="empty-icon">👥</div><div>No hay clientes registrados</div></div>';
-                return;
-            }
-            
-            var html = '';
-            keys.forEach(function(key) {
-                var cliente = clientes[key];
-                html += '<div class="list-item" onclick="editarCliente(\'' + key + '\')">';
-                html += '<div class="list-item-title">' + cliente.nombre + '</div>';
-                html += '<div class="list-item-info">📱 ' + cliente.telefono + ' | 🆔 ' + (cliente.cedula || 'Sin cédula');
-                if (cliente.fechaExamen) {
-                    html += '<br>👁️ Último examen: ' + cliente.fechaExamen;
-                }
-                if (cliente.ojoDerecho || cliente.ojoIzquierdo) {
-                    html += '<br>👓 Graduación: OD: ' + (cliente.ojoDerecho || 'N/A') + ' | OI: ' + (cliente.ojoIzquierdo || 'N/A');
-                }
-                html += '</div></div>';
-            });
-            
-            container.innerHTML = html;
-        }
-        
-        function editarCliente(clienteId) {
-            var clientes = safeGetStorage('urbana_clientes');
-            var cliente = clientes[clienteId];
-            
-            if (cliente) {
-                document.getElementById('clienteNombre').value = cliente.nombre || '';
-                document.getElementById('clienteTelefono').value = cliente.telefono || '';
-                document.getElementById('clienteCedula').value = cliente.cedula || '';
-                document.getElementById('clienteCorreo').value = cliente.correo || '';
-                document.getElementById('clienteDireccion').value = cliente.direccion || '';
-                document.getElementById('clienteFechaExamen').value = cliente.fechaExamen || '';
-                document.getElementById('clienteOjoDerecho').value = cliente.ojoDerecho || '';
-                document.getElementById('clienteOjoIzquierdo').value = cliente.ojoIzquierdo || '';
-                document.getElementById('clienteDiagnostico').value = cliente.diagnostico || '';
-                document.getElementById('clienteComentarios').value = cliente.comentarios || '';
-            }
-        }
-        
-        function sincronizarInventario() {
-            var monturas = safeGetStorage('urbana_monturas');
-            var productos = safeGetStorage('urbana_productos');
-            var monturaKeys = Object.keys(monturas);
-            
-            if (monturaKeys.length === 0) {
-                showAlert('⚠️ No hay monturas en el catálogo para sincronizar', 'error');
-                return;
-            }
-            
-            var sincronizados = 0;
-            monturaKeys.forEach(function(key) {
-                var montura = monturas[key];
-                if (!productos[montura.codigo]) {
-                    var precio = parseFloat(montura.precio.replace(/[^0-9.-]+/g,"")) || 0;
-                    productos[montura.codigo] = {
-                        id: montura.codigo,
-                        descripcion: montura.nombre,
-                        precioBase: precio,
-                        stock: 1,
-                        comentarios: 'Sincronizado desde catálogo',
-                        fechaSync: new Date().toISOString()
-                    };
-                    sincronizados++;
-                }
-            });
-            
-            if (safeSetStorage('urbana_productos', productos)) {
-                showAlert('✅ Sincronizadas ' + sincronizados + ' monturas del catálogo');
-                cargarListaProductos();
-            } else {
-                showAlert('❌ Error al sincronizar inventario', 'error');
-            }
-        }
-        
-        function guardarProducto() {
-            var producto = {
-                id: document.getElementById('productoId').value.trim().toUpperCase(),
-                descripcion: document.getElementById('productoDescripcion').value.trim(),
-                precioBase: parseFloat(document.getElementById('productoPrecio').value) || 0,
-                stock: parseInt(document.getElementById('productoStock').value) || 0,
-                comentarios: document.getElementById('productoComentarios').value.trim(),
-                fechaModificacion: new Date().toISOString()
-            };
-            
-            if (!producto.id || !producto.descripcion || producto.precioBase <= 0) {
-                showAlert('⚠️ Complete todos los campos obligatorios', 'error');
-                return;
-            }
-            
-            var productos = safeGetStorage('urbana_productos');
-            productos[producto.id] = producto;
-            
-            if (safeSetStorage('urbana_productos', productos)) {
-                showAlert('✅ Montura guardada: ' + producto.id);
-                limpiarFormularioProducto();
-                cargarListaProductos();
-            } else {
-                showAlert('❌ Error al guardar montura', 'error');
-            }
-        }
-        
-        function limpiarFormularioProducto() {
-            document.getElementById('productoForm').reset();
-        }
-        
-        function cargarListaProductos() {
-            var productos = safeGetStorage('urbana_productos');
-            var container = document.getElementById('listaProductos');
-            var keys = Object.keys(productos);
-            
-            if (keys.length === 0) {
-                container.innerHTML = '<div class="empty-state"><div class="empty-icon">👓</div><div>No hay monturas en inventario</div></div>';
-                return;
-            }
-            
-            var html = '';
-            keys.forEach(function(key) {
-                var producto = productos[key];
-                html += '<div class="list-item">';
-                html += '<div class="list-item-title">' + producto.id + '</div>';
-                html += '<div class="list-item-info">' + producto.descripcion + '<br>💰 RD$' + producto.precioBase.toFixed(2) + ' | 📊 Stock: ' + producto.stock + '</div>';
-                html += '</div>';
-            });
-            
-            container.innerHTML = html;
-        }
-        
-        function obtenerSiguienteComprobante(tipo) {
-            if (tipo === 'sin_ncf') {
-                return null;
-            }
-            
-            var comprobantes = safeGetStorage('urbana_comprobantes');
-            if (!comprobantes[tipo]) {
-                var prefijos = {
-                    'consumidor': 1,
-                    'empresarial': 1, 
-                    'gubernamental': 1,
-                    'zona_franca': 1
-                };
-                comprobantes[tipo] = prefijos[tipo];
-            }
-            
-            var siguiente = comprobantes[tipo];
-            comprobantes[tipo] = siguiente + 1;
-            safeSetStorage('urbana_comprobantes', comprobantes);
-            
-            var prefijo = tipo === 'consumidor' ? 'B01' :
-                         tipo === 'empresarial' ? 'B02' :
-                         tipo === 'gubernamental' ? 'B03' : 'B04';
-            
-            return prefijo + String(siguiente).padStart(11, '0');
-        }
-        
-        function resetearComprobantes() {
-            if (confirm('⚠️ ¿Está seguro de resetear toda la numeración de comprobantes?')) {
-                safeSetStorage('urbana_comprobantes', {});
-                showAlert('✅ Numeración de comprobantes reseteada');
-                actualizarVistaComprobantes();
-            }
-        }
-        
-        function actualizarVistaComprobantes() {
-            var comprobantes = safeGetStorage('urbana_comprobantes');
-            
-            var tipos = [
-                { tipo: 'consumidor', elemento: 'siguienteConsumidor' },
-                { tipo: 'empresarial', elemento: 'siguienteEmpresarial' },
-                { tipo: 'gubernamental', elemento: 'siguienteGubernamental' },
-                { tipo: 'zona_franca', elemento: 'siguienteZonaFranca' }
-            ];
-            
-            tipos.forEach(function(item) {
-                var elemento = document.getElementById(item.elemento);
-                if (elemento) {
-                    var numero = comprobantes[item.tipo] || 1;
-                    var prefijo = item.tipo === 'consumidor' ? 'B01' :
-                                 item.tipo === 'empresarial' ? 'B02' :
-                                 item.tipo === 'gubernamental' ? 'B03' : 'B04';
-                    elemento.textContent = prefijo + String(numero).padStart(11, '0');
-                }
-            });
-        }
-        
-        function cargarClientesSelect() {
-            var clientes = safeGetStorage('urbana_clientes');
-            var select = document.getElementById('facturaCliente');
-            var keys = Object.keys(clientes);
-            
-            var html = '<option value="">Seleccione un cliente...</option>';
-            keys.forEach(function(key) {
-                var cliente = clientes[key];
-                html += '<option value="' + key + '">' + cliente.nombre + ' - ' + cliente.telefono + '</option>';
-            });
-            
-            select.innerHTML = html;
-        }
-        
-        function cargarProductosSelect() {
-            var productos = safeGetStorage('urbana_productos');
-            var select = document.getElementById('facturaProducto');
-            var keys = Object.keys(productos);
-            
-            var html = '<option value="">Seleccione montura...</option>';
-            keys.forEach(function(key) {
-                var producto = productos[key];
-                if (producto.stock > 0) {
-                    html += '<option value="' + key + '">' + producto.id + ' - ' + producto.descripcion + ' (RD$' + producto.precioBase.toFixed(2) + ')</option>';
-                }
-            });
-            
-            select.innerHTML = html;
-        }
-        
-        function agregarProductoFactura() {
-            var productoId = document.getElementById('facturaProducto').value;
-            if (!productoId) {
-                showAlert('⚠️ Seleccione una montura', 'error');
-                return;
-            }
-            
-            var productos = safeGetStorage('urbana_productos');
-            var producto = productos[productoId];
-            
-            var itemExistente = carritoActual.find(item => item.id === productoId);
-            if (itemExistente) {
-                itemExistente.cantidad++;
-            } else {
-                carritoActual.push({
-                    id: productoId,
-                    descripcion: producto.descripcion,
-                    precio: producto.precioBase,
-                    cantidad: 1
-                });
-            }
-            
-            actualizarCarritoFactura();
-            document.getElementById('facturaProducto').value = '';
-        }
-        
-        function actualizarCarritoFactura() {
-            var container = document.getElementById('carritoFactura');
-            
-            if (carritoActual.length === 0) {
-                container.innerHTML = '<div class="empty-state"><div class="empty-icon">🛒</div><div>No hay monturas agregadas</div></div>';
-                document.getElementById('resumenFactura').style.display = 'none';
-                document.getElementById('btnProcesarFactura').disabled = true;
-                return;
-            }
-            
-            var html = '';
-            var subtotal = 0;
-            
-            carritoActual.forEach(function(item, index) {
-                var total = item.precio * item.cantidad;
-                subtotal += total;
-                
-                html += '<div class="cart-item">';
-                html += '<div class="cart-item-info">';
-                html += '<div class="cart-item-name">' + item.id + ' - ' + item.descripcion + '</div>';
-                html += '<div class="cart-item-price">RD$' + item.precio.toFixed(2) + ' c/u</div>';
-                html += '</div>';
-                html += '<div class="cart-controls">';
-                html += '<button class="qty-btn" onclick="cambiarCantidad(' + index + ', -1)">-</button>';
-                html += '<div class="qty-display">' + item.cantidad + '</div>';
-                html += '<button class="qty-btn" onclick="cambiarCantidad(' + index + ', 1)">+</button>';
-                html += '</div></div>';
-            });
-            
-            container.innerHTML = html;
-            
-            var itbis = subtotal * 0.18;
-            var total = subtotal + itbis;
-            
-            document.getElementById('facturaSubtotal').textContent = 'RD$' + subtotal.toFixed(2);
-            document.getElementById('facturaItbis').textContent = 'RD$' + itbis.toFixed(2);
-            document.getElementById('facturaTotal').textContent = 'RD$' + total.toFixed(2);
-            document.getElementById('resumenFactura').style.display = 'block';
-            document.getElementById('btnProcesarFactura').disabled = false;
-        }
-        
-        function cambiarCantidad(index, cambio) {
-            carritoActual[index].cantidad += cambio;
-            if (carritoActual[index].cantidad <= 0) {
-                carritoActual.splice(index, 1);
-            }
-            actualizarCarritoFactura();
-        }
-        
-        function limpiarFactura() {
-            carritoActual = [];
-            document.getElementById('facturaCliente').value = '';
-            document.getElementById('facturaComentarios').value = '';
-            if (modoRuralActivo) {
-                document.getElementById('facturaComprobante').value = 'sin_ncf';
-            } else {
-                document.getElementById('facturaComprobante').value = 'consumidor';
-            }
-            document.getElementById('facturaFormaPago').value = 'efectivo';
-            actualizarCarritoFactura();
-        }
-        
-        function procesarFactura() {
-            var clienteId = document.getElementById('facturaCliente').value;
-            var tipoComprobante = document.getElementById('facturaComprobante').value;
-            var formaPago = document.getElementById('facturaFormaPago').value;
-            var comentarios = document.getElementById('facturaComentarios').value.trim();
-            
-            if (!clienteId || carritoActual.length === 0) {
-                showAlert('⚠️ Seleccione cliente y agregue monturas', 'error');
-                return;
-            }
-            
-            var clientes = safeGetStorage('urbana_clientes');
-            var cliente = clientes[clienteId];
-            
-            var numeroComprobante = null;
-            if (tipoComprobante !== 'sin_ncf') {
-                numeroComprobante = obtenerSiguienteComprobante(tipoComprobante);
-            }
-            
-            var factura = {
-                id: 'FACT-' + Date.now(),
-                numeroComprobante: numeroComprobante,
-                sinNCF: tipoComprobante === 'sin_ncf',
-                fecha: new Date().toLocaleDateString('es-DO'),
-                cliente: cliente,
-                productos: [...carritoActual],
-                subtotal: carritoActual.reduce((sum, item) => sum + (item.precio * item.cantidad), 0),
-                itbis: carritoActual.reduce((sum, item) => sum + (item.precio * item.cantidad), 0) * 0.18,
-                total: carritoActual.reduce((sum, item) => sum + (item.precio * item.cantidad), 0) * 1.18,
-                formaPago: formaPago,
-                tipoComprobante: tipoComprobante,
-                comentarios: comentarios
-            };
-            
-            generarPDF(factura);
-            
-            var facturas = safeGetStorage('urbana_facturas');
-            facturas[factura.id] = factura;
-            safeSetStorage('urbana_facturas', facturas);
-            
-            if (factura.sinNCF) {
-                showAlert('✅ Factura Proforma generada exitosamente');
-            } else {
-                showAlert('✅ Factura generada: ' + numeroComprobante);
-            }
-            limpiarFactura();
-        }
-        
-        function generarPDF(factura) {
-            try {
-                var { jsPDF } = window.jspdf;
-                var doc = new jsPDF();
-                
-                doc.setFontSize(20);
-                doc.text('URBANA VISIÓN', 105, 20, { align: 'center' });
-                doc.setFontSize(12);
-                doc.text('Monturas de calidad premium - Estilo urbano moderno', 105, 30, { align: 'center' });
-                doc.text('Tel: 809-713-5307', 105, 40, { align: 'center' });
-                
-                doc.setFontSize(14);
-                if (factura.sinNCF) {
-                    doc.text('FACTURA PROFORMA', 20, 60);
-                } else {
-                    doc.text('FACTURA', 20, 60);
-                }
-                doc.setFontSize(10);
-                
-                if (factura.sinNCF) {
-                    doc.text('Tipo: Factura Proforma (Sin NCF)', 20, 70);
-                } else {
-                    doc.text('NCF: ' + factura.numeroComprobante, 20, 70);
-                }
-                
-                doc.text('Fecha: ' + factura.fecha, 20, 80);
-                doc.text('Forma de Pago: ' + factura.formaPago.toUpperCase(), 20, 90);
-                
-                doc.text('CLIENTE:', 20, 110);
-                doc.text('Nombre: ' + factura.cliente.nombre, 20, 120);
-                doc.text('Teléfono: ' + factura.cliente.telefono, 20, 130);
-                if (factura.cliente.cedula) doc.text('Cédula/RNC: ' + factura.cliente.cedula, 20, 140);
-                
-                if (factura.cliente.fechaExamen) {
-                    doc.text('ÚLTIMO EXAMEN OPTOMÉTRICO:', 20, 160);
-                    doc.text('Fecha: ' + factura.cliente.fechaExamen, 20, 170);
-                    if (factura.cliente.ojoDerecho) doc.text('OD: ' + factura.cliente.ojoDerecho, 20, 180);
-                    if (factura.cliente.ojoIzquierdo) doc.text('OI: ' + factura.cliente.ojoIzquierdo, 100, 180);
-                    if (factura.cliente.diagnostico) doc.text('Diagnóstico: ' + factura.cliente.diagnostico, 20, 190);
-                }
-                
-                var startY = factura.cliente.fechaExamen ? 210 : 160;
-                doc.text('MONTURAS:', 20, startY);
-                
-                var currentY = startY + 15;
-                factura.productos.forEach(function(producto) {
-                    var linea = producto.id + ' - ' + producto.descripcion;
-                    doc.text(linea, 20, currentY);
-                    doc.text('Cant: ' + producto.cantidad, 20, currentY + 10);
-                    doc.text('Precio: RD$' + producto.precio.toFixed(2), 100, currentY + 10);
-                    doc.text('Total: RD$' + (producto.precio * producto.cantidad).toFixed(2), 150, currentY + 10);
-                    currentY += 25;
-                });
-                
-                currentY += 10;
-                doc.text('Subtotal: RD$' + factura.subtotal.toFixed(2), 150, currentY);
-                doc.text('ITBIS (18%): RD$' + factura.itbis.toFixed(2), 150, currentY + 10);
-                doc.setFontSize(12);
-                doc.text('TOTAL: RD$' + factura.total.toFixed(2), 150, currentY + 25);
-                
-                if (factura.comentarios) {
-                    doc.setFontSize(10);
-                    currentY += 40;
-                    doc.text('COMENTARIOS:', 20, currentY);
-                    doc.text(factura.comentarios, 20, currentY + 10);
-                }
-                
-                doc.setFontSize(8);
-                doc.text('Gracias por elegir Urbana Visión - Monturas Premium', 105, currentY + 35, { align: 'center' });
-                
-                var fileName = factura.sinNCF ? 
-                    'Proforma_UrbanaVision_' + factura.id + '.pdf' :
-                    'Factura_UrbanaVision_' + factura.numeroComprobante + '.pdf';
-                doc.save(fileName);
-                
-                setTimeout(function() {
-                    enviarFacturaPorWhatsApp(factura);
-                }, 1000);
-                
-            } catch (error) {
-                console.error('Error generando PDF:', error);
-                showAlert('❌ Error al generar PDF. Verifique su navegador.', 'error');
-            }
-        }
-        
-        function enviarFacturaPorWhatsApp(factura) {
-            var mensaje = '';
-            
-            if (factura.sinNCF) {
-                mensaje = '📄 *FACTURA PROFORMA - URBANA VISIÓN* 📄\n\n';
-                mensaje += '🌾 Factura Proforma (Zona Rural/Humanitario)\n';
-            } else {
-                mensaje = '📄 *FACTURA - URBANA VISIÓN* 📄\n\n';
-                mensaje += '🧾 NCF: ' + factura.numeroComprobante + '\n';
-            }
-            
-            mensaje += '📅 Fecha: ' + factura.fecha + '\n';
-            mensaje += '👤 Cliente: ' + factura.cliente.nombre + '\n\n';
-            
-            mensaje += '👓 *MONTURAS PREMIUM:*\n';
-            factura.productos.forEach(function(producto) {
-                mensaje += '• ' + producto.id + ' - ' + producto.descripcion + '\n';
-                mensaje += '  Cantidad: ' + producto.cantidad + ' | Precio: RD$' + producto.precio.toFixed(2) + '\n';
-            });
-            
-            mensaje += '\n💰 *TOTALES:*\n';
-            mensaje += 'Subtotal: RD$' + factura.subtotal.toFixed(2) + '\n';
-            mensaje += 'ITBIS (18%): RD$' + factura.itbis.toFixed(2) + '\n';
-            mensaje += '*TOTAL: RD$' + factura.total.toFixed(2) + '*\n\n';
-            
-            if (factura.cliente.fechaExamen) {
-                mensaje += '👁️ *ÚLTIMO EXAMEN:*\n';
-                mensaje += 'Fecha: ' + factura.cliente.fechaExamen + '\n';
-                if (factura.cliente.ojoDerecho) mensaje += 'OD: ' + factura.cliente.ojoDerecho + '\n';
-                if (factura.cliente.ojoIzquierdo) mensaje += 'OI: ' + factura.cliente.ojoIzquierdo + '\n';
-            }
-            
-            if (factura.comentarios) {
-                mensaje += '\n📝 *COMENTARIOS:*\n';
-                mensaje += factura.comentarios + '\n';
-            }
-            
-            mensaje += '\n👓 ¡Gracias por elegir Urbana Visión! ✨\n';
-            mensaje += 'Estilo urbano premium 🌟';
-            
-            var whatsappUrl = 'https://wa.me/' + factura.cliente.telefono.replace(/[^0-9]/g, '') + '?text=' + encodeURIComponent(mensaje);
-            window.open(whatsappUrl, '_blank');
-        }
-        
-        function goToMainSite() {
-            window.location.href = BASE_URL;
-        }
-
-        function goToAdmin() {
-            window.location.href = BASE_URL + 'admin.html';
-        }
-        
-        function inicializarPOS() {
-            cargarListaClientes();
-            actualizarVistaComprobantes();
-            
-            var comprobantes = safeGetStorage('urbana_comprobantes');
-            if (Object.keys(comprobantes).length === 0) {
-                safeSetStorage('urbana_comprobantes', {
-                    'consumidor': 1,
-                    'empresarial': 1,
-                    'gubernamental': 1,
-                    'zona_franca': 1
-                });
-                actualizarVistaComprobantes();
-            }
-        }
-        
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', inicializarPOS);
-        } else {
-            inicializarPOS();
-        }
-    </script>
-</body>
-</html>
