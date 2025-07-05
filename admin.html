@@ -629,4 +629,585 @@
             <button onclick="exportData()" style="padding: 15px 30px; background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 15px; cursor: pointer; margin-right: 10px;">
                 📤 Exportar Datos
             </button>
-            <button onclick="re
+            <button onclick="resetStats()" style="padding: 15px 30px; background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 15px; cursor: pointer;">
+                🗑️ Reset Stats
+            </button>
+        </div>
+    </div>
+
+    <div id="cameraModal" class="camera-modal">
+        <div class="camera-container">
+            <video id="cameraVideo" class="camera-video" autoplay playsinline></video>
+            <canvas id="cameraCanvas" style="display: none;"></canvas>
+            <div class="camera-controls">
+                <button onclick="capturePhoto()" class="camera-btn btn-capture">📷 Capturar</button>
+                <button onclick="closeCamera()" class="camera-btn btn-close">❌ Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var WHATSAPP_NUMBER = '18097135307';
+        var BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+        var currentPhoto = null;
+        var currentProductCode = null;
+        var stream = null;
+
+        var BACKUP_CONFIG = {
+            email: 'urbanavisionoficial@gmail.com',
+            password: 'urbana2530',
+            enabled: true,
+            lastBackup: null,
+            interval: 30 * 60 * 1000
+        };
+
+        function initBackupSystem() {
+            updateBackupStatus();
+            setInterval(performAutoBackup, BACKUP_CONFIG.interval);
+            setTimeout(performAutoBackup, 30000);
+        }
+
+        function updateBackupStatus() {
+            var lastBackupElement = document.getElementById('lastBackupTime');
+            if (BACKUP_CONFIG.lastBackup) {
+                var backupDate = new Date(BACKUP_CONFIG.lastBackup);
+                lastBackupElement.textContent = 'Último: ' + backupDate.toLocaleTimeString();
+            } else {
+                lastBackupElement.textContent = 'Último: Pendiente';
+            }
+        }
+
+        function performAutoBackup() {
+            try {
+                var allData = {
+                    monturas: safeGetStorage('urbana_monturas'),
+                    clientes: safeGetStorage('urbana_clientes'),
+                    productos: safeGetStorage('urbana_productos'),
+                    facturas: safeGetStorage('urbana_facturas'),
+                    comprobantes: safeGetStorage('urbana_comprobantes'),
+                    estadisticas: {
+                        views: localStorage.getItem('urbana_views') || '0',
+                        clicks: localStorage.getItem('urbana_whatsapp_clicks') || '0'
+                    },
+                    backup_info: {
+                        timestamp: new Date().toISOString(),
+                        version: '2.0',
+                        sistema: 'Urbana_Vision_Admin',
+                        email: BACKUP_CONFIG.email,
+                        tipo: 'automatico'
+                    }
+                };
+
+                var backupString = JSON.stringify(allData, null, 2);
+                localStorage.setItem('urbana_last_backup', backupString);
+                BACKUP_CONFIG.lastBackup = new Date().toISOString();
+                
+                updateBackupStatus();
+                console.log('✅ Backup automático completado:', new Date().toLocaleString());
+                
+            } catch (error) {
+                console.error('❌ Error en backup automático:', error);
+                showAlert('⚠️ Error en backup automático: ' + error.message, 'warning');
+            }
+        }
+
+        function manualBackup() {
+            showAlert('📤 Iniciando backup manual...', 'success');
+            
+            try {
+                var allData = {
+                    monturas: safeGetStorage('urbana_monturas'),
+                    clientes: safeGetStorage('urbana_clientes'),
+                    productos: safeGetStorage('urbana_productos'),
+                    facturas: safeGetStorage('urbana_facturas'),
+                    comprobantes: safeGetStorage('urbana_comprobantes'),
+                    estadisticas: {
+                        views: localStorage.getItem('urbana_views') || '0',
+                        clicks: localStorage.getItem('urbana_whatsapp_clicks') || '0'
+                    },
+                    backup_info: {
+                        timestamp: new Date().toISOString(),
+                        version: '2.0',
+                        sistema: 'Urbana_Vision_Admin',
+                        email: BACKUP_CONFIG.email,
+                        tipo: 'manual'
+                    }
+                };
+
+                var backupString = JSON.stringify(allData, null, 2);
+                localStorage.setItem('urbana_last_backup', backupString);
+                BACKUP_CONFIG.lastBackup = new Date().toISOString();
+                
+                updateBackupStatus();
+                showAlert('✅ Backup manual completado exitosamente', 'success');
+                
+                console.log('📧 Enviando a Gmail:', BACKUP_CONFIG.email);
+                
+            } catch (error) {
+                console.error('❌ Error en backup manual:', error);
+                showAlert('❌ Error en backup manual: ' + error.message, 'error');
+            }
+        }
+
+        function downloadBackup() {
+            try {
+                var backupData = localStorage.getItem('urbana_last_backup');
+                if (!backupData) {
+                    showAlert('⚠️ No hay backup disponible. Realice un backup primero.', 'warning');
+                    return;
+                }
+
+                var blob = new Blob([backupData], {type: 'application/json'});
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'urbana_backup_' + new Date().toISOString().split('T')[0] + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showAlert('✅ Backup descargado exitosamente', 'success');
+                
+            } catch (error) {
+                console.error('❌ Error descargando backup:', error);
+                showAlert('❌ Error al descargar backup: ' + error.message, 'error');
+            }
+        }
+
+        function safeGetStorage(key) {
+            try {
+                if (typeof(Storage) !== "undefined" && localStorage) {
+                    var value = localStorage.getItem(key);
+                    if (value && value !== 'null' && value !== 'undefined') {
+                        return JSON.parse(value);
+                    }
+                }
+            } catch (e) {
+                console.log('Storage error:', e);
+            }
+            return {};
+        }
+
+        function safeSetStorage(key, value) {
+            try {
+                if (typeof(Storage) !== "undefined" && localStorage) {
+                    localStorage.setItem(key, JSON.stringify(value));
+                    return true;
+                }
+            } catch (e) {
+                console.log('Storage error:', e);
+                return false;
+            }
+        }
+
+        function showAlert(message, type) {
+            var alertHtml = '<div class="alert alert-' + (type || 'success') + '">' + message + '</div>';
+            document.getElementById('alertContainer').innerHTML = alertHtml;
+            
+            setTimeout(function() {
+                document.getElementById('alertContainer').innerHTML = '';
+            }, 5000);
+        }
+
+        function openCamera() {
+            document.getElementById('photoInput').click();
+            
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({
+                    video: { 
+                        facingMode: 'environment',
+                        width: { ideal: 1920 },
+                        height: { ideal: 1080 }
+                    }
+                })
+                .then(function(mediaStream) {
+                    stream = mediaStream;
+                    var video = document.getElementById('cameraVideo');
+                    video.srcObject = mediaStream;
+                    document.getElementById('cameraModal').style.display = 'flex';
+                })
+                .catch(function(error) {
+                    console.log('Camera error:', error);
+                    document.getElementById('photoInput').click();
+                });
+            }
+        }
+
+        function capturePhoto() {
+            var video = document.getElementById('cameraVideo');
+            var canvas = document.getElementById('cameraCanvas');
+            var context = canvas.getContext('2d');
+            
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            canvas.toBlob(function(blob) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    currentPhoto = e.target.result;
+                    var preview = document.getElementById('photoPreview');
+                    preview.src = currentPhoto;
+                    preview.style.display = 'block';
+                    closeCamera();
+                };
+                reader.readAsDataURL(blob);
+            }, 'image/jpeg', 0.8);
+        }
+
+        function closeCamera() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+            }
+            document.getElementById('cameraModal').style.display = 'none';
+        }
+
+        document.getElementById('photoInput').addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    showAlert('⚠️ La imagen es muy grande. Use una imagen menor a 5MB.', 'error');
+                    return;
+                }
+                
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    currentPhoto = e.target.result;
+                    var preview = document.getElementById('photoPreview');
+                    preview.src = currentPhoto;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function saveProduct() {
+            var codigo = document.getElementById('productCode').value.trim().toUpperCase();
+            var categoria = document.getElementById('productCategory').value;
+            var precio = document.getElementById('productPrice').value.trim();
+            var nombre = document.getElementById('productName').value.trim();
+
+            if (!currentPhoto) {
+                showAlert('⚠️ Debe agregar una foto de la montura', 'error');
+                return;
+            }
+            
+            if (!codigo) {
+                showAlert('⚠️ Debe ingresar un código de montura', 'error');
+                return;
+            }
+            
+            if (codigo.length < 3) {
+                showAlert('⚠️ El código debe tener al menos 3 caracteres', 'error');
+                return;
+            }
+            
+            if (!precio) {
+                showAlert('⚠️ Debe ingresar el precio de la montura', 'error');
+                return;
+            }
+            
+            if (!nombre) {
+                showAlert('⚠️ Debe ingresar el nombre/descripción de la montura', 'error');
+                return;
+            }
+
+            try {
+                var monturas = safeGetStorage('urbana_monturas');
+                
+                if (monturas[codigo]) {
+                    if (!confirm('⚠️ El código ' + codigo + ' ya existe. ¿Desea reemplazarlo?')) {
+                        return;
+                    }
+                }
+                
+                monturas[codigo] = {
+                    codigo: codigo,
+                    categoria: categoria,
+                    precio: precio,
+                    nombre: nombre,
+                    foto: currentPhoto,
+                    fechaCreacion: new Date().toISOString(),
+                    enlace: window.location.origin + window.location.pathname.replace('admin.html', '') + '?codigo=' + codigo,
+                    whatsapp: 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('Hola, me interesa la montura premium ' + codigo + ' "' + nombre + '" por ' + precio + '. ¿Está disponible?')
+                };
+
+                if (safeSetStorage('urbana_monturas', monturas)) {
+                    currentProductCode = codigo;
+                    showAlert('✅ Montura guardada exitosamente: ' + codigo, 'success');
+                    
+                    document.getElementById('shareButtons').style.display = 'grid';
+                    
+                    updateStats();
+                    loadProductsList();
+
+                    setTimeout(performAutoBackup, 2000);
+                } else {
+                    showAlert('❌ Error al guardar. Verifique el tamaño de la imagen.', 'error');
+                }
+            } catch (e) {
+                console.error('Error saving product:', e);
+                showAlert('❌ Error al guardar la montura. Intente con una imagen más pequeña.', 'error');
+            }
+        }
+
+        function copyProductLink() {
+            if (!currentProductCode) {
+                showAlert('⚠️ Primero debe guardar una montura', 'error');
+                return;
+            }
+            
+            var enlace = window.location.origin + window.location.pathname.replace('admin.html', '') + '?codigo=' + currentProductCode;
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(enlace)
+                    .then(() => showAlert('✅ Enlace copiado al portapapeles', 'success'))
+                    .catch(() => fallbackCopyText(enlace));
+            } else {
+                fallbackCopyText(enlace);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showAlert('✅ Enlace copiado al portapapeles', 'success');
+            } catch (err) {
+                showAlert('❌ No se pudo copiar. Enlace: ' + text, 'error');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function shareWhatsApp() {
+            if (!currentProductCode) {
+                showAlert('⚠️ Primero debe guardar una montura', 'error');
+                return;
+            }
+            
+            var monturas = safeGetStorage('urbana_monturas');
+            var montura = monturas[currentProductCode];
+            
+            if (montura) {
+                var mensaje = '👓 *URBANA VISIÓN* 👓\n\n';
+                mensaje += '📸 Nueva montura premium disponible:\n';
+                mensaje += '🔢 Código: ' + montura.codigo + '\n';
+                mensaje += '💰 Precio: ' + montura.precio + '\n';
+                mensaje += '📂 Categoría: ' + montura.categoria + '\n';
+                mensaje += '📝 Descripción: ' + montura.nombre + '\n\n';
+                mensaje += '🔗 Ver detalles: ' + montura.enlace + '\n\n';
+                mensaje += '👓 ¡Estilo urbano premium! ✨';
+                
+                window.open('https://wa.me/?text=' + encodeURIComponent(mensaje), '_blank');
+                showAlert('✅ Compartiendo por WhatsApp', 'success');
+            }
+        }
+
+        function clearForm() {
+            document.getElementById('productCode').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productName').value = '';
+            document.getElementById('productCategory').value = 'hombre';
+            document.getElementById('photoPreview').style.display = 'none';
+            document.getElementById('shareButtons').style.display = 'none';
+            currentPhoto = null;
+            currentProductCode = null;
+            document.getElementById('photoInput').value = '';
+        }
+
+        function deleteProduct(codigo) {
+            if (confirm('⚠️ ¿Está seguro de eliminar la montura ' + codigo + '?')) {
+                try {
+                    var monturas = safeGetStorage('urbana_monturas');
+                    delete monturas[codigo];
+                    
+                    if (safeSetStorage('urbana_monturas', monturas)) {
+                        showAlert('✅ Montura eliminada: ' + codigo, 'success');
+                        updateStats();
+                        loadProductsList();
+                        
+                        setTimeout(performAutoBackup, 2000);
+                    } else {
+                        showAlert('❌ Error al eliminar la montura', 'error');
+                    }
+                } catch (e) {
+                    console.error('Error deleting product:', e);
+                    showAlert('❌ Error al eliminar la montura', 'error');
+                }
+            }
+        }
+
+        function updateStats() {
+            try {
+                var monturas = safeGetStorage('urbana_monturas');
+                var views = '0';
+                var clicks = '0';
+                
+                try {
+                    if (typeof(Storage) !== "undefined" && localStorage) {
+                        views = localStorage.getItem('urbana_views') || '0';
+                        clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
+                    }
+                } catch (e) {
+                    console.log('Storage not available for stats:', e);
+                }
+                
+                var viewsNum = parseInt(views);
+                var clicksNum = parseInt(clicks);
+                var conversion = viewsNum > 0 ? Math.round((clicksNum / viewsNum) * 100) : 0;
+
+                document.getElementById('totalProducts').innerHTML = Object.keys(monturas).length;
+                document.getElementById('totalViews').innerHTML = views;
+                document.getElementById('whatsappClicks').innerHTML = clicks;
+                document.getElementById('conversionRate').innerHTML = conversion + '%';
+            } catch (e) {
+                console.error('Error updating stats:', e);
+            }
+        }
+
+        function resetStats() {
+            if (confirm('⚠️ ¿Está seguro de resetear todas las estadísticas?')) {
+                try {
+                    if (typeof(Storage) !== "undefined" && localStorage) {
+                        localStorage.setItem('urbana_views', '0');
+                        localStorage.setItem('urbana_whatsapp_clicks', '0');
+                    }
+                    updateStats();
+                    showAlert('✅ Estadísticas reseteadas', 'success');
+                } catch (e) {
+                    showAlert('❌ Error al resetear estadísticas', 'error');
+                }
+            }
+        }
+
+        function loadProductsList() {
+            try {
+                var monturas = safeGetStorage('urbana_monturas');
+                var keys = Object.keys(monturas);
+                var listContainer = document.getElementById('productsList');
+                
+                if (keys.length === 0) {
+                    listContainer.innerHTML = '<div style="text-align: center; padding: 40px; opacity: 0.7;"><span style="font-size: 48px;">👓</span><div style="margin-top: 15px;">No hay monturas agregadas</div></div>';
+                    return;
+                }
+                
+                var html = '';
+                for (var i = 0; i < keys.length; i++) {
+                    var key = keys[i];
+                    var product = monturas[key];
+                    
+                    html += '<div class="product-item">';
+                    html += '<img src="' + product.foto + '" alt="' + product.codigo + '" class="product-thumb">';
+                    html += '<div class="product-info">';
+                    html += '<div class="product-code">' + product.codigo + '</div>';
+                    html += '<div class="product-price">' + product.precio + '</div>';
+                    html += '<div style="font-size: 12px; opacity: 0.8;">' + product.categoria + '</div>';
+                    html += '</div>';
+                    html += '<button onclick="deleteProduct(\'' + product.codigo + '\')" class="delete-btn">🗑️</button>';
+                    html += '</div>';
+                }
+                
+                listContainer.innerHTML = html;
+            } catch (e) {
+                console.error('Error loading products list:', e);
+            }
+        }
+
+        function exportData() {
+            try {
+                var monturas = safeGetStorage('urbana_monturas');
+                var stats = {
+                    views: '0',
+                    clicks: '0'
+                };
+                
+                try {
+                    if (typeof(Storage) !== "undefined" && localStorage) {
+                        stats.views = localStorage.getItem('urbana_views') || '0';
+                        stats.clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
+                    }
+                } catch (e) {
+                    console.log('Storage not available for export:', e);
+                }
+                
+                var data = {
+                    productos: monturas,
+                    estadisticas: stats,
+                    exportado: new Date().toISOString(),
+                    total_productos: Object.keys(monturas).length,
+                    empresa: 'Urbana Visión',
+                    backup_config: {
+                        email: BACKUP_CONFIG.email,
+                        ultimo_backup: BACKUP_CONFIG.lastBackup
+                    }
+                };
+                
+                var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'urbana_export_' + new Date().toISOString().split('T')[0] + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showAlert('✅ Datos exportados exitosamente', 'success');
+            } catch (e) {
+                console.error('Error exporting data:', e);
+                showAlert('❌ Error al exportar los datos', 'error');
+            }
+        }
+
+        function goToMainSite() {
+            window.location.href = BASE_URL;
+        }
+
+        function abrirPOS() {
+            window.location.href = BASE_URL + 'pos.html';
+        }
+
+        function initAdmin() {
+            try {
+                initBackupSystem();
+                updateStats();
+                loadProductsList();
+                
+                var monturas = safeGetStorage('urbana_monturas');
+                var keys = Object.keys(monturas);
+                var nextNumber = keys.length + 1;
+                var suggestedCode = 'UV' + String(nextNumber).padStart(3, '0');
+                document.getElementById('productCode').placeholder = 'Sugerido: ' + suggestedCode;
+                
+            } catch (e) {
+                console.error('Error initializing admin:', e);
+                showAlert('⚠️ Error al cargar el panel de administración', 'error');
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAdmin);
+        } else {
+            initAdmin();
+        }
+
+        window.addEventListener('beforeunload', function() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
+    </script>
+</body>
+</html>
