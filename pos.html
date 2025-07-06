@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POS - Urbana Visión</title>
+    <title>POS - Urbana Visión Óptica</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(135deg, #1e293b 0%, #475569 100%); 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
             min-height: 100vh; 
             color: white; 
             padding: 10px;
@@ -28,70 +28,10 @@
         .header h1 {
             font-size: 24px;
             margin-bottom: 5px;
-            background: linear-gradient(45deg, #60a5fa, #3b82f6);
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-        
-        .header p {
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
-        
-        .header-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .header-btn {
-            padding: 8px 15px;
-            border-radius: 10px;
-            font-size: 12px;
-            cursor: pointer;
-            border: 1px solid;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-home {
-            background: rgba(59, 130, 246, 0.2);
-            color: #3b82f6;
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-        
-        .btn-admin {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-        
-        .btn-home:hover, .btn-admin:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .modo-rural-toggle {
-            background: rgba(16, 185, 129, 0.2);
-            border: 2px solid rgba(16, 185, 129, 0.3);
-            color: #10b981;
-            padding: 10px 15px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .modo-rural-toggle.active {
-            background: rgba(16, 185, 129, 0.4);
-            border-color: #10b981;
-        }
-
-        .modo-rural-toggle:hover {
-            background: rgba(16, 185, 129, 0.3);
         }
         
         .tabs {
@@ -116,8 +56,8 @@
         }
         
         .tab-btn.active {
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(45deg, #22d3ee, #0891b2);
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
         }
         
         .tab-content {
@@ -137,7 +77,7 @@
             font-weight: 700;
             margin-bottom: 20px;
             text-align: center;
-            color: #60a5fa;
+            color: #fbbf24;
         }
         
         .form-group {
@@ -161,17 +101,10 @@
             border-radius: 10px;
             font-size: 14px;
             font-family: inherit;
-            transition: all 0.3s ease;
         }
         
         .form-input::placeholder, .form-textarea::placeholder {
             color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
         
         .btn {
@@ -187,46 +120,24 @@
         }
         
         .btn-primary {
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            background: linear-gradient(45deg, #22d3ee, #0891b2);
             color: white;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
         
         .btn-success {
             background: linear-gradient(45deg, #10b981, #059669);
             color: white;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        }
-        
-        .btn-success:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
         }
         
         .btn-danger {
             background: linear-gradient(45deg, #ef4444, #dc2626);
             color: white;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-        }
-        
-        .btn-danger:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
         }
         
         .btn-secondary {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.3);
         }
         
         .row {
@@ -243,13 +154,10 @@
             margin-bottom: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .list-item:hover {
             background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
         }
         
         .list-item-title {
@@ -262,7 +170,6 @@
         .list-item-info {
             font-size: 12px;
             opacity: 0.9;
-            line-height: 1.4;
         }
         
         .empty-state {
@@ -281,7 +188,6 @@
             border-radius: 15px;
             padding: 15px;
             margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .summary-row {
@@ -294,7 +200,7 @@
         .summary-total {
             font-weight: 800;
             font-size: 18px;
-            color: #3b82f6;
+            color: #22d3ee;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 8px;
         }
@@ -307,11 +213,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .cart-item-info {
             flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .cart-item-name {
@@ -321,7 +229,7 @@
         }
         
         .cart-item-price {
-            color: #3b82f6;
+            color: #22d3ee;
             font-size: 12px;
         }
         
@@ -333,21 +241,13 @@
         
         .qty-btn {
             background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: none;
             color: white;
             width: 30px;
             height: 30px;
             border-radius: 50%;
             cursor: pointer;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .qty-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
         }
         
         .qty-display {
@@ -357,9 +257,9 @@
         }
         
         .alert {
-            background: rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #3b82f6;
+            background: rgba(34, 211, 238, 0.2);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            color: #22d3ee;
             padding: 12px;
             border-radius: 10px;
             margin-bottom: 15px;
@@ -380,49 +280,80 @@
             color: #ef4444;
         }
 
-        /* Mejoras visuales específicas */
-        .comprobante-item {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .modo-rural-toggle {
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .comprobante-item:hover {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        .modo-rural-toggle.active {
+            background: rgba(16, 185, 129, 0.4);
+            border-color: #10b981;
         }
 
-        /* Scrollbar personalizado */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .ncf-config {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
         }
 
-        ::-webkit-scrollbar-track {
+        .ncf-range {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .ncf-item {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
+        .ncf-title {
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.5);
+        .ncf-status {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .footer-credits {
+            position: fixed;
+            bottom: 10px;
+            right: 25px;
+            color: #8B4513;
+            font-size: 10px;
+            font-weight: 600;
+            opacity: 0.8;
+            z-index: 999;
+        }
+
+        .product-image-small {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>💼 POS Urbana Visión</h1>
-            <p>Sistema Punto de Venta Premium</p>
-            <div class="header-buttons">
-                <button onclick="goToMainSite()" class="header-btn btn-home">
-                    🏠 Sitio Principal
-                </button>
-                <button onclick="goToAdmin()" class="header-btn btn-admin">
-                    ⚙️ Panel Admin
-                </button>
-            </div>
+            <h1>💼 POS Urbana Visión Óptica</h1>
+            <p>Sistema Punto de Venta Completo</p>
             
             <div class="modo-rural-toggle" onclick="toggleModoRural()" id="modoRuralToggle">
                 🌾 Modo Rural/Humanitario: <span id="modoRuralStatus">Desactivado</span>
@@ -431,8 +362,8 @@
         
         <div class="tabs">
             <button class="tab-btn active" onclick="showTab('clientes')">👥 Clientes</button>
-            <button class="tab-btn" onclick="showTab('inventario')">👓 Inventario</button>
-            <button class="tab-btn" onclick="showTab('comprobantes')">📋 Comprobantes</button>
+            <button class="tab-btn" onclick="showTab('inventario')">📦 Inventario</button>
+            <button class="tab-btn" onclick="showTab('comprobantes')">📋 NCF</button>
             <button class="tab-btn" onclick="showTab('facturacion')">💰 Facturar</button>
         </div>
 
@@ -510,19 +441,19 @@
 
         <!-- TAB INVENTARIO -->
         <div id="inventario" class="tab-content">
-            <h2 class="section-title">👓 Gestión de Inventario</h2>
+            <h2 class="section-title">📦 Gestión de Inventario</h2>
             
             <button onclick="sincronizarInventario()" class="btn btn-success">🔄 Sincronizar con Catálogo</button>
             
             <form id="productoForm" style="margin-top: 15px;">
                 <div class="form-group">
-                    <label class="form-label">🔤 ID Montura</label>
+                    <label class="form-label">🔤 ID Producto</label>
                     <input type="text" id="productoId" class="form-input" placeholder="UV001" style="text-transform: uppercase;">
                 </div>
                 
                 <div class="form-group">
                     <label class="form-label">📝 Descripción</label>
-                    <textarea id="productoDescripcion" class="form-textarea" rows="3" placeholder="Descripción detallada de la montura"></textarea>
+                    <textarea id="productoDescripcion" class="form-textarea" rows="3" placeholder="Descripción detallada del producto"></textarea>
                 </div>
                 
                 <div class="row">
@@ -538,61 +469,108 @@
                 
                 <div class="form-group">
                     <label class="form-label">💬 Comentarios</label>
-                    <textarea id="productoComentarios" class="form-textarea" rows="2" placeholder="Observaciones de la montura"></textarea>
+                    <textarea id="productoComentarios" class="form-textarea" rows="2" placeholder="Observaciones del producto"></textarea>
                 </div>
                 
-                <button type="button" onclick="guardarProducto()" class="btn btn-primary">💾 Guardar Montura</button>
+                <button type="button" onclick="guardarProducto()" class="btn btn-primary">💾 Guardar Producto</button>
                 <button type="button" onclick="limpiarFormularioProducto()" class="btn btn-secondary">🗑️ Limpiar</button>
             </form>
             
-            <h3 style="margin: 20px 0 10px 0; font-size: 16px;">📋 Lista de Monturas</h3>
+            <h3 style="margin: 20px 0 10px 0; font-size: 16px;">📋 Lista de Productos</h3>
             <div id="listaProductos">
                 <div class="empty-state">
-                    <div class="empty-icon">👓</div>
-                    <div>No hay monturas en inventario</div>
+                    <div class="empty-icon">📦</div>
+                    <div>No hay productos en inventario</div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB COMPROBANTES -->
+        <!-- TAB COMPROBANTES NCF -->
         <div id="comprobantes" class="tab-content">
-            <h2 class="section-title">📋 Comprobantes Fiscales</h2>
+            <h2 class="section-title">📋 Comprobantes Fiscales (NCF)</h2>
             
-            <div id="listaComprobantes">
-                <div class="list-item comprobante-item">
-                    <div class="list-item-title">🧾 Consumidor Final</div>
-                    <div class="list-item-info">
-                        Rango: B010000000001 - B010000099999<br>
-                        Siguiente: <span id="siguienteConsumidor">B010000000001</span>
+            <div class="ncf-config">
+                <h3 style="margin-bottom: 15px; color: #fbbf24;">⚙️ Configuración de Rangos</h3>
+                
+                <!-- CONSUMIDOR FINAL -->
+                <div class="ncf-item">
+                    <div class="ncf-title">🧾 Consumidor Final (B01)</div>
+                    <div class="ncf-range">
+                        <div class="form-group">
+                            <label class="form-label">Desde:</label>
+                            <input type="text" id="consumidorInicio" class="form-input" placeholder="B01000000001" maxlength="13">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hasta:</label>
+                            <input type="text" id="consumidorFinal" class="form-input" placeholder="B01000100000" maxlength="13">
+                        </div>
+                    </div>
+                    <div class="ncf-status">
+                        Actual: <span id="consumidorActual">No configurado</span> | 
+                        Disponibles: <span id="consumidorDisponibles">0</span>
+                    </div>
+                </div>
+
+                <!-- EMPRESARIAL -->
+                <div class="ncf-item">
+                    <div class="ncf-title">🏢 Empresarial (B02)</div>
+                    <div class="ncf-range">
+                        <div class="form-group">
+                            <label class="form-label">Desde:</label>
+                            <input type="text" id="empresarialInicio" class="form-input" placeholder="B02000000001" maxlength="13">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hasta:</label>
+                            <input type="text" id="empresarialFinal" class="form-input" placeholder="B02000100000" maxlength="13">
+                        </div>
+                    </div>
+                    <div class="ncf-status">
+                        Actual: <span id="empresarialActual">No configurado</span> | 
+                        Disponibles: <span id="empresarialDisponibles">0</span>
+                    </div>
+                </div>
+
+                <!-- GUBERNAMENTAL -->
+                <div class="ncf-item">
+                    <div class="ncf-title">🏛️ Gubernamental (B03)</div>
+                    <div class="ncf-range">
+                        <div class="form-group">
+                            <label class="form-label">Desde:</label>
+                            <input type="text" id="gubernamentalInicio" class="form-input" placeholder="B03000000001" maxlength="13">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hasta:</label>
+                            <input type="text" id="gubernamentalFinal" class="form-input" placeholder="B03000100000" maxlength="13">
+                        </div>
+                    </div>
+                    <div class="ncf-status">
+                        Actual: <span id="gubernamentalActual">No configurado</span> | 
+                        Disponibles: <span id="gubernamentalDisponibles">0</span>
+                    </div>
+                </div>
+
+                <!-- ZONA FRANCA -->
+                <div class="ncf-item">
+                    <div class="ncf-title">🆓 Zona Franca (B04)</div>
+                    <div class="ncf-range">
+                        <div class="form-group">
+                            <label class="form-label">Desde:</label>
+                            <input type="text" id="zonafrancaInicio" class="form-input" placeholder="B04000000001" maxlength="13">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hasta:</label>
+                            <input type="text" id="zonafrancaFinal" class="form-input" placeholder="B04000100000" maxlength="13">
+                        </div>
+                    </div>
+                    <div class="ncf-status">
+                        Actual: <span id="zonafrancaActual">No configurado</span> | 
+                        Disponibles: <span id="zonafrancaDisponibles">0</span>
                     </div>
                 </div>
                 
-                <div class="list-item comprobante-item">
-                    <div class="list-item-title">🏢 Empresarial</div>
-                    <div class="list-item-info">
-                        Rango: B020000000001 - B020000099999<br>
-                        Siguiente: <span id="siguienteEmpresarial">B020000000001</span>
-                    </div>
-                </div>
-                
-                <div class="list-item comprobante-item">
-                    <div class="list-item-title">🏛️ Gubernamental</div>
-                    <div class="list-item-info">
-                        Rango: B030000000001 - B030000099999<br>
-                        Siguiente: <span id="siguienteGubernamental">B030000000001</span>
-                    </div>
-                </div>
-                
-                <div class="list-item comprobante-item">
-                    <div class="list-item-title">🆓 Zona Franca</div>
-                    <div class="list-item-info">
-                        Rango: B040000000001 - B040000099999<br>
-                        Siguiente: <span id="siguienteZonaFranca">B040000000001</span>
-                    </div>
-                </div>
+                <button onclick="configurarNCF()" class="btn btn-primary">💾 Guardar Configuración</button>
+                <button onclick="resetearComprobantes()" class="btn btn-danger">🔄 Resetear Todo</button>
             </div>
-            
-            <button onclick="resetearComprobantes()" class="btn btn-danger" style="margin-top: 15px;">🔄 Resetear Numeración</button>
         </div>
 
         <!-- TAB FACTURACIÓN -->
@@ -632,11 +610,11 @@
                 <textarea id="facturaComentarios" class="form-textarea" rows="2" placeholder="Ej: Entrega en 48 horas, Revisión en 30 días, etc."></textarea>
             </div>
             
-            <h3 style="margin: 20px 0 10px 0; font-size: 16px;">🛒 Agregar Monturas</h3>
+            <h3 style="margin: 20px 0 10px 0; font-size: 16px;">🛒 Agregar Productos</h3>
             <div class="row">
                 <div class="form-group">
                     <select id="facturaProducto" class="form-select">
-                        <option value="">Seleccione montura...</option>
+                        <option value="">Seleccione producto...</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -644,7 +622,103 @@
                 </div>
             </div>
             
-            <h3 style="margin: 20px 0 10px 0; font-size: 16px;">👓 Monturas en Factura</h3>
+            <h3 style="margin: 20px 0 10px 0; font-size: 16px;">🛍️ Productos en Factura</h3>
             <div id="carritoFactura">
                 <div class="empty-state">
                     <div class="empty-icon">🛒</div>
+                    <div>No hay productos agregados</div>
+                </div>
+            </div>
+            
+            <div id="resumenFactura" class="invoice-summary" style="display: none;">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="facturaSubtotal">RD$0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>ITBIS (18%):</span>
+                    <span id="facturaItbis">RD$0.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total:</span>
+                    <span id="facturaTotal">RD$0.00</span>
+                </div>
+            </div>
+            
+            <button onclick="procesarFactura()" class="btn btn-success" id="btnProcesarFactura" disabled>📄 Generar Factura PDF</button>
+            <button onclick="limpiarFactura()" class="btn btn-secondary">🗑️ Limpiar Factura</button>
+        </div>
+    </div>
+
+    <div class="footer-credits">
+        by fbrugal jrubinstein consultores
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <script>
+        var WHATSAPP_NUMBER = '18097135307';
+        var BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+        var currentTab = 'clientes';
+        var carritoActual = [];
+        var modoRuralActivo = false;
+
+        var BACKUP_CONFIG = {
+            email: 'urbanavisionoficial@gmail.com',
+            password: 'kenia@35',
+            enabled: true,
+            lastBackup: null,
+            interval: 30 * 60 * 1000
+        };
+
+        function safeGetStorage(key) {
+            try {
+                if (typeof(Storage) !== "undefined" && localStorage) {
+                    var value = localStorage.getItem(key);
+                    if (value && value !== 'null' && value !== 'undefined') {
+                        return JSON.parse(value);
+                    }
+                }
+            } catch (e) {
+                console.log('Storage error:', e);
+            }
+            return {};
+        }
+
+        function safeSetStorage(key, value) {
+            try {
+                if (typeof(Storage) !== "undefined" && localStorage) {
+                    localStorage.setItem(key, JSON.stringify(value));
+                    return true;
+                }
+            } catch (e) {
+                console.log('Storage error:', e);
+                return false;
+            }
+        }
+
+        function showAlert(message, type = 'success') {
+            var alertHtml = '<div class="alert alert-' + type + '">' + message + '</div>';
+            document.getElementById('alertContainer').innerHTML = alertHtml;
+            
+            setTimeout(function() {
+                document.getElementById('alertContainer').innerHTML = '';
+            }, 4000);
+        }
+
+        function toggleModoRural() {
+            modoRuralActivo = !modoRuralActivo;
+            var toggle = document.getElementById('modoRuralToggle');
+            var status = document.getElementById('modoRuralStatus');
+            var comprobanteSelect = document.getElementById('facturaComprobante');
+            
+            if (modoRuralActivo) {
+                toggle.classList.add('active');
+                status.textContent = 'Activado (Sin NCF)';
+                comprobanteSelect.value = 'sin_ncf';
+                comprobanteSelect.disabled = true;
+                showAlert('✅ Modo Rural activado - Las facturas serán Proforma', 'success');
+            } else {
+                toggle.classList.remove('active');
+                status.textContent = 'Desactivado';
+                comprobanteSelect.disabled =
