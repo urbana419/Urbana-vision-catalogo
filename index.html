@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urbana Visión - Monturas Premium</title>
+    <title>Urbana Visión Óptica - Sistema Híbrido</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(135deg, #1e293b 0%, #475569 100%); 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
             min-height: 100vh; 
             color: white; 
             font-size: 16px;
             overflow-x: hidden;
         }
         .container { max-width: 430px; margin: 0 auto; padding: 15px; }
-        
-        /* MODO NORMAL - Sistema Mejorado */
-        .modo-normal { display: block; }
         
         .header { 
             background: rgba(255, 255, 255, 0.15); 
@@ -31,7 +28,7 @@
         .logo { 
             width: 70px; 
             height: 70px; 
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8); 
+            background: linear-gradient(45deg, #4f46e5, #7c3aed); 
             border-radius: 50%; 
             margin: 0 auto 20px; 
             display: flex; 
@@ -44,7 +41,7 @@
             font-size: 28px; 
             font-weight: 800; 
             margin-bottom: 8px;
-            background: linear-gradient(45deg, #60a5fa, #3b82f6);
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -95,222 +92,6 @@
             transform: translateY(-2px);
         }
 
-        /* MODO HUMANITARIO MEJORADO */
-        .modo-humanitario {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1000;
-            background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
-            padding: 20px;
-        }
-        
-        .humanitario-container {
-            max-width: 400px;
-            margin: 0 auto;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .humanitario-header {
-            background: rgba(255, 255, 255, 0.95);
-            color: #1e293b;
-            border-radius: 30px;
-            padding: 40px 30px;
-            text-align: center;
-            margin-bottom: 30px;
-            border: 4px solid #3b82f6;
-            animation: pulse-header 3s infinite;
-        }
-        
-        @keyframes pulse-header {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-            50% { transform: scale(1.02); box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
-        }
-        
-        .humanitario-logo {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-            border-radius: 50%;
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            animation: float 4s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .humanitario-title {
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: glow-text 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes glow-text {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            to { text-shadow: 2px 2px 20px rgba(59, 130, 246, 0.8); }
-        }
-        
-        .humanitario-subtitle {
-            font-size: 20px;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-
-        .main-actions-humanitario {
-            display: grid;
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        
-        .action-btn-humanitario {
-            background: rgba(255, 255, 255, 0.98);
-            color: #1e293b;
-            border: 5px solid #3b82f6;
-            padding: 40px 25px;
-            border-radius: 30px;
-            font-size: 22px;
-            font-weight: 900;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            text-transform: uppercase;
-        }
-        
-        .action-btn-humanitario:hover {
-            background: #3b82f6;
-            color: white;
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-        }
-        
-        .action-icon-humanitario {
-            font-size: 80px;
-            display: block;
-            margin-bottom: 20px;
-            animation: bounce-icon 2s infinite;
-        }
-        
-        @keyframes bounce-icon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .action-text-humanitario {
-            font-size: 24px;
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
-        
-        .action-subtitle-humanitario {
-            font-size: 16px;
-            opacity: 0.8;
-            font-weight: 600;
-        }
-
-        .emergency-section {
-            background: linear-gradient(45deg, #ef4444, #dc2626);
-            border-radius: 30px;
-            padding: 30px;
-            text-align: center;
-            margin-bottom: 30px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            animation: pulse-emergency 1.5s infinite;
-            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.4);
-            cursor: pointer;
-        }
-        
-        @keyframes pulse-emergency {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .emergency-icon {
-            font-size: 70px;
-            margin-bottom: 20px;
-            animation: shake 1s infinite;
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-        
-        .emergency-text {
-            font-size: 24px;
-            font-weight: 900;
-            margin-bottom: 12px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        /* Controles de Audio MEJORADOS */
-        .audio-controls {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1002;
-        }
-        
-        .audio-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #f59e0b, #d97706);
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            font-size: 35px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: audio-pulse 2s infinite;
-            transition: all 0.3s ease;
-        }
-        
-        @keyframes audio-pulse {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-5px) scale(1.05); }
-        }
-        
-        .audio-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-
-        /* Detector de Modo MEJORADO */
-        .modo-selector {
-            position: fixed;
-            top: 25px;
-            left: 25px;
-            z-index: 999;
-            background: rgba(0,0,0,0.9);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            cursor: pointer;
-            font-weight: 700;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Analytics y otros elementos */
         .analytics-badge {
             position: fixed;
             top: 25px;
@@ -362,7 +143,6 @@
         .state-icon { font-size: 64px; margin-bottom: 20px; }
         .state-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; }
 
-        /* Estilos para productos mejorados */
         .product-card { 
             background: rgba(255, 255, 255, 0.15); 
             backdrop-filter: blur(10px);
@@ -382,7 +162,7 @@
         }
         .product-info { text-align: center; }
         .product-code { 
-            background: linear-gradient(45deg, #3b82f6, #1d4ed8); 
+            background: linear-gradient(45deg, #4f46e5, #7c3aed); 
             color: white; 
             padding: 15px 25px; 
             border-radius: 25px; 
@@ -391,7 +171,7 @@
             display: inline-block; 
             margin-bottom: 15px; 
             text-transform: uppercase; 
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
         }
         .product-category { 
             background: rgba(251, 146, 60, 0.2); 
@@ -407,11 +187,10 @@
         .product-price { 
             font-size: 36px; 
             font-weight: 800; 
-            color: #10b981; 
+            color: #22d3ee; 
             margin-bottom: 30px; 
         }
 
-        /* Botones mejorados */
         .whatsapp-button { 
             background: #25d366; 
             color: white; 
@@ -437,7 +216,6 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
-        /* Botones de compartir */
         .share-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -468,13 +246,13 @@
         }
 
         .btn-send-message {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-            border: 2px solid rgba(16, 185, 129, 0.3);
+            background: rgba(34, 211, 238, 0.2);
+            color: #22d3ee;
+            border: 2px solid rgba(34, 211, 238, 0.3);
         }
 
         .btn-send-message:hover {
-            background: #10b981;
+            background: #22d3ee;
             color: white;
         }
 
@@ -497,7 +275,6 @@
             background: rgba(99, 102, 241, 0.3);
         }
 
-        /* Catálogo mejorado */
         .catalog-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -537,22 +314,15 @@
         .catalog-item-price { 
             font-size: 18px; 
             font-weight: 700; 
-            color: #10b981; 
+            color: #22d3ee; 
         }
 
-        /* Ocultar elementos en modo humanitario */
-        .modo-humanitario .analytics-badge,
-        .modo-humanitario .admin-access {
-            display: none;
-        }
-
-        /* Notificación de éxito */
         .success-notification {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(16, 185, 129, 0.95);
+            background: rgba(34, 211, 238, 0.95);
             color: white;
             padding: 20px 30px;
             border-radius: 20px;
@@ -569,7 +339,6 @@
             10%, 90% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
 
-        /* BACKUP Status Indicator */
         .backup-status {
             position: fixed;
             top: 80px;
@@ -588,157 +357,226 @@
         .backup-status.show {
             opacity: 1;
         }
+
+        .footer-credits {
+            position: fixed;
+            bottom: 10px;
+            right: 25px;
+            color: #8B4513;
+            font-size: 10px;
+            font-weight: 600;
+            opacity: 0.8;
+            z-index: 999;
+        }
+
+        .vision-test {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .test-instructions {
+            margin: 20px 0;
+        }
+
+        .test-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .vision-chart {
+            background: white;
+            color: black;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .chart-line {
+            margin: 15px 0;
+            letter-spacing: 2px;
+        }
+
+        .test-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .test-btn {
+            padding: 20px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .test-btn-primary {
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            color: white;
+        }
+
+        .test-btn-secondary {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .test-btn:hover {
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
-    <!-- Selector de Modo -->
-    <div class="modo-selector" onclick="toggleModo()" id="modoSelector">
-        👓 Modo: Normal
-    </div>
-
-    <!-- BACKUP Status -->
-    <div class="backup-status" id="backupStatus">
-        ☁️ Backup automático activo
-    </div>
-
-    <!-- MODO NORMAL - Sistema Original -->
-    <div id="modoNormal" class="modo-normal">
-        <div class="container">
-            <div class="header">
-                <div class="logo">👓</div>
-                <h1 class="brand-name">Urbana Visión</h1>
-                <p class="tagline">Monturas de calidad premium - Estilo urbano moderno</p>
-                <div class="contact-info">
-                    <div class="contact-item"><span>📱</span><span>809-713-5307</span></div>
-                    <div class="contact-item"><span>🎁</span><span>6 meses garantía</span></div>
-                    <div class="contact-item"><span>🚚</span><span>Envío gratis</span></div>
-                </div>
+    <div class="container">
+        <div class="header">
+            <div class="logo">👁️</div>
+            <h1 class="brand-name">Urbana Visión Óptica</h1>
+            <p class="tagline">Tu visión urbana, nuestra pasión - Especialistas en salud visual</p>
+            <div class="contact-info">
+                <div class="contact-item"><span>📱</span><span>809-713-5307</span></div>
+                <div class="contact-item"><span>🎁</span><span>Garantía premium</span></div>
+                <div class="contact-item"><span>🚚</span><span>Entrega gratis</span></div>
             </div>
+        </div>
 
-            <div class="feature-buttons">
-                <button class="feature-btn" onclick="showCatalogView()">
-                    👓 VER MONTURAS<br>
-                    <small>Catálogo premium</small>
-                </button>
-                <button class="feature-btn" onclick="abrirPOS()">
-                    💼 PUNTO DE VENTA<br>
-                    <small>Sistema completo</small>
-                </button>
-                <button class="feature-btn" onclick="adminAccess()">
-                    ⚙️ ADMINISTRAR<br>
-                    <small>Panel de control</small>
-                </button>
-                <button class="feature-btn" onclick="activarModoHumanitario()">
-                    🌾 MODO SIMPLE<br>
-                    <small>Acceso fácil</small>
-                </button>
-            </div>
-            
-            <div id="mainContent">
-                <div class="empty-state">
-                    <span class="state-icon">👓</span>
-                    <div class="state-title">Bienvenido a Urbana Visión</div>
-                    <div>Descubre nuestras monturas premium de estilo urbano moderno. Calidad garantizada con diseños exclusivos.</div>
-                    <br>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <button onclick="showCatalogView()" style="padding: 15px; background: linear-gradient(45deg, #3b82f6, #1d4ed8); color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
-                            👓 Ver Monturas
-                        </button>
-                        <button onclick="activarModoHumanitario()" style="padding: 15px; background: linear-gradient(45deg, #10b981, #059669); color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
-                            🌾 Modo Simple
-                        </button>
-                    </div>
+        <div class="feature-buttons">
+            <button class="feature-btn" onclick="showVisionTest()">
+                🔍 TEST DE VISTA<br>
+                <small>Gratis y rápido</small>
+            </button>
+            <button class="feature-btn" onclick="showCatalogView()">
+                👓 VER MONTURAS<br>
+                <small>Catálogo completo</small>
+            </button>
+            <button class="feature-btn" onclick="abrirPOS()">
+                💼 PUNTO DE VENTA<br>
+                <small>Facturación completa</small>
+            </button>
+            <button class="feature-btn" onclick="goToAdmin()">
+                ⚙️ ADMINISTRAR<br>
+                <small>Gestión del sistema</small>
+            </button>
+        </div>
+        
+        <div id="mainContent">
+            <div class="empty-state">
+                <span class="state-icon">🏥</span>
+                <div class="state-title">Bienvenido a Urbana Visión Óptica</div>
+                <div>Tu salud visual es nuestra prioridad. Comience con nuestro test de vista gratuito o explore nuestro catálogo de monturas premium.</div>
+                <br>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <button onclick="showVisionTest()" style="padding: 15px; background: linear-gradient(45deg, #22d3ee, #0891b2); color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
+                        🔍 Hacer Test
+                    </button>
+                    <button onclick="showCatalogView()" style="padding: 15px; background: linear-gradient(45deg, #10b981, #059669); color: white; border: none; border-radius: 15px; cursor: pointer; font-size: 14px; font-weight: 700;">
+                        👓 Ver Catálogo
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODO HUMANITARIO - Sistema Simplificado MEJORADO -->
-    <div id="modoHumanitario" class="modo-humanitario">
-        <div class="humanitario-container">
-            <!-- Header Humanitario -->
-            <div class="humanitario-header">
-                <div class="humanitario-logo">👓</div>
-                <h1 class="humanitario-title">Urbana Visión</h1>
-                <p class="humanitario-subtitle">🌟 Monturas para todos 🌟</p>
-            </div>
-
-            <!-- Sección de Emergencia -->
-            <div class="emergency-section" onclick="emergencyCall()">
-                <div class="emergency-icon">🚨</div>
-                <div class="emergency-text">¿NECESITA AYUDA URGENTE?</div>
-                <div class="emergency-text" style="font-size: 18px;">TOQUE AQUÍ PARA LLAMAR</div>
-                <div style="font-size: 14px; margin-top: 10px; opacity: 0.9;">
-                    Atención inmediata disponible
-                </div>
-            </div>
-
-            <!-- Acciones Principales Humanitarias -->
-            <div class="main-actions-humanitario">
-                <button class="action-btn-humanitario" onclick="verMonturasSimple()">
-                    <span class="action-icon-humanitario">👓</span>
-                    <div class="action-text-humanitario">Ver Monturas</div>
-                    <div class="action-subtitle-humanitario">Catálogo completo</div>
-                </button>
-                
-                <button class="action-btn-humanitario" onclick="pedirAyuda()">
-                    <span class="action-icon-humanitario">🤝</span>
-                    <div class="action-text-humanitario">Pedir Ayuda</div>
-                    <div class="action-subtitle-humanitario">Hablar con especialista</div>
-                </button>
-                
-                <button class="action-btn-humanitario" onclick="consultarPrecio()">
-                    <span class="action-icon-humanitario">💰</span>
-                    <div class="action-text-humanitario">Consultar Precio</div>
-                    <div class="action-subtitle-humanitario">Información de costos</div>
-                </button>
-            </div>
-
-            <!-- Botón para volver al modo normal -->
-            <div style="text-align: center;">
-                <button onclick="desactivarModoHumanitario()" style="background: rgba(255,255,255,0.2); color: white; border: 3px solid white; padding: 18px 35px; border-radius: 25px; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
-                    🔙 Modo Normal
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Controles de Audio -->
-    <div class="audio-controls">
-        <button class="audio-btn" onclick="toggleAudio()" id="audioBtn">
-            🔊
-        </button>
-    </div>
-
-    <!-- Analytics y Admin -->
     <div id="analyticsBadge" class="analytics-badge">
-        📊 <span id="viewCount">0</span> visitas | 💬 <span id="clickCount">0</span> clicks
+        📊 <span id="viewCount">0</span> vistas | 💬 <span id="clickCount">0</span> clicks
     </div>
 
     <div class="admin-access" onclick="adminAccess()">⚙️</div>
 
-    <!-- Notificación de éxito -->
     <div id="successNotification" class="success-notification">
         ✅ ¡Enlace copiado!
     </div>
 
+    <div id="backupStatus" class="backup-status">
+        ☁️ Backup automático activo
+    </div>
+
+    <div class="footer-credits">
+        by fbrugal jrubinstein consultores
+    </div>
+
     <script>
-        // VARIABLES GLOBALES - URBANA VISIÓN
         var WHATSAPP_NUMBER = '18097135307';
         var BASE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
-        var isAudioEnabled = false;
-        var modoActual = 'normal'; // 'normal' o 'humanitario'
-        var audioSupported = 'speechSynthesis' in window;
 
-                        // SISTEMA DE BACKUP AUTOMÁTICO A GMAIL
         var BACKUP_CONFIG = {
             email: 'urbanavisionoficial@gmail.com',
+            password: 'kenia@35',
             enabled: true,
             lastBackup: null,
-            interval: 30 * 60 * 1000 // 30 minutos
+            interval: 30 * 60 * 1000
         };
 
-        // FUNCIONES DE UTILIDAD
+        function initBackupSystem() {
+            if (BACKUP_CONFIG.enabled) {
+                showBackupStatus();
+                setInterval(performAutoBackup, BACKUP_CONFIG.interval);
+                setTimeout(performAutoBackup, 30000);
+            }
+        }
+
+        function showBackupStatus() {
+            var status = document.getElementById('backupStatus');
+            status.classList.add('show');
+            setTimeout(() => status.classList.remove('show'), 3000);
+        }
+
+        function performAutoBackup() {
+            try {
+                var allData = {
+                    monturas: safeGetStorage('urbana_monturas'),
+                    clientes: safeGetStorage('urbana_clientes'),
+                    productos: safeGetStorage('urbana_productos'),
+                    facturas: safeGetStorage('urbana_facturas'),
+                    comprobantes: safeGetStorage('urbana_comprobantes'),
+                    estadisticas: {
+                        views: localStorage.getItem('urbana_views') || '0',
+                        clicks: localStorage.getItem('urbana_whatsapp_clicks') || '0'
+                    },
+                    backup_info: {
+                        timestamp: new Date().toISOString(),
+                        version: '2.0',
+                        sistema: 'Urbana_Vision_Optica',
+                        email: BACKUP_CONFIG.email
+                    }
+                };
+
+                var backupString = JSON.stringify(allData, null, 2);
+                localStorage.setItem('urbana_last_backup', backupString);
+                BACKUP_CONFIG.lastBackup = new Date().toISOString();
+                
+                console.log('✅ Backup automático completado:', new Date().toLocaleString());
+                
+                var status = document.getElementById('backupStatus');
+                status.innerHTML = '✅ Backup realizado';
+                status.style.background = 'rgba(16, 185, 129, 0.9)';
+                showBackupStatus();
+                
+                setTimeout(() => {
+                    status.innerHTML = '☁️ Backup automático activo';
+                    status.style.background = 'rgba(16, 185, 129, 0.9)';
+                }, 3000);
+                
+            } catch (error) {
+                console.error('❌ Error en backup automático:', error);
+                var status = document.getElementById('backupStatus');
+                status.innerHTML = '⚠️ Error backup';
+                status.style.background = 'rgba(239, 68, 68, 0.9)';
+                showBackupStatus();
+            }
+        }
+
         function getUrlParam(name) {
             try {
                 var urlParams = new URLSearchParams(window.location.search);
@@ -808,74 +646,6 @@
             }
         }
 
-        // SISTEMA DE BACKUP AUTOMÁTICO
-        function initBackupSystem() {
-            if (BACKUP_CONFIG.enabled) {
-                showBackupStatus();
-                setInterval(performAutoBackup, BACKUP_CONFIG.interval);
-                // Backup inicial después de 30 segundos
-                setTimeout(performAutoBackup, 30000);
-            }
-        }
-
-        function showBackupStatus() {
-            var status = document.getElementById('backupStatus');
-            status.classList.add('show');
-            setTimeout(() => status.classList.remove('show'), 3000);
-        }
-
-        function performAutoBackup() {
-            try {
-                var allData = {
-                    monturas: safeGetStorage('urbana_monturas'),
-                    clientes: safeGetStorage('urbana_clientes'),
-                    productos: safeGetStorage('urbana_productos'),
-                    facturas: safeGetStorage('urbana_facturas'),
-                    comprobantes: safeGetStorage('urbana_comprobantes'),
-                    estadisticas: {
-                        views: localStorage.getItem('urbana_views') || '0',
-                        clicks: localStorage.getItem('urbana_whatsapp_clicks') || '0'
-                    },
-                    backup_info: {
-                        timestamp: new Date().toISOString(),
-                        version: '2.0',
-                        sistema: 'Urbana_Vision',
-                        email: BACKUP_CONFIG.email
-                    }
-                };
-
-                var backupString = JSON.stringify(allData, null, 2);
-                
-                try {
-                    localStorage.setItem('urbana_last_backup', backupString);
-                    BACKUP_CONFIG.lastBackup = new Date().toISOString();
-                    
-                    console.log('✅ Backup automático completado:', new Date().toLocaleString());
-                    
-                    var status = document.getElementById('backupStatus');
-                    status.innerHTML = '✅ Backup realizado';
-                    status.style.background = 'rgba(16, 185, 129, 0.9)';
-                    showBackupStatus();
-                    
-                    setTimeout(() => {
-                        status.innerHTML = '☁️ Backup automático activo';
-                        status.style.background = 'rgba(16, 185, 129, 0.9)';
-                    }, 3000);
-                    
-                } catch (e) {
-                    console.log('⚠️ Backup local fallido:', e);
-                }
-
-            } catch (error) {
-                console.error('❌ Error en backup automático:', error);
-                var status = document.getElementById('backupStatus');
-                status.innerHTML = '⚠️ Error backup';
-                status.style.background = 'rgba(239, 68, 68, 0.9)';
-                showBackupStatus();
-            }
-        }
-
-        // Función para mostrar notificación
         function showNotification(message) {
             var notification = document.getElementById('successNotification');
             notification.textContent = message;
@@ -886,7 +656,6 @@
             }, 3000);
         }
 
-        // Función para copiar enlace
         function copyProductLink(codigo) {
             var enlace = window.location.origin + window.location.pathname + '?codigo=' + codigo;
             
@@ -899,7 +668,6 @@
             }
         }
 
-        // Función fallback para copiar
         function fallbackCopyText(text) {
             var textArea = document.createElement("textarea");
             textArea.value = text;
@@ -918,19 +686,18 @@
             document.body.removeChild(textArea);
         }
 
-        // Función para enviar mensaje
         function sendProductMessage(codigo) {
             var monturas = safeGetStorage('urbana_monturas');
             var montura = monturas[codigo];
             
             if (montura) {
-                var mensaje = '👓 *URBANA VISIÓN* 👓\n\n';
-                mensaje += '📸 Te comparto esta montura premium:\n';
+                var mensaje = '🏥 *URBANA VISIÓN ÓPTICA* 🏥\n\n';
+                mensaje += '📸 Te comparto esta montura:\n';
                 mensaje += '🔢 Código: ' + montura.codigo + '\n';
                 mensaje += '💰 Precio: ' + montura.precio + '\n';
                 mensaje += '📝 Descripción: ' + montura.nombre + '\n\n';
                 mensaje += '🔗 Ver más detalles: ' + montura.enlace + '\n\n';
-                mensaje += '👓 ¡Estilo urbano premium! ✨';
+                mensaje += '👁️ ¡Tu visión urbana, nuestra pasión! ✨';
                 
                 window.open('https://wa.me/?text=' + encodeURIComponent(mensaje), '_blank');
                 addWhatsAppClick();
@@ -938,338 +705,59 @@
             }
         }
 
-        // SISTEMA DE AUDIO MEJORADO
-        function toggleAudio() {
-            isAudioEnabled = !isAudioEnabled;
-            var btn = document.getElementById('audioBtn');
-            btn.textContent = isAudioEnabled ? '🔇' : '🔊';
-            
-            if (isAudioEnabled && audioSupported) {
-                speakText("Audio activado. Bienvenido a Urbana Visión. Ahora escuchará instrucciones de voz para navegar fácilmente por nuestro catálogo de monturas premium.");
-                btn.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
-            } else if (isAudioEnabled && !audioSupported) {
-                alert("Su navegador no soporta audio. Use un navegador más reciente como Chrome o Firefox.");
-                isAudioEnabled = false;
-                btn.textContent = '🔊';
-            } else {
-                btn.style.background = 'linear-gradient(45deg, #f59e0b, #d97706)';
-            }
-        }
-
-        function speakText(text) {
-            if (!isAudioEnabled || !audioSupported) return;
-            
-            window.speechSynthesis.cancel();
-            
-            var utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'es-ES';
-            utterance.rate = 0.65;
-            utterance.volume = 1.0;
-            utterance.pitch = 1.0;
-            
-            var voices = window.speechSynthesis.getVoices();
-            var spanishVoice = voices.find(voice => voice.lang.includes('es') && voice.name.includes('ema'));
-            if (spanishVoice) {
-                utterance.voice = spanishVoice;
-            }
-            
-            window.speechSynthesis.speak(utterance);
-        }
-
-        // GESTIÓN DE MODOS
-        function toggleModo() {
-            if (modoActual === 'normal') {
-                activarModoHumanitario();
-            } else {
-                desactivarModoHumanitario();
-            }
-        }
-
-        function activarModoHumanitario() {
-            modoActual = 'humanitario';
-            document.getElementById('modoNormal').style.display = 'none';
-            document.getElementById('modoHumanitario').style.display = 'block';
-            document.getElementById('modoSelector').textContent = '🌾 Modo: Simple';
-            
-            if (!isAudioEnabled && audioSupported) {
-                setTimeout(() => toggleAudio(), 1000);
-            }
-            
-            setTimeout(() => {
-                speakText("Modo simple activado. Bienvenido a Urbana Visión. Este modo está diseñado para facilitar la navegación. Aquí puede ver nuestras monturas premium y solicitar ayuda cuando lo necesite.");
-            }, 2000);
-        }
-
-        function desactivarModoHumanitario() {
-            modoActual = 'normal';
-            document.getElementById('modoHumanitario').style.display = 'none';
-            document.getElementById('modoNormal').style.display = 'block';
-            document.getElementById('modoSelector').textContent = '👓 Modo: Normal';
-            
-            speakText("Modo normal activado. Ahora puede acceder a todas las funciones del catálogo de Urbana Visión.");
-        }
-
-        // FUNCIONES HUMANITARIAS
-        function emergencyCall() {
-            speakText("Activando contacto de emergencia para Urbana Visión.");
-            addWhatsAppClick();
-            
-            if (confirm("🚨 ¿Necesita AYUDA URGENTE?\n\n• Consulta sobre monturas\n• Problema con pedido\n• Atención especial\n\n¿LLAMAR INMEDIATAMENTE?")) {
-                window.open('tel:' + WHATSAPP_NUMBER.replace(/^1/, ''), '_self');
-                
-                setTimeout(function() {
-                    var emergencyMessage = "🚨 SOLICITUD URGENTE - URBANA VISIÓN 🚨\n\n";
-                    emergencyMessage += "Necesito atención URGENTE relacionada con:\n\n";
-                    emergencyMessage += "⏰ ES URGENTE ⏰\n";
-                    emergencyMessage += "📱 Por favor responder inmediatamente\n\n";
-                    emergencyMessage += "📍 Solicito: [Explicar qué necesita]\n";
-                    emergencyMessage += "🆘 Detalles: [Describir situación]";
-                    
-                    window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(emergencyMessage), '_blank');
-                }, 1000);
-            }
-        }
-
-        function verMonturasSimple() {
-            speakText("Mostrando todas las monturas premium disponibles en Urbana Visión. Puede tocar cualquier montura para ver más detalles y precios.");
+        function showVisionTest() {
             addView();
-            desactivarModoHumanitario();
-            setTimeout(() => showCatalogView(), 500);
+            var html = '';
+            html += '<div class="vision-test">';
+            html += '<h2 style="font-size: 24px; margin-bottom: 20px; color: #22d3ee;">🔍 Test de Vista Básico</h2>';
+            html += '<div class="test-instructions">';
+            html += '<div class="test-step">📏 Extienda su brazo completamente</div>';
+            html += '<div class="test-step">🖐️ Tape su ojo derecho con la mano</div>';
+            html += '<div class="test-step">👁️ Lea las letras con el ojo izquierdo</div>';
+            html += '</div>';
+            
+            html += '<div class="vision-chart">';
+            html += '<div class="chart-line" style="font-size: 40px;">E</div>';
+            html += '<div class="chart-line" style="font-size: 32px;">F P</div>';
+            html += '<div class="chart-line" style="font-size: 24px;">T O Z</div>';
+            html += '<div class="chart-line" style="font-size: 18px;">L P E D</div>';
+            html += '<div class="chart-line" style="font-size: 14px;">P E C F D</div>';
+            html += '<div class="chart-line" style="font-size: 12px;">E D F C Z P</div>';
+            html += '</div>';
+            
+            html += '<p style="margin: 20px 0; font-size: 14px; color: #e2e8f0;"><strong>⚠️ Importante:</strong> Este es solo un test referencial. Para un examen completo, visite a un profesional.</p>';
+            
+            html += '<div class="test-buttons">';
+            html += '<button onclick="sendTestResult(true)" class="test-btn test-btn-primary">✅ Veo bien todas</button>';
+            html += '<button onclick="sendTestResult(false)" class="test-btn test-btn-secondary">❌ No veo algunas</button>';
+            html += '</div>';
+            
+            html += '<div style="margin-top: 20px;">';
+            html += '<button onclick="showCatalogView()" class="catalog-button">👓 Ver Monturas Disponibles</button>';
+            html += '</div>';
+            html += '</div>';
+
+            document.getElementById('mainContent').innerHTML = html;
         }
 
-        function pedirAyuda() {
-            speakText("Conectando con nuestro especialista en monturas premium para recibir ayuda personalizada.");
+        function sendTestResult(canSeeWell) {
             addWhatsAppClick();
+            var message = '';
+            if (canSeeWell) {
+                message = '¡Hola! Hice el test de vista en su página y puedo ver bien. Me gustaría explorar monturas para protección o estilo. ¿Qué opciones tienen disponibles? 👁️✨';
+            } else {
+                message = '¡Hola! Hice el test de vista en su página y tengo dificultades para ver algunas letras. Necesito una evaluación profesional y posiblemente monturas graduadas. ¿Pueden ayudarme? 👁️🔍';
+            }
             
-            var mensaje = "🤝 SOLICITUD DE AYUDA - URBANA VISIÓN 🤝\n\n";
-            mensaje += "Hola, necesito ayuda para elegir monturas premium. ";
-            mensaje += "Me gustaría que me asesoren personalmente.\n\n";
-            mensaje += "📞 SOLICITO:\n";
-            mensaje += "• Asesoría para elegir monturas\n";
-            mensaje += "• Información sobre estilos\n";
-            mensaje += "• Consulta sobre precios\n";
-            mensaje += "• Recomendaciones personalizadas\n\n";
-            mensaje += "🙏 Por favor, contáctenme cuando puedan.";
-            
-            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mensaje), '_blank');
+            var whatsappUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
         }
 
-        function consultarPrecio() {
-            speakText("Enviando consulta sobre precios y promociones disponibles.");
-            addWhatsAppClick();
-            
-            var mensaje = "💰 CONSULTA DE PRECIOS - URBANA VISIÓN 💰\n\n";
-            mensaje += "Hola, me interesan sus monturas premium y necesito información sobre:\n\n";
-            mensaje += "📋 CONSULTAS:\n";
-            mensaje += "• Precios de monturas disponibles\n";
-            mensaje += "• Promociones actuales\n";
-            mensaje += "• Formas de pago\n";
-            mensaje += "• Garantías incluidas\n";
-            mensaje += "• Costos de envío\n\n";
-            mensaje += "👓 Me interesa conocer sus opciones premium.\n";
-            mensaje += "📱 Espero su respuesta. ¡Gracias!";
-            
-            window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mensaje), '_blank');
-        }
-
-        // FUNCIONES DEL SISTEMA ORIGINAL
         function showProduct(montura) {
             var categories = {
                 'hombre': '👨 Hombres',
                 'mujer': '👩 Mujeres', 
                 'deportivo': '🏃 Deportivos',
-                'niños': '👶 Niños'
-            };
-
-            addView();
-
-            var message = '¡Hola! Me interesa la montura premium ' + montura.codigo + ' "' + montura.nombre + '" por ' + montura.precio + '. ¿Está disponible? ¿Incluye garantía y envío? 👓✨';
-            var whatsappUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
-
-            var html = '';
-            html += '<div class="product-card">';
-            html += '<img src="' + montura.foto + '" alt="Montura ' + montura.codigo + '" class="product-image">';
-            html += '<div class="product-info">';
-            html += '<div class="product-code">' + montura.codigo + '</div>';
-            html += '<div class="product-category">' + (categories[montura.categoria] || '👓 Monturas') + '</div>';
-            html += '<h2 class="product-name">' + montura.nombre + '</h2>';
-            html += '<div class="product-price">' + montura.precio + '</div>';
-            
-            html += '<div class="share-buttons">';
-            html += '<button onclick="copyProductLink(\'' + montura.codigo + '\')" class="share-btn btn-copy-link">📋 Copiar Enlace</button>';
-            html += '<button onclick="sendProductMessage(\'' + montura.codigo + '\')" class="share-btn btn-send-message">💬 Enviar Mensaje</button>';
-            html += '</div>';
-            
-            html += '<a href="' + whatsappUrl + '" target="_blank" class="whatsapp-button" onclick="addWhatsAppClick()">';
-            html += '💬 CONSULTAR DISPONIBILIDAD</a>';
-            html += '<button onclick="showCatalogView()" class="catalog-button">';
-            html += '👓 Ver todas las monturas</button>';
-            html += '</div></div>';
-
-            return html;
-        }
-
-        function showCatalogView() {
-            var monturas = safeGetStorage('urbana_monturas');
-            var keys = Object.keys(monturas);
-
-            if (keys.length === 0) {
-                var html = '';
-                html += '<div class="empty-state">';
-                html += '<span class="state-icon">📦</span>';
-                html += '<div class="state-title">Catálogo en preparación</div>';
-                html += '<div>Estamos agregando nuevas monturas premium. Mientras tanto, puede contactarnos directamente.</div><br>';
-                html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">';
-                html += '<button onclick="pedirAyuda()" style="padding: 15px; background: linear-gradient(45deg, #3b82f6, #1d4ed8); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">📞 Contactar</button>';
-                html += '<button onclick="activarModoHumanitario()" style="padding: 15px; background: linear-gradient(45deg, #10b981, #059669); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🌾 Modo Simple</button>';
-                html += '</div></div>';
-                
-                document.getElementById('mainContent').innerHTML = html;
-                return;
-            }
-
-            addView();
-
-            var html = '<div class="catalog-grid">';
-            
-            for (var i = 0; i < keys.length; i++) {
-                var key = keys[i];
-                var montura = monturas[key];
-                
-                html += '<div class="catalog-item" onclick="goToProduct(\'' + montura.codigo + '\')">';
-                html += '<img src="' + montura.foto + '" alt="' + montura.codigo + '" class="catalog-item-image">';
-                html += '<div class="catalog-item-code">' + montura.codigo + '</div>';
-                html += '<div class="catalog-item-price">' + montura.precio + '</div>';
-                html += '</div>';
-            }
-            
-            html += '</div>';
-            
-            html += '<div style="text-align: center; margin-top: 20px;">';
-            html += '<button onclick="pedirAyuda()" class="catalog-button">🤝 Asesoría Personalizada</button>';
-            html += '</div>';
-            
-            document.getElementById('mainContent').innerHTML = html;
-        }
-
-        function goToProduct(codigo) {
-            var currentUrl = window.location.href.split('?')[0];
-            window.location.href = currentUrl + '?codigo=' + codigo;
-        }
-
-        function abrirPOS() {
-            var password = prompt('🔐 Acceso al Sistema POS:');
-            if (password === 'urbana2030') {
-                window.location.href = BASE_URL + 'pos.html';
-            } else if (password !== null) {
-                alert('❌ Contraseña incorrecta');
-            }
-        }
-
-        function adminAccess() {
-            var password = prompt('🔐 Contraseña de administrador Urbana Visión:');
-            if (password === 'urbana2030') {
-                window.location.href = BASE_URL + 'admin.html';
-            } else if (password !== null) {
-                alert('❌ Contraseña incorrecta');
-            }
-        }
-
-        // INICIALIZACIÓN
-        function initApp() {
-            try {
-                var views = '0';
-                var clicks = '0';
-                
-                try {
-                    if (typeof(Storage) !== "undefined" && localStorage) {
-                        views = localStorage.getItem('urbana_views') || '0';
-                        clicks = localStorage.getItem('urbana_whatsapp_clicks') || '0';
-                    }
-                } catch (e) {
-                    console.log('Storage not available:', e);
-                }
-                
-                var viewElement = document.getElementById('viewCount');
-                var clickElement = document.getElementById('clickCount');
-                if (viewElement) viewElement.innerHTML = views;
-                if (clickElement) clickElement.innerHTML = clicks;
-
-                // Verificar si hay un código de producto en la URL
-                var productCode = getUrlParam('codigo');
-                
-                if (productCode) {
-                    var monturas = safeGetStorage('urbana_monturas');
-                    var montura = monturas[productCode.toUpperCase()];
-                    
-                    if (montura) {
-                        document.getElementById('mainContent').innerHTML = showProduct(montura);
-                        document.title = montura.codigo + ' - ' + montura.nombre + ' | Urbana Visión';
-                    } else {
-                        var html = '';
-                        html += '<div class="empty-state">';
-                        html += '<span class="state-icon">🔍</span>';
-                        html += '<div class="state-title">Montura no encontrada</div>';
-                        html += '<div>El código <strong>' + productCode + '</strong> no existe</div><br>';
-                        html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">';
-                        html += '<button onclick="showCatalogView()" style="padding: 15px; background: linear-gradient(45deg, #3b82f6, #1d4ed8); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">👓 Ver Catálogo</button>';
-                        html += '<button onclick="activarModoHumanitario()" style="padding: 15px; background: linear-gradient(45deg, #10b981, #059669); color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🌾 Modo Simple</button>';
-                        html += '</div></div>';
-                        
-                        document.getElementById('mainContent').innerHTML = html;
-                    }
-                } else {
-                    // Mostrar catálogo automáticamente si hay productos
-                    var monturas = safeGetStorage('urbana_monturas');
-                    if (Object.keys(monturas).length > 0) {
-                        showCatalogView();
-                    }
-                }
-
-                // Inicializar sistema de backup
-                initBackupSystem();
-                
-                setTimeout(function() {
-                    if (audioSupported) {
-                        speakText("Bienvenido a Urbana Visión. Toque el botón naranja para activar la ayuda por voz, o el botón modo simple para acceso fácil.");
-                    }
-                }, 3000);
-                
-            } catch (e) {
-                console.error('Error initializing app:', e);
-                var html = '';
-                html += '<div class="empty-state">';
-                html += '<span class="state-icon">⚠️</span>';
-                html += '<div class="state-title">Error de carga</div>';
-                html += '<div>Intente recargar la página</div><br>';
-                html += '<button onclick="window.location.reload()" style="padding: 15px; background: #ef4444; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: 700;">🔄 Recargar</button>';
-                html += '</div>';
-                
-                document.getElementById('mainContent').innerHTML = html;
-            }
-        }
-
-        // EVENTOS
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initApp);
-        } else {
-            initApp();
-        }
-        
-        window.addEventListener('offline', function() {
-            speakText("Sin conexión a internet. El sistema funciona sin conexión.");
-        });
-        
-        window.addEventListener('online', function() {
-            speakText("Conexión a internet restaurada. Realizando backup automático.");
-            setTimeout(performAutoBackup, 2000);
-        });
-
-        document.addEventListener('touchstart', function(event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-        }, { passive: false });
-    </script>
-</body>
-</html>
+                'niños': '👶 Niños',
+                'lectura': '📖 Lectura',
+                '
